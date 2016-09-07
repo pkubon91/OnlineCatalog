@@ -22,7 +22,7 @@ namespace DataContracts.Mappings
         {
             Mapper.Initialize(
                 m =>
-                    m.CreateMap<User, UserDto>().ForMember(dest => dest.Address, opts => opts.MapFrom(src => src.Map())));
+                    m.CreateMap<User, UserDto>().ForMember(dest => dest.Address, opts => opts.MapFrom(src => src.Address.Map())));
             return Mapper.Map<UserDto>(domainUser);
         }
     }

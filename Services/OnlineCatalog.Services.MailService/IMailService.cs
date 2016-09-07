@@ -1,11 +1,9 @@
-﻿using System.Net.Security;
-using System.ServiceModel;
-using System.ServiceModel.Web;
+﻿using System.ServiceModel;
 using OnlineCatalog.Common.DataContracts.General;
 
 namespace OnlineCatalog.Services.MailService
 {
-    [ServiceContract]
+    [ServiceContract(Namespace = "https://online.catalog.com/")]
     public interface IMailService
     {
         [OperationContract(Action = "SendMail")]

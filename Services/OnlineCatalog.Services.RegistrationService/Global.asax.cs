@@ -6,7 +6,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Common.Validations;
-//using OnlineCatalog.Services.MailService;
+using OnlineCatalog.Services.RegistrationService.MailServiceClient;
 using OnlineCatalog.Services.RegistrationService.Validations;
 
 namespace OnlineCatalog.Services.RegistrationService
@@ -22,7 +22,7 @@ namespace OnlineCatalog.Services.RegistrationService
                     Component.For<IValidator<UserDto>>().ImplementedBy<UserRegistrationValidator>(),
                     Component.For<ISessionProvider>().ImplementedBy<SessionFactory>(),
                     Component.For<IUserRepository>().ImplementedBy<UserRepository>(),
-                    //Component.For<IMailService>().ImplementedBy<MailServiceClient>(),
+                    Component.For<IMailService>().ImplementedBy<MailServiceClient.MailServiceClient>(),
                     Component.For<IRegisterService>().ImplementedBy<RegisterService>());
         }
 

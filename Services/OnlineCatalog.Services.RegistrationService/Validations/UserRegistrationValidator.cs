@@ -13,6 +13,7 @@ namespace OnlineCatalog.Services.RegistrationService.Validations
             if(entity.Login.IsNullOrEmpty()) throw new ArgumentNullException(nameof(entity.Login), "Login cannot be null or empty");
             if(entity.Password.IsNullOrEmpty()) throw new ArgumentNullException(nameof(entity.Password), "Password cannot be null or empty");
             if(entity.Address == null) throw new ArgumentNullException(nameof(entity.Address), "Address cannot be null");
+            if (entity.Address.Email.IsNullOrEmpty()) throw new ArgumentException(nameof(entity.Address.Email));
         }
     }
 }

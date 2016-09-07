@@ -48,5 +48,15 @@ namespace OnlineCatalog.Services.RegistrationService.Tests.Unit.Validations
 
             a.ShouldThrow<ArgumentNullException>();
         }
+
+        [TestCase("")]
+        [TestCase(null)]
+        public void WhenAddressEmailIsNullOrEmptyThenArgumentExceptionIsThrown(string email)
+        {
+            UserRegistrationValidator validator = new UserRegistrationValidator();
+            Action a = () => validator.Validate(new UserDto() {Login = "Test login", Password = "Password", Address = new UserAddressDto() {Email = email}});
+
+            a.ShouldThrow<ArgumentException>();
+        }
     }
 }

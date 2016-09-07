@@ -5,6 +5,8 @@ namespace OnlineCatalog.Common.DataContracts.Administration
     [DataContract(Namespace = "http://onlinecatalog.com")]
     public class UserDto
     {
+        public static readonly UserDto EmptyUser = new UserDto();
+
         [DataMember]
         public string Name { get; set; }
         

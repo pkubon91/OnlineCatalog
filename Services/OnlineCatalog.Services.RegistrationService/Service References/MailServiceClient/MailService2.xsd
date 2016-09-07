@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://online.catalog.com/" elementFormDefault="qualified" targetNamespace="http://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="MailContext">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailContent" nillable="true" type="tns:MailContent" />
+      <xs:element minOccurs="0" name="EmailTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SenderAddress" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MailContext" nillable="true" type="tns:MailContext" />
+  <xs:complexType name="MailContent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessageBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" type="tns:MailMessageType" />
+      <xs:element minOccurs="0" name="ReceiverName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MailContent" nillable="true" type="tns:MailContent" />
+  <xs:simpleType name="MailMessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Registration" />
+      <xs:enumeration value="Empty" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MailMessageType" nillable="true" type="tns:MailMessageType" />
+</xs:schema>

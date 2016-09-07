@@ -63,6 +63,10 @@
       <Project>{AA6DAD0B-8A37-435E-8EFE-47266D8D3650}</Project>
       <Name>OnlineCatalog.Common.DataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\OnlineCatalog.Common\OnlineCatalog.Common.csproj">
+      <Project>{7B7C7805-646F-4884-B1C0-AA97CFBF6977}</Project>
+      <Name>OnlineCatalog.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineCatalog.Services.RegistrationService\OnlineCatalog.Services.RegistrationService.csproj">
       <Project>{6C07FA5A-441A-47D8-8265-A75C3349AE2C}</Project>
       <Name>OnlineCatalog.Services.RegistrationService</Name>
