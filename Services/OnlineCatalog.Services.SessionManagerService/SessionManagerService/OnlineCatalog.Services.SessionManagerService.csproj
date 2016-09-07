@@ -61,11 +61,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="SessionManagerService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISessionManagerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing.cs" />
+    <Compile Include="SessionManagerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
