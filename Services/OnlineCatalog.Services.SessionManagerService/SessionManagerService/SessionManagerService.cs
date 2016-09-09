@@ -5,8 +5,7 @@ using System.ServiceModel.Activation;
 
 namespace OnlineCatalog.Services.SessionManagerService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, IncludeExceptionDetailInFaults = false, ConcurrencyMode = ConcurrencyMode.Single)]
-    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any, InstanceContextMode = InstanceContextMode.Single)]
     public class SessionManagerService : ISessionManagerService
     {
         private Dictionary<string, DateTime> ActiveUsers { get; set; } = new Dictionary<string, DateTime>();
@@ -21,6 +20,7 @@ namespace OnlineCatalog.Services.SessionManagerService
                     ActivateUser(userName);
                     return true;
                 }
+                ActiveUsers.Remove(userName);
             }
             return false;
         }
@@ -29,9 +29,12 @@ namespace OnlineCatalog.Services.SessionManagerService
         {
             if (ActiveUsers.ContainsKey(userName))
             {
-                ActiveUsers[userName] = DateTime.UtcNow;   
+                ActiveUsers[userName] = DateTime.UtcNow;
             }
-            ActiveUsers.Add(userName, DateTime.UtcNow);
+            else
+            {
+                ActiveUsers.Add(userName, DateTime.UtcNow);
+            }
         }
     }
 }

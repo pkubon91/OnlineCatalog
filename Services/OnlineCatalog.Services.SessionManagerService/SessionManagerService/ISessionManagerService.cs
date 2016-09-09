@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 
 namespace OnlineCatalog.Services.SessionManagerService
@@ -7,11 +8,11 @@ namespace OnlineCatalog.Services.SessionManagerService
     public interface ISessionManagerService
     {
         [OperationContract]
-        [WebGet(UriTemplate = Routing.ClientRoute, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebInvoke(Method = "GET", UriTemplate = "activeUsers/{userName}", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         bool IsUserActive(string userName);
 
-//        [OperationContract]
-//
-//        void ActivateUser(string userName);
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "activateUser/{userName}", BodyStyle = WebMessageBodyStyle.Bare)]
+        void ActivateUser(string userName);
     }
 }
