@@ -2,6 +2,6 @@
 {
     public interface IValidator<T>
     {
-        void Validate(T entity);
+        bool Validate(T entity);
     }
 }

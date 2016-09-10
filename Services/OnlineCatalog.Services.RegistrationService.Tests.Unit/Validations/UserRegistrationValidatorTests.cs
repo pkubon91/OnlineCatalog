@@ -10,53 +10,63 @@ namespace OnlineCatalog.Services.RegistrationService.Tests.Unit.Validations
     public class UserRegistrationValidatorTests
     {
         [Test]
-        public void WhenUserDtoIsEmptyThenNullReferenceExceptionIsThrown()
+        public void WhenUserDtoIsEmptyThenReturnFalse()
         {
             UserRegistrationValidator validator = new UserRegistrationValidator();
 
-            Action a = () => validator.Validate(null);
+            bool result = validator.Validate(null);
 
-            a.ShouldThrow<ArgumentNullException>();
+            result.Should().BeFalse();
         }
 
         [Test]
-        public void WhenUserLoginIsNotFilledThenArgumentNullExceptionIsThrown()
+        public void WhenUserLoginIsNotFilledThenReturnFalse()
         {
             UserRegistrationValidator validator = new UserRegistrationValidator();
 
-            Action a = () => validator.Validate(new UserDto());
+            bool result = validator.Validate(new UserDto());
 
-            a.ShouldThrow<ArgumentNullException>();
+            result.Should().BeFalse();
         }
 
         [Test]
-        public void WhenUserPasswordIsNotFilledThenArgumentNullExceptionIsThrown()
+        public void WhenUserPasswordIsNotFilledThenReturnFalse()
         {
             UserRegistrationValidator validator = new UserRegistrationValidator();
 
-            Action a = () => validator.Validate(new UserDto() {Login = "testLogin"});
+            bool result = validator.Validate(new UserDto() { Login = "testLogin" });
 
-            a.ShouldThrow<ArgumentNullException>();
+            result.Should().BeFalse();
         }
 
         [Test]
-        public void WhenAddressIsNullThenArgumentNullExceptionIsThrown()
+        public void WhenAddressIsNullThenReturnFalse()
         {
             UserRegistrationValidator validator = new UserRegistrationValidator();
 
-            Action a = () => validator.Validate(new UserDto() {Login = "TestLogin", Password = "Password", Address = null});
+            bool result = validator.Validate(new UserDto() {Login = "TestLogin", Password = "Password", Address = null});
 
-            a.ShouldThrow<ArgumentNullException>();
+            result.Should().BeFalse();
         }
 
         [TestCase("")]
         [TestCase(null)]
-        public void WhenAddressEmailIsNullOrEmptyThenArgumentExceptionIsThrown(string email)
+        public void WhenAddressEmailIsNullOrEmptyThenReturnFalse(string email)
         {
             UserRegistrationValidator validator = new UserRegistrationValidator();
-            Action a = () => validator.Validate(new UserDto() {Login = "Test login", Password = "Password", Address = new UserAddressDto() {Email = email}});
 
-            a.ShouldThrow<ArgumentException>();
+            bool result = validator.Validate(new UserDto() { Login = "Test login", Password = "Password", Address = new UserAddressDto() { Email = email } });
+
+            result.Should().BeFalse();
+        }
+
+        public void WhenAllFieldsAreFilledCorrectlyThenRetrunTrue()
+        {
+            UserRegistrationValidator validator = new UserRegistrationValidator();
+
+            bool result = validator.Validate(new UserDto() { Login = "Test login", Password = "Password", Address = new UserAddressDto() { Email = "test@gmail.com" } });
+
+            result.Should().BeTrue();
         }
     }
 }

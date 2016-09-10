@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="OnlineCatalog.Services.SessionManagerService.SessionManagerService" CodeBehind="OnlineCatalog.Services.SessionManagerService.SessionManagerService.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OnlineCatalog.Services.SessionManagerService.SessionManagerService" Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>

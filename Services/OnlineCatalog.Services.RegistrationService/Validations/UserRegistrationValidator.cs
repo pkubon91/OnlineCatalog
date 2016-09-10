@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Common.Extensions;
 using OnlineCatalog.Common.Validations;
@@ -7,13 +8,14 @@ namespace OnlineCatalog.Services.RegistrationService.Validations
 {
     public class UserRegistrationValidator : IValidator<UserDto>
     {
-        public void Validate(UserDto entity)
+        public bool Validate(UserDto entity)
         {
-            if(entity == null) throw new ArgumentNullException(nameof(entity), "User cannot be null");
-            if(entity.Login.IsNullOrEmpty()) throw new ArgumentNullException(nameof(entity.Login), "Login cannot be null or empty");
-            if(entity.Password.IsNullOrEmpty()) throw new ArgumentNullException(nameof(entity.Password), "Password cannot be null or empty");
-            if(entity.Address == null) throw new ArgumentNullException(nameof(entity.Address), "Address cannot be null");
-            if (entity.Address.Email.IsNullOrEmpty()) throw new ArgumentException(nameof(entity.Address.Email));
+            if(entity == null) return false;
+            if (entity.Login.IsNullOrEmpty()) return false;
+            if (entity.Password.IsNullOrEmpty()) return false;
+            if (entity.Address == null) return false;
+            if (entity.Address.Email.IsNullOrEmpty()) return false;
+            return true;
         }
     }
 }

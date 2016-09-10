@@ -1,39 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ServiceModel;
-using System.ServiceModel.Activation;
 
 namespace OnlineCatalog.Services.SessionManagerService
 {
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any, InstanceContextMode = InstanceContextMode.Single)]
     public class SessionManagerService : ISessionManagerService
     {
-        private Dictionary<string, DateTime> ActiveUsers { get; set; } = new Dictionary<string, DateTime>();
+        private readonly IActiveUsers _activeUsers;
+        private readonly IUtcDateTimeProvider _utcDateTimeProvider;
+
+        public SessionManagerService(IActiveUsers activeUsers, IUtcDateTimeProvider utcDateTimeProvider)
+        {
+            if (activeUsers == null) throw new ArgumentNullException(nameof(activeUsers));
+            if (utcDateTimeProvider == null) throw new ArgumentNullException(nameof(utcDateTimeProvider));
+
+            _activeUsers = activeUsers;
+            _utcDateTimeProvider = utcDateTimeProvider;
+        }
          
         public bool IsUserActive(string userName)
         {
-            if (ActiveUsers.ContainsKey(userName))
+            if (_activeUsers.Users.ContainsKey(userName))
             {
-                DateTime lastActivity = ActiveUsers[userName];
-                if (lastActivity.AddMinutes(10) >= DateTime.UtcNow)
+                DateTime lastActivity = _activeUsers[userName];
+                if (lastActivity.AddMinutes(10) >= _utcDateTimeProvider.UtcDateTimeNow)
                 {
                     ActivateUser(userName);
                     return true;
                 }
-                ActiveUsers.Remove(userName);
+                _activeUsers.Users.Remove(userName);
             }
             return false;
         }
 
         public void ActivateUser(string userName)
         {
-            if (ActiveUsers.ContainsKey(userName))
+            if (_activeUsers.Users.ContainsKey(userName))
             {
-                ActiveUsers[userName] = DateTime.UtcNow;
+                _activeUsers[userName] = _utcDateTimeProvider.UtcDateTimeNow;
             }
             else
             {
-                ActiveUsers.Add(userName, DateTime.UtcNow);
+                _activeUsers.Users.Add(userName, _utcDateTimeProvider.UtcDateTimeNow);
             }
         }
     }

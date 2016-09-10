@@ -28,7 +28,7 @@ namespace OnlineCatalog.Services.RegistrationService
 
         public void RegisterUser(UserDto userForRegistration)
         {
-            _validator.Validate(userForRegistration);
+            if (!_validator.Validate(userForRegistration)) return;
             User user = _userRepository.GetUserByLogin(userForRegistration.Login);
             if (user != null) throw new ArgumentException("User with this login already exist in db", nameof(userForRegistration));
 
