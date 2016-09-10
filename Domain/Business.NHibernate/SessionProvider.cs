@@ -2,6 +2,7 @@
 using System.Configuration;
 using Business.NHibernate.Administration;
 using Business.NHibernate.Interceptors;
+using Business.NHibernate.Products;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -63,7 +64,9 @@ namespace Business.NHibernate
                 .CurrentSessionContext("thread_static")
                 .Mappings(m => m.FluentMappings
                     .AddFromAssemblyOf<UserMap>()
-                    .AddFromAssemblyOf<UserAddressMap>());
+                    .AddFromAssemblyOf<UserAddressMap>()
+                    .AddFromAssemblyOf<ProductCategoryMap>()
+                    .AddFromAssemblyOf<ProductMap>());
             return configuration;
         }
 

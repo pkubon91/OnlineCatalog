@@ -12,7 +12,17 @@ namespace OnlineCatalog.Services.SessionManagerService
 
         public DateTime this[string key]
         {
-            set { Users.Add(key, DateTime.UtcNow); }
+            set
+            {
+                if (Users.ContainsKey(key))
+                {
+                    Users[key] = value;
+                }
+                else
+                {
+                    Users.Add(key, DateTime.UtcNow);
+                }
+            }
             get { return Users[key]; }
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-using OnlineCatalog.Common.DataContracts.Administration;
+﻿using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Common.Extensions;
 using OnlineCatalog.Common.Validations;
 

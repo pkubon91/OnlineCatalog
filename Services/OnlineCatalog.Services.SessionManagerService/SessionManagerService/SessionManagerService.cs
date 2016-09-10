@@ -9,7 +9,12 @@ namespace OnlineCatalog.Services.SessionManagerService
         private readonly IActiveUsers _activeUsers;
         private readonly IUtcDateTimeProvider _utcDateTimeProvider;
 
-        public SessionManagerService(IActiveUsers activeUsers, IUtcDateTimeProvider utcDateTimeProvider)
+        protected SessionManagerService()
+        {
+            
+        }
+
+        public SessionManagerService(IActiveUsers activeUsers, IUtcDateTimeProvider utcDateTimeProvider) : this()
         {
             if (activeUsers == null) throw new ArgumentNullException(nameof(activeUsers));
             if (utcDateTimeProvider == null) throw new ArgumentNullException(nameof(utcDateTimeProvider));
@@ -35,14 +40,7 @@ namespace OnlineCatalog.Services.SessionManagerService
 
         public void ActivateUser(string userName)
         {
-            if (_activeUsers.Users.ContainsKey(userName))
-            {
-                _activeUsers[userName] = _utcDateTimeProvider.UtcDateTimeNow;
-            }
-            else
-            {
-                _activeUsers.Users.Add(userName, _utcDateTimeProvider.UtcDateTimeNow);
-            }
+            _activeUsers[userName] = _utcDateTimeProvider.UtcDateTimeNow;
         }
     }
 }
