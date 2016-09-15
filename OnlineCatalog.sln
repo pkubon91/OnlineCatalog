@@ -41,6 +41,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.Logi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.SessionManagerService.Tests.Unit", "Services\OnlineCatalog.Services.SessionManagerService.Tests.Unit\OnlineCatalog.Services.SessionManagerService.Tests.Unit.csproj", "{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{47AF5CE0-A2F3-402C-ABE5-7DD634DCF711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.ProductCategoryService", "Services\OnlineCatalog.Services.ProductCategoryService\OnlineCatalog.Services.ProductCategoryService.csproj", "{2B64CBC1-5C96-4D83-A559-4EED94644F7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,10 @@ Global
 		{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B64CBC1-5C96-4D83-A559-4EED94644F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B64CBC1-5C96-4D83-A559-4EED94644F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B64CBC1-5C96-4D83-A559-4EED94644F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B64CBC1-5C96-4D83-A559-4EED94644F7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +140,6 @@ Global
 		{7A32F6CD-A283-445F-891B-BA9DF7DAA787} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{63BE7E8A-8374-4E7B-BC6C-4A38CA1AAF73} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
+		{2B64CBC1-5C96-4D83-A559-4EED94644F7B} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 	EndGlobalSection
 EndGlobal

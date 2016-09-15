@@ -51,6 +51,8 @@
     <Compile Include="Administration\IUserRepository.cs" />
     <Compile Include="Administration\UserRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Product\IProductCategoryRepository.cs" />
+    <Compile Include="Product\ProductCategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
