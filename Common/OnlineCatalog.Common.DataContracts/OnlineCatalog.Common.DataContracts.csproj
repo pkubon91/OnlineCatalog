@@ -50,8 +50,12 @@
     <Compile Include="General\MailContent.cs" />
     <Compile Include="General\MailContext.cs" />
     <Compile Include="General\MailMessageType.cs" />
+    <Compile Include="Mappings\ProductMappings\ProductCategoryMapper.cs" />
+    <Compile Include="Mappings\ProductMappings\ProductMapper.cs" />
     <Compile Include="Mappings\UserAddressMapper.cs" />
     <Compile Include="Mappings\UserMapper.cs" />
+    <Compile Include="Products\ProductCategoryDto.cs" />
+    <Compile Include="Products\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

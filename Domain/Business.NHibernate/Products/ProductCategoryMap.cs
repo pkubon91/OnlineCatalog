@@ -11,6 +11,8 @@ namespace Business.NHibernate.Products
 
             Id(cat => cat.UniqueId).GeneratedBy.GuidComb().Column("PRODUCT_CATEGORY_GUID");
             Map(cat => cat.CategoryName).Not.Nullable().Length(100).Column("PRODUCT_CATEGORY_NAME");
+            Map(cat => cat.Created).Not.Nullable().Column("CREATED_DATE");
+            Map(cat => cat.Updated).Not.Nullable().Column("UPDATED_DATE");
 
             HasManyToMany(cat => cat.AssignedProducts)
                 .Cascade.All()
