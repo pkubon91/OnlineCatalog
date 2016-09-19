@@ -1,4 +1,7 @@
-﻿namespace Business.Administration
+﻿using System.Collections.Generic;
+using Business.Groups;
+
+namespace Business.Administration
 {
     public class User : BaseDomainObject
     {
@@ -7,14 +10,13 @@
             
         }
 
-        public User(bool isAdminMode) : this()
+        public User(UserRank userRank) : this()
         {
-            IsAdminMode = isAdminMode;
+            UserRank = userRank;
         }
 
-        public User(string login, string password, bool isAdminUser) : this(isAdminUser)
+        public User(string login, string password, UserRank userRank) : this(userRank)
         {
-            IsAdminMode = isAdminUser;
             Login = login;
             Password = password;
         }
@@ -23,12 +25,14 @@
 
         public virtual string Surname { get; set; }
 
-        public virtual bool IsAdminMode { get; private set; }
-
         public virtual UserAddress Address { get; set; }
 
         public virtual string Login { get; private set; }
 
         public virtual string Password { get; private set; }
+
+        public virtual UserRank UserRank { get; private set; }
+
+        public virtual IEnumerable<Shop> AssignedShops { get; private set; } = new List<Shop>();
     }
 }

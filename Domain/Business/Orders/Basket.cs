@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Business.Administration;
+using Business.Groups;
 using Business.Products;
 using NHibernate.Mapping;
 
@@ -22,6 +23,8 @@ namespace Business.Orders
         public DateTime Created { get; private set; }
 
         public DateTime Updated { get; private set; }
+
+        public Shop BasketShop { get; set; }
 
         public void SetCreatedDate(DateTime dateTime)
         {

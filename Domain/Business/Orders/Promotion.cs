@@ -3,7 +3,7 @@ using Business.Products;
 
 namespace Business.Orders
 {
-    public class Promotion : BaseDomainObject
+    public class Promotion
     {
         public DateTime StartPromotion { get; set; }
 

@@ -1,13 +1,7 @@
-﻿using System;
-
-namespace Business.Administration
+﻿namespace Business.Administration
 {
-    public class UserAddress
+    public class UserAddress : BaseDomainObject
     {
-        public virtual  Guid AddressGuid { get; set; }
-
-//        public virtual User AssociatedUser { get; set; }
-        
         public virtual string City { get; set; }
 
         public virtual string Street { get; set; }

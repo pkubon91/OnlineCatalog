@@ -10,7 +10,7 @@ namespace Business.NHibernate.Administration
         {
             Table("USER_ADDRESS");
 
-            Id(a => a.AddressGuid).GeneratedBy.Foreign("USER_GUID").Column("USER_ADDRESS_GUID");
+            Id(a => a.UniqueId).GeneratedBy.Foreign("USER_GUID").Column("USER_ADDRESS_GUID");
             Map(a => a.BuildingNumber).Column("BUILDING_NUMBER");
             Map(a => a.City).Column("CITY");
             Map(a => a.Email).Column("EMAIL");

@@ -58,7 +58,10 @@
   <ItemGroup>
     <Compile Include="Administration\User.cs" />
     <Compile Include="Administration\UserAddress.cs" />
+    <Compile Include="Administration\UserRank.cs" />
     <Compile Include="BaseDomainObject.cs" />
+    <Compile Include="Groups\Shop.cs" />
+    <Compile Include="IActiveable.cs" />
     <Compile Include="IAuditable.cs" />
     <Compile Include="Orders\Basket.cs" />
     <Compile Include="Orders\Order.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

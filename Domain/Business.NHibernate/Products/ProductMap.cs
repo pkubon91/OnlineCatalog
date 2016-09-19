@@ -21,6 +21,7 @@ namespace Business.NHibernate.Products
             Map(prod => prod.ProductImage).Nullable().Column("PRODUCT_IMAGE");
 
             References(prod => prod.CreatedBy).Nullable().Not.Cascade.All().Column("USER_GUID");
+            References(prod => prod.ProductShop).Not.Nullable().Cascade.All().Column("SHOP_GUID");
 
             HasManyToMany(prod => prod.Categories)
                 .Cascade.All()

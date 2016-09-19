@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Business.Administration;
+using Business.Groups;
 
 namespace Business.Products
 {
@@ -37,6 +38,8 @@ namespace Business.Products
         public DateTime Created { get; private set; }
 
         public DateTime Updated { get; private set; }
+
+        public Shop ProductShop { get; set; }
 
         public void SetCreatedDate(DateTime dateTime)
         {

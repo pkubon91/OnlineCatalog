@@ -48,7 +48,7 @@ namespace OnlineCatalog.Services.LoginService.Tests.Unit
         [Test]
         public void WhenUserPasswordIsNotMatchedToReturnedUserThenEmptyUserIsReturned()
         {
-            var user = new User("testLogin", "testPassword", isAdminUser: false);
+            var user = new User("testLogin", "testPassword", UserRank.Client);
             var loginService = new LoginService(Mock.Of<IUserRepository>(r => r.GetUserByLogin("testLogin") == user));
 
             var userDto = loginService.LoginUser("testLogin", "testPassword2");
@@ -59,7 +59,7 @@ namespace OnlineCatalog.Services.LoginService.Tests.Unit
         [Test]
         public void WhenUserPasswordAndLoginAreMatchedThenUserDtoIsReturned()
         {
-            var user = new User("testLogin", "testPassword", isAdminUser: false)
+            var user = new User("testLogin", "testPassword", UserRank.Client)
             {
                 Name = "xName",
                 Surname = "xSurname"

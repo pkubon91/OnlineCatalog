@@ -14,6 +14,7 @@ namespace Business.NHibernate.Orders
             Map(basket => basket.Updated).Not.Nullable().Column("UPDATE_DATE");
             Map(basket => basket.IsRealized).Not.Nullable().Default("0").Column("IS_REALIZED");
             References(basket => basket.Owner).Not.Nullable().Column("USER_GUID");
+            References(basket => basket.BasketShop).Not.Nullable().Column("SHOP_GUID");
 
             HasManyToMany(basket => basket.BasketProducts)
                 .Cascade.AllDeleteOrphan()

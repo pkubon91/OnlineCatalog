@@ -37,7 +37,7 @@ namespace Business.DataAccess.Tests.Unit.Administration
             ISession sessionMock =
                 Mock.Of<ISession>(
                     session =>
-                        session.QueryOver<User>().Where(user => user.Login == "testLogin").SingleOrDefault() == new User("testLogin", "testPassword", false));
+                        session.QueryOver<User>().Where(user => user.Login == "testLogin").SingleOrDefault() == new User("testLogin", "testPassword", UserRank.Client));
             ISessionProvider sessionProvider = Mock.Of<ISessionProvider>(provider => provider.CreateSession() == sessionMock);
 
             var userRepository = new UserRepository(sessionProvider);
@@ -69,7 +69,7 @@ namespace Business.DataAccess.Tests.Unit.Administration
             sessionMock.Setup(session => session.BeginTransaction()).Returns(Mock.Of<ITransaction>());
             UserRepository userRepository = new UserRepository(Mock.Of<ISessionProvider>(provider => provider.CreateSession() == sessionMock.Object));
 
-            userRepository.AddToDatabase(new User(isAdminMode: true));
+            userRepository.AddToDatabase(new User(UserRank.SystemAdministrator));
 
             sessionMock.Verify(session => session.BeginTransaction(), Times.Once);
         }
@@ -82,7 +82,7 @@ namespace Business.DataAccess.Tests.Unit.Administration
             sessionMock.Setup(session => session.BeginTransaction()).Returns(transactionMock.Object);
             UserRepository userRepository = new UserRepository(Mock.Of<ISessionProvider>(provider => provider.CreateSession() == sessionMock.Object));
 
-            userRepository.AddToDatabase(new User(isAdminMode: true));
+            userRepository.AddToDatabase(new User(UserRank.Client));
 
             transactionMock.Verify(transaction => transaction.Commit(), Times.Once);
         }

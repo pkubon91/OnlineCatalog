@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Administration\UserAddressMap.cs" />
     <Compile Include="Administration\UserMap.cs" />
+    <Compile Include="Groups\ShopMap.cs" />
     <Compile Include="Interceptors\AuditInterceptor.cs" />
     <Compile Include="ISessionProvider.cs" />
     <Compile Include="Orders\BasketMap.cs" />
