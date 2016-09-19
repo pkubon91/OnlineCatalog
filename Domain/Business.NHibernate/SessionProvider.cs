@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Configuration;
 using Business.NHibernate.Administration;
+using Business.NHibernate.Groups;
 using Business.NHibernate.Interceptors;
+using Business.NHibernate.Orders;
 using Business.NHibernate.Products;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -66,7 +68,10 @@ namespace Business.NHibernate
                     .AddFromAssemblyOf<UserMap>()
                     .AddFromAssemblyOf<UserAddressMap>()
                     .AddFromAssemblyOf<ProductCategoryMap>()
-                    .AddFromAssemblyOf<ProductMap>());
+                    .AddFromAssemblyOf<ProductMap>()
+                    .AddFromAssemblyOf<ShopMap>()
+                    .AddFromAssemblyOf<BasketMap>()
+                    .AddFromAssemblyOf<OrderMap>());
             return configuration;
         }
 
