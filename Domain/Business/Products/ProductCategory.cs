@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.Groups;
 
 namespace Business.Products
 {
@@ -23,6 +24,8 @@ namespace Business.Products
         public DateTime Created => _createdDateTime;
 
         public DateTime Updated => _updatedDateTime;
+
+        public virtual Shop ProductCategoryShop { get; set; }
 
         public void SetCreatedDate(DateTime dateTime)
         {

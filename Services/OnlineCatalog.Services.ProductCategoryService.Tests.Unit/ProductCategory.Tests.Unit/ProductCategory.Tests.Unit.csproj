@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D433CD7-1A4F-4767-B864-9EE3DE3C622B}</ProjectGuid>
+    <ProjectGuid>{73852213-E743-47EB-A324-BF2212A456D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineCatalog.Common.DataContracts.Tests.Unit</RootNamespace>
-    <AssemblyName>OnlineCatalog.Common.DataContracts.Tests.Unit</AssemblyName>
+    <RootNamespace>ProductCategory.Tests.Unit</RootNamespace>
+    <AssemblyName>ProductCategory.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=4.14.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.dll</HintPath>
+      <HintPath>..\..\..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions.Core, Version=4.14.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\FluentAssertions.4.14.0\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="Moq, Version=4.5.22.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Moq.4.5.22\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -52,21 +60,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappings\ProductMappings\ProductCategoryMappertTests.cs" />
-    <Compile Include="Mappings\ShopMapperTests.cs" />
+    <Compile Include="ProductCategoryServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Business\Business.csproj">
+    <ProjectReference Include="..\..\..\Common\OnlineCatalog.Common.DataContracts\OnlineCatalog.Common.DataContracts.csproj">
+      <Project>{AA6DAD0B-8A37-435E-8EFE-47266D8D3650}</Project>
+      <Name>OnlineCatalog.Common.DataContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Domain\Business.DataAccess\Business.DataAccess.csproj">
+      <Project>{20679846-A4D6-44AD-8B58-88C10D007D00}</Project>
+      <Name>Business.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Domain\Business\Business.csproj">
       <Project>{5B84B39E-51AF-4D19-8827-075CA7F36CEC}</Project>
       <Name>Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnlineCatalog.Common.DataContracts\OnlineCatalog.Common.DataContracts.csproj">
-      <Project>{AA6DAD0B-8A37-435E-8EFE-47266D8D3650}</Project>
-      <Name>OnlineCatalog.Common.DataContracts</Name>
+    <ProjectReference Include="..\..\OnlineCatalog.Services.ProductCategoryService\OnlineCatalog.Services.ProductCategoryService.csproj">
+      <Project>{2B64CBC1-5C96-4D83-A559-4EED94644F7B}</Project>
+      <Name>OnlineCatalog.Services.ProductCategoryService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Business.Administration;
 using Business.Groups;
+using Business.Orders;
 
 namespace Business.Products
 {
@@ -39,7 +40,7 @@ namespace Business.Products
 
         public DateTime Updated { get; private set; }
 
-        public Shop ProductShop { get; set; }
+        public virtual IEnumerable<Basket> BasketProducts { get; set; } 
 
         public void SetCreatedDate(DateTime dateTime)
         {

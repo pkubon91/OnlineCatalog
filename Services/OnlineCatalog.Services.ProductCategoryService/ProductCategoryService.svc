@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OnlineCatalog.Services.ProductCategoryService.ProductCategoryService" CodeBehind="ProductCategoryService.svc.cs" %>

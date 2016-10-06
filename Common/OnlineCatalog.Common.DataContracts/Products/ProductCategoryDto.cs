@@ -8,6 +8,9 @@ namespace OnlineCatalog.Common.DataContracts.Products
     public class ProductCategoryDto
     {
         [DataMember]
+        public Guid ProductCategoryGuid { get; set; }
+
+        [DataMember]
         public string CategoryName { get; set; }
 
         [DataMember]
@@ -15,6 +18,9 @@ namespace OnlineCatalog.Common.DataContracts.Products
 
         [DataMember]
         public DateTime UpdatedDateTime { get; set; }
+
+        [DataMember]
+        public Guid ShopGuid { get; set; }
 
         [DataMember]
         public IEnumerable<ProductDto> AssignedProducts { get; set; }

@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Business.NHibernate;
 using Business.Products;
+using NHibernate;
+using NHibernate.Linq;
 
 namespace Business.DataAccess.Product
 {
@@ -28,15 +32,23 @@ namespace Business.DataAccess.Product
             }
         }
 
-        public ProductCategory GetProductCategoryById(int id)
+        public IEnumerable<ProductCategory> GetProductCategoriesForShop(Guid shopUniqueId)
         {
             using (var session = _sessionProvider.CreateSession())
             {
-                return session.Get<ProductCategory>(id);
+                return session.Query<ProductCategory>().Where(category => category.ProductCategoryShop.UniqueId == shopUniqueId);
             }
         }
 
-        public ProductCategory EditProductCategory(int productCategoryId, ProductCategory productCategory)
+        public ProductCategory GetProductCategoryByName(Guid shopId, string name)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.Query<ProductCategory>().Single(cat => cat.ProductCategoryShop.UniqueId == shopId && cat.CategoryName == name);
+            }
+        }
+
+        public ProductCategory EditProductCategory(Guid productCategoryId, ProductCategory productCategory)
         {
             if(productCategory == null) throw new ArgumentNullException(nameof(productCategory));
             
@@ -51,13 +63,13 @@ namespace Business.DataAccess.Product
             return productCategory;
         }
 
-        public void RemoveProductCategory(int id)
+        public void RemoveProductCategory(Guid id)
         {
-            var productCategory = GetProductCategoryById(id);
-            if (productCategory == null) return;
-
             using (var session = _sessionProvider.CreateSession())
             {
+                var productCategory = session.Get<ProductCategory>(id);
+                if (productCategory == null) return;
+
                 using (var transaction = session.BeginTransaction())
                 {
                     session.Delete(productCategory);

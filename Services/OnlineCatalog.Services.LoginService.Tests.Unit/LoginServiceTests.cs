@@ -36,13 +36,16 @@ namespace OnlineCatalog.Services.LoginService.Tests.Unit
         }
 
         [Test]
-        public void WhenUserLoginIsNotMatchedThenEmptyUserIsReturned()
+        public void WhenUserLoginIsNotMatchedThenEmptyUserIsReturnedWithNoAuthenticatedPropertySet()
         {
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(r => r.GetUserByLogin("testLogin")).Returns((User) null);
             var loginService = new LoginService(userRepository.Object);
 
-            loginService.LoginUser("testLogin", "testPassword").Should().Be(UserDto.EmptyUser);
+            UserDto loginUser = loginService.LoginUser("testLogin", "testPassword");
+
+            loginUser.Should().Be(UserDto.EmptyUser);
+            loginUser.IsAuthenticated.Should().BeFalse();
         }
 
         [Test]
@@ -54,6 +57,7 @@ namespace OnlineCatalog.Services.LoginService.Tests.Unit
             var userDto = loginService.LoginUser("testLogin", "testPassword2");
 
             userDto.Should().Be(UserDto.EmptyUser);
+            userDto.IsAuthenticated.Should().BeFalse();
         }
 
         [Test]
@@ -71,6 +75,7 @@ namespace OnlineCatalog.Services.LoginService.Tests.Unit
             userDto.Login.Should().Be(user.Login);
             userDto.Name.Should().Be(user.Name);
             userDto.Surname.Should().Be(user.Surname);
+            userDto.IsAuthenticated.Should().BeTrue();
         }
     }
 }

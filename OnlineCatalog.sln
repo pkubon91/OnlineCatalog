@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.Prod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.NHibernate.TestApp", "Domain\Business.NHibernate.TestApp\Business.NHibernate.TestApp.csproj", "{1930FB15-2566-4057-91DC-D89819AF2468}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCategory.Tests.Unit", "Services\OnlineCatalog.Services.ProductCategoryService.Tests.Unit\ProductCategory.Tests.Unit\ProductCategory.Tests.Unit.csproj", "{73852213-E743-47EB-A324-BF2212A456D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,10 @@ Global
 		{1930FB15-2566-4057-91DC-D89819AF2468}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1930FB15-2566-4057-91DC-D89819AF2468}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1930FB15-2566-4057-91DC-D89819AF2468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73852213-E743-47EB-A324-BF2212A456D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73852213-E743-47EB-A324-BF2212A456D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73852213-E743-47EB-A324-BF2212A456D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73852213-E743-47EB-A324-BF2212A456D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +154,6 @@ Global
 		{1DF300D0-EBE5-46CC-9E5B-68470D00B4CB} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{2B64CBC1-5C96-4D83-A559-4EED94644F7B} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{1930FB15-2566-4057-91DC-D89819AF2468} = {C722DDC1-5D83-4C85-B4AD-68CAAC3C7E5C}
+		{73852213-E743-47EB-A324-BF2212A456D7} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 	EndGlobalSection
 EndGlobal

@@ -1,13 +1,17 @@
-﻿using Business.Products;
+﻿using System;
+using System.Collections.Generic;
+using Business.Products;
 
 namespace Business.DataAccess.Product
 {
     public interface IProductCategoryRepository : IRepository<ProductCategory>
     {
-        ProductCategory GetProductCategoryById(int id);
+        IEnumerable<ProductCategory> GetProductCategoriesForShop(Guid shopUniqueId);
 
-        ProductCategory EditProductCategory(int productCategoryId, ProductCategory productCategory);
+        ProductCategory GetProductCategoryByName(Guid shopId, string name);
 
-        void RemoveProductCategory(int id);
+        ProductCategory EditProductCategory(Guid productCategoryId, ProductCategory productCategory);
+
+        void RemoveProductCategory(Guid id);
     }
 }
