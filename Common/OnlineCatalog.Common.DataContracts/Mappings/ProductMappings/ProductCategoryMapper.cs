@@ -17,6 +17,7 @@ namespace OnlineCatalog.Common.DataContracts.Mappings.ProductMappings
                     m.CreateMap<ProductCategoryDto, ProductCategory>()
                         .ForMember(dest => dest.Created, opts => opts.MapFrom(src => src.CreatedDateTime))
                         .ForMember(dest => dest.Updated, opts => opts.MapFrom(src => src.UpdatedDateTime))
+                        .ForMember(dest => dest.UniqueId, opts => opts.MapFrom(src => new Guid(src.ProductCategoryGuid.ToString())))
                         .ForMember(dest => dest.AssignedProducts, opts => opts.Ignore()));
             return Mapper.Map<ProductCategory>(productCategoryDto);
         }
@@ -29,6 +30,8 @@ namespace OnlineCatalog.Common.DataContracts.Mappings.ProductMappings
                     m.CreateMap<ProductCategory, ProductCategoryDto>()
                         .ForMember(dest => dest.CreatedDateTime, opts => opts.MapFrom(src => src.Created))
                         .ForMember(dest => dest.UpdatedDateTime, opts => opts.MapFrom(src => src.Updated))
+                        .ForMember(dest => dest.ProductCategoryGuid, opts => opts.MapFrom(src => new Guid(src.UniqueId.ToString())))
+                        .ForMember(dest => dest.ShopGuid, opts => opts.MapFrom(src => new Guid(src.ProductCategoryShop.UniqueId.ToString())))
                         .ForMember(dest => dest.AssignedProducts, opts => opts.Ignore()));
             return Mapper.Map<ProductCategoryDto>(productCategory);
         }

@@ -7,6 +7,8 @@ namespace OnlineCatalog.Common.DataContracts.Groups
     [DataContract(Namespace = "https://online.catalog.com/")]
     public class ShopDto
     {
+        public static ShopDto EmptyShop = new ShopDto();
+
         [DataMember]
         public Guid ShopGuid { get; set; }
 

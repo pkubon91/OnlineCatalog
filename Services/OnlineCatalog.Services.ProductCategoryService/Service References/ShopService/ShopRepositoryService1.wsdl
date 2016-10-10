@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="https://online.catalog.com/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://online.catalog.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://online.catalog.com/Imports">
+      <xsd:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd0" namespace="https://online.catalog.com/" />
+      <xsd:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" namespace="https://onlinecatalog.com" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IShopRepositoryService_GetShopByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopByName" />
+  </wsdl:message>
+  <wsdl:message name="IShopRepositoryService_GetShopByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IShopRepositoryService_GetShopByUniqueId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopByUniqueId" />
+  </wsdl:message>
+  <wsdl:message name="IShopRepositoryService_GetShopByUniqueId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopByUniqueIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IShopRepositoryService">
+    <wsdl:operation name="GetShopByName">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByName" message="tns:IShopRepositoryService_GetShopByName_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByNameResponse" message="tns:IShopRepositoryService_GetShopByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShopByUniqueId">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueId" message="tns:IShopRepositoryService_GetShopByUniqueId_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueIdResponse" message="tns:IShopRepositoryService_GetShopByUniqueId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

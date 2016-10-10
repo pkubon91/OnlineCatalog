@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace OnlineCatalog.Common.DataContracts
 {
@@ -9,6 +10,7 @@ namespace OnlineCatalog.Common.DataContracts
 
         public ActionStatus Status { get; private set; }
         public string Reason { get; private set; }
+        public Exception ThrownException { get; private set; }
 
         private ServiceActionResult(ActionStatus status)
         {
@@ -18,6 +20,11 @@ namespace OnlineCatalog.Common.DataContracts
         public ServiceActionResult(ActionStatus status, string reason) : this(status)
         {
             Reason = reason;
+        }
+
+        public ServiceActionResult(ActionStatus status, Exception thrownException) : this(status, "Unexpected error")
+        {
+            ThrownException = thrownException;
         }
     }
 }

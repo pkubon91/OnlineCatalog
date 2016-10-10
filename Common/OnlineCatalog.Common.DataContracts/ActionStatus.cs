@@ -17,6 +17,9 @@ namespace OnlineCatalog.Common.DataContracts
         Successfull,
 
         [EnumMember]
-        NotSuccessfull
+        NotSuccessfull,
+
+        [EnumMember]
+        WithException
     }
 }

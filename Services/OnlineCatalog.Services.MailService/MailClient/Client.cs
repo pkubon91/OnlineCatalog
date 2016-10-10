@@ -7,7 +7,7 @@ namespace OnlineCatalog.Services.MailService.MailClient
         public SmtpClient CreateClient()
         {
             SmtpClient client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
+            client.Host = "smtp.google.com";
             client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;

@@ -16,7 +16,7 @@ namespace OnlineCatalog.Common.DataContracts.Tests.Unit.Mappings
         [Test]
         public void ShopDtoIsMapped()
         {
-            var shopGuid = new Guid();
+            var shopGuid = Guid.NewGuid();
             var addressGuid = new Guid();
             ShopDto shopDto = new ShopDto()
             {
@@ -47,7 +47,7 @@ namespace OnlineCatalog.Common.DataContracts.Tests.Unit.Mappings
         [Test]
         public void ShopIsMappedToDtoObject()
         {
-            var shopGuid = new Guid();
+            var shopGuid = Guid.NewGuid();
             var addressGuid = new Guid();
             Shop shop = new Shop()
             {
