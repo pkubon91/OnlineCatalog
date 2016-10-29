@@ -50,7 +50,7 @@ namespace OnlineCatalog.Web.Main.Controllers.LoginView
                 FormsAuthentication.SetAuthCookie(authenticatedUser.Login, true);
                 if (authenticatedUser.UserRank == UserRankDto.Client)
                 {
-                    RedirectToAction("ShopList", "Shop", authenticatedUser.AssignedShops);
+                    return RedirectToAction("ShopList", "Shop", authenticatedUser.AssignedShops);
                 }
             }
             ViewBag.Error = "Username or password is invalid";

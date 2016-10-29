@@ -16,7 +16,7 @@ namespace Business.NHibernate.Administration
             Map(u => u.Login).Not.Nullable().Column("LOGIN");
             Map(u => u.Password).Not.Nullable().Column("PASSWORD");
 
-            References(u => u.Address).Not.Nullable().Cascade.All().Unique().Column("USER_ADDRESS_GUID");
+            References(u => u.Address).Not.Nullable().Cascade.All().Unique().Column("USER_ADDRESS_GUID").LazyLoad(Laziness.False);
             HasManyToMany(user => user.AssignedShops)
                 .Cascade.AllDeleteOrphan()
                 .ChildKeyColumn("SHOP_GUID")

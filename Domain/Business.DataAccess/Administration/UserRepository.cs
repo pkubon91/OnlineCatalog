@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Business.Administration;
 using Business.NHibernate;
 using NHibernate;
@@ -36,8 +37,12 @@ namespace Business.DataAccess.Administration
             User user;
             using (var session = _sessionProvider.CreateSession())
             {
-                var users = session.QueryOver<User>().Where(u => u.Login == login);
-                if(users.RowCount() > 1) throw new NonUniqueResultException(users.RowCount());
+                var usersQuery = session.CreateQuery(@"select u from User u 
+                                                        left join fetch u.AssignedShops s 
+                                                        where u.Login = :Login");
+                usersQuery.SetString("Login", login);
+                var users = usersQuery.List<User>();
+                if(users.Count > 1) throw new NonUniqueResultException(users.Count);
                 user = users.SingleOrDefault();
             }
             return user;
