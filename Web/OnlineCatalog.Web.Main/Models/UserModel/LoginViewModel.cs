@@ -10,5 +10,10 @@ namespace OnlineCatalog.Web.Main.Models.UserModel
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string HashPassword
+        {
+            get { return Password; }
+        }
     }
 }

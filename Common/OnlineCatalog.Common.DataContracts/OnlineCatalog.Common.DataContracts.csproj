@@ -48,6 +48,7 @@
     <Compile Include="ActionStatus.cs" />
     <Compile Include="Administration\UserAddressDto.cs" />
     <Compile Include="Administration\UserDto.cs" />
+    <Compile Include="Administration\UserRankDto.cs" />
     <Compile Include="General\MailContent.cs" />
     <Compile Include="General\MailContext.cs" />
     <Compile Include="General\MailMessageType.cs" />

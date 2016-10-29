@@ -33,6 +33,6 @@ namespace Business.Administration
 
         public virtual UserRank UserRank { get; private set; }
 
-        public virtual IEnumerable<Shop> AssignedShops { get; private set; } = new List<Shop>();
+        public virtual IList<Shop> AssignedShops { get; private set; } = new List<Shop>();
     }
 }

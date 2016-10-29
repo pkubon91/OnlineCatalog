@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Mappings\ProductMappings\ProductCategoryMappertTests.cs" />
     <Compile Include="Mappings\ShopMapperTests.cs" />
+    <Compile Include="Mappings\UserMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

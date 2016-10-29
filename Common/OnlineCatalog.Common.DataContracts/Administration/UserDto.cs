@@ -1,4 +1,7 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using OnlineCatalog.Common.DataContracts.Groups;
 
 namespace OnlineCatalog.Common.DataContracts.Administration
 {
@@ -14,7 +17,7 @@ namespace OnlineCatalog.Common.DataContracts.Administration
         public string Surname { get; set; }
 
         [DataMember(IsRequired = true)]
-        public bool IsAdminMode { get; set; }
+        public UserRankDto UserRank { get; set; }
 
         [DataMember]
         public UserAddressDto Address { get; set; }
@@ -24,6 +27,9 @@ namespace OnlineCatalog.Common.DataContracts.Administration
 
         [DataMember(IsRequired = true)]
         public string Password { get; set; }
+
+        [DataMember]
+        public IEnumerable<ShopDto> AssignedShops { get; set; } = new List<ShopDto>();
 
         [DataMember]
         public bool IsAuthenticated { get; private set; } = true;

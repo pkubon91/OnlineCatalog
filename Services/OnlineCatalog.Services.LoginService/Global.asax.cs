@@ -1,5 +1,6 @@
 ﻿using System;
 using Business.DataAccess.Administration;
+using Business.NHibernate;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -14,6 +15,7 @@ namespace OnlineCatalog.Services.LoginService
         {
             _dependencyContainer = new WindsorContainer();
             _dependencyContainer.AddFacility<WcfFacility>()
+                .Register(Component.For<ISessionProvider>().ImplementedBy<SessionFactory>())
                 .Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>())
                 .Register(Component.For<ILoginService>().ImplementedBy<LoginService>());
         }

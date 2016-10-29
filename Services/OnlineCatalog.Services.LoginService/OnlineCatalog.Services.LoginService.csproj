@@ -114,6 +114,10 @@
       <Project>{20679846-A4D6-44AD-8B58-88C10D007D00}</Project>
       <Name>Business.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Business.NHibernate\Business.NHibernate.csproj">
+      <Project>{63472D77-6EB2-49DD-AA19-68E97F3CC796}</Project>
+      <Name>Business.NHibernate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Domain\Business\Business.csproj">
       <Project>{5B84B39E-51AF-4D19-8827-075CA7F36CEC}</Project>
       <Name>Business</Name>

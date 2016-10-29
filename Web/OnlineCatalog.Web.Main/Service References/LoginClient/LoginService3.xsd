@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="https://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/LoginService/LoginService.svc?xsd=xsd3" namespace="https://onlinecatalog.com" />
+  <xs:import schemaLocation="http://localhost/LoginService/LoginService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/LoginService/LoginService.svc?xsd=xsd2" namespace="http://onlinecatalog.com" />
+  <xs:element name="LoginUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hashPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://onlinecatalog.com" minOccurs="0" name="LoginUserResult" nillable="true" type="q1:UserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfShopDto">
+    <xs:sequence>
+      <xs:element xmlns:q2="https://online.catalog.com/" minOccurs="0" maxOccurs="unbounded" name="ShopDto" nillable="true" type="q2:ShopDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q3="https://online.catalog.com/" name="ArrayOfShopDto" nillable="true" type="q3:ArrayOfShopDto" />
+  <xs:complexType name="ShopDto">
+    <xs:sequence>
+      <xs:element xmlns:q4="https://onlinecatalog.com" minOccurs="0" name="Address" nillable="true" type="q4:UserAddressDto" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShopGuid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q5="https://online.catalog.com/" name="ShopDto" nillable="true" type="q5:ShopDto" />
+  <xs:simpleType name="UserRankDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="SystemAdministrator" />
+      <xs:enumeration value="ShopAdministrator" />
+      <xs:enumeration value="Client" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q6="https://online.catalog.com/" name="UserRankDto" nillable="true" type="q6:UserRankDto" />
+</xs:schema>

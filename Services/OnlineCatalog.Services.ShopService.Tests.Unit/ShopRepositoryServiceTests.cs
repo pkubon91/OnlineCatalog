@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Business.DataAccess.Group;
 using Business.Groups;
 using FluentAssertions;
@@ -71,6 +72,31 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
 
             shop.Should().NotBeNull();
             shop.ShopGuid.Should().Be(shopGuid);
+        }
+
+        [Test]
+        public void WhenShopRepositoryReturnNullThenEmptyCollectionIsReturned()
+        {
+            var shopRepository = new Mock<IShopRepository>();
+            shopRepository.Setup(r => r.GetAllActiveShops()).Returns((IEnumerable<Shop>) null);
+            var shopService = new ShopRepositoryService(shopRepository.Object);
+
+            IEnumerable<ShopDto> shops = shopService.GetAllActiveShops();
+
+            shops.Should().BeEmpty();
+        }
+
+        [Test]
+        public void WhenShopRepositoryReturnSomeRecordsThenAllRecordsAreMappedIntoShopDto()
+        {
+            var shopRepository = new Mock<IShopRepository>();
+            shopRepository.Setup(r => r.GetAllActiveShops()).Returns(new List<Shop>() {Mock.Of<Shop>(), Mock.Of<Shop>()});
+            var shopService = new ShopRepositoryService(shopRepository.Object);
+
+            IEnumerable<ShopDto> shops = shopService.GetAllActiveShops();
+
+            shops.Should().NotBeEmpty();
+            shops.Should().HaveCount(2);
         }
     }
 }

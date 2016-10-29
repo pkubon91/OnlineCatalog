@@ -7,13 +7,14 @@
 <h2>Shop store</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AuthenticateUser", "LoginView", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>Authentication page</h4>
-        <hr />
+        <hr/>
+        <label>@ViewBag.Error</label>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,14 +27,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Login" class="btn btn-default" onclick="location.href='@Url.Action("AuthenticateUser", "LoginView")'"/>
+                <input type="submit" value="Login" class="btn btn-default"/>
             </div>
         </div>
     </div>

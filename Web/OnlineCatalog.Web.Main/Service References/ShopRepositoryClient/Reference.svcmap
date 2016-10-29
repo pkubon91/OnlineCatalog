@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="66e1b4be-d89e-4c2d-b58a-04e622634668" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/ShopService/ShopRepositoryService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ShopRepositoryService.xsd" MetadataType="Schema" ID="4c42f8ae-e77a-4823-a7bb-4fbbf4ab6680" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ShopRepositoryService.wsdl" MetadataType="Wsdl" ID="1118bb6c-7019-49bb-bf2b-2c901297c046" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="ShopRepositoryService1.xsd" MetadataType="Schema" ID="efe5c0eb-64a3-46df-b987-6ca15095881a" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ShopRepositoryService1.wsdl" MetadataType="Wsdl" ID="44201c4f-e187-4876-8620-a4f1e96b12e1" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ShopRepositoryService2.xsd" MetadataType="Schema" ID="7f589aa5-e2ed-47e3-bdc4-48057472c3e5" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

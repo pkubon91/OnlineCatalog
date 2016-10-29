@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Business.Groups;
 using Business.NHibernate;
 using NHibernate;
@@ -9,12 +10,20 @@ namespace Business.DataAccess.Group
     public class ShopRepository : IShopRepository
     {
         private readonly ISessionProvider _sessionProvider;
-
+        
         public ShopRepository(ISessionProvider sessionProvider)
         {
             if (sessionProvider == null) throw new ArgumentNullException(nameof(sessionProvider));
             _sessionProvider = sessionProvider;
         }
+
+        public IEnumerable<Shop> GetAllActiveShops()
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.QueryOver<Shop>().Where(s => s.IsActive && s.IsDeleted == false).List();
+            }
+        } 
 
         public void AddToDatabase(Shop entity)
         {
