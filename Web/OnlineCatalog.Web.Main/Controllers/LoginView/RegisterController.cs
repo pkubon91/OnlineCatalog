@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
+using OnlineCatalog.Common.DataContracts;
+using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Web.Main.Models.UserModel;
 using OnlineCatalog.Web.Main.RegistrationClient;
 
@@ -26,13 +28,13 @@ namespace OnlineCatalog.Web.Main.Controllers.LoginView
         {
             if (ModelState.IsValid)
             {
-                _registerClient.RegisterUser(new UserDto
+                var result = _registerClient.RegisterUser(new UserDto
                 {
                     Login = registeredUser.Login,
                     Password = registeredUser.Password,
                     Name = registeredUser.Name,
                     Surname = registeredUser.Surname,
-                    UserRank = UserRankDto.Client,
+                    UserRank = UserRankDto.SystemAdministrator,
                     Address = new UserAddressDto()
                     {
                         BuildingNumber = registeredUser.Address.BuildingNumber,
@@ -42,7 +44,10 @@ namespace OnlineCatalog.Web.Main.Controllers.LoginView
                         PhoneNumber = registeredUser.Address.PhoneNumber
                     }
                 });
-                return RedirectToAction("Login", "LoginView");
+                if (result.Status == ActionStatus.Successfull)
+                {
+                    return RedirectToAction("Login", "LoginView");
+                }
             }
             return RedirectToAction("Register");
         }

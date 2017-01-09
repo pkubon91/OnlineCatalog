@@ -17,11 +17,11 @@ namespace Business.DataAccess.Group
             _sessionProvider = sessionProvider;
         }
 
-        public IEnumerable<Shop> GetAllActiveShops()
+        public IEnumerable<Shop> GetAllShops()
         {
             using (var session = _sessionProvider.CreateSession())
             {
-                return session.QueryOver<Shop>().Where(s => s.IsActive && s.IsDeleted == false).List();
+                return session.QueryOver<Shop>().Where(s => s.IsDeleted == false).List();
             }
         } 
 
@@ -58,6 +58,18 @@ namespace Business.DataAccess.Group
             using (var session = _sessionProvider.CreateSession())
             {
                 return session.Get<Shop>(uniqueId);
+            }
+        }
+
+        public void UpdateShop(Shop shop)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Update(shop);
+                    transaction.Commit();
+                }
             }
         }
     }

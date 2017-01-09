@@ -17,5 +17,8 @@ namespace OnlineCatalog.Common.DataContracts.Groups
 
         [DataMember]
         public UserAddressDto Address { get; set; }
+
+        [DataMember]
+        public bool IsActive { get; set; }
     }
 }

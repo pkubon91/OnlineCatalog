@@ -7,11 +7,11 @@
       <xsd:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" namespace="https://onlinecatalog.com" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IShopRepositoryService_GetAllActiveShops_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllActiveShops" />
+  <wsdl:message name="IShopRepositoryService_GetAllShops_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllShops" />
   </wsdl:message>
-  <wsdl:message name="IShopRepositoryService_GetAllActiveShops_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllActiveShopsResponse" />
+  <wsdl:message name="IShopRepositoryService_GetAllShops_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllShopsResponse" />
   </wsdl:message>
   <wsdl:message name="IShopRepositoryService_GetShopByName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetShopByName" />
@@ -26,9 +26,9 @@
     <wsdl:part name="parameters" element="tns:GetShopByUniqueIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IShopRepositoryService">
-    <wsdl:operation name="GetAllActiveShops">
-      <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetAllActiveShops" message="tns:IShopRepositoryService_GetAllActiveShops_InputMessage" />
-      <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetAllActiveShopsResponse" message="tns:IShopRepositoryService_GetAllActiveShops_OutputMessage" />
+    <wsdl:operation name="GetAllShops">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetAllShops" message="tns:IShopRepositoryService_GetAllShops_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetAllShopsResponse" message="tns:IShopRepositoryService_GetAllShops_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetShopByName">
       <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByName" message="tns:IShopRepositoryService_GetShopByName_InputMessage" />

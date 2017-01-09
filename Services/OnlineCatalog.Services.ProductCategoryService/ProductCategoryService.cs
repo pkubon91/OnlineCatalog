@@ -1,5 +1,6 @@
 ﻿using System;
 using Business.DataAccess.Product;
+using Business.DataAccess.Products;
 using Business.Products;
 using OnlineCatalog.Common.DataContracts;
 using OnlineCatalog.Common.DataContracts.Mappings;

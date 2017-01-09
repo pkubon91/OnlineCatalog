@@ -24,6 +24,10 @@ namespace Business.NHibernate.Interceptors
             if (auditableEntity != null)
             {
                 DateTime currentDate = DateTime.UtcNow;
+                for (int i = 0; i < propertyNames.Length; i++)
+                {
+                    if (propertyNames[i] == "Created" || propertyNames[i] == "Updated") state[i] = currentDate;
+                }
                 auditableEntity.SetCreatedDate(currentDate);
                 auditableEntity.SetUpdatedDate(currentDate);
 

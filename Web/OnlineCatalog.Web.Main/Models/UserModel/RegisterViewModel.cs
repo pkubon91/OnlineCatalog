@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using OnlineCatalog.Web.Main.CustomValidations;
+using OnlineCatalog.Web.Main.Models.Shared;
 
 namespace OnlineCatalog.Web.Main.Models.UserModel
 {
     [ValidateUser]
-    public class RegisterViewModel
+    public class RegisterViewModel : IAddressViewModel
     {
         public RegisterViewModel()
         {

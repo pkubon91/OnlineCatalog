@@ -6,10 +6,12 @@ namespace Business.DataAccess.Group
 {
     public interface IShopRepository : IRepository<Shop>
     {
-        IEnumerable<Shop> GetAllActiveShops();
+        IEnumerable<Shop> GetAllShops();
 
         Shop GetShopByName(string shopName);
 
         Shop GetShopById(Guid uniqueId);
+
+        void UpdateShop(Shop shop);
     }
 }

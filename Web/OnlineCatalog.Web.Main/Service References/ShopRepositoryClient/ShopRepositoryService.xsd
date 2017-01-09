@@ -2,15 +2,15 @@
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="https://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" namespace="https://onlinecatalog.com" />
   <xs:import schemaLocation="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:element name="GetAllActiveShops">
+  <xs:element name="GetAllShops">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllActiveShopsResponse">
+  <xs:element name="GetAllShopsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="https://online.catalog.com/" minOccurs="0" name="GetAllActiveShopsResult" nillable="true" type="q1:ArrayOfShopDto" />
+        <xs:element xmlns:q1="https://online.catalog.com/" minOccurs="0" name="GetAllShopsResult" nillable="true" type="q1:ArrayOfShopDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -9,7 +9,7 @@ namespace OnlineCatalog.Services.ShopService
     public interface IShopRepositoryService
     {
         [OperationContract]
-        IEnumerable<ShopDto> GetAllActiveShops();
+        IEnumerable<ShopDto> GetAllShops();
 
         [OperationContract]
         ShopDto GetShopByName(string shopName);

@@ -36,6 +36,8 @@ namespace Business.Products
 
         public virtual bool IsDeleted { get; set; }
 
+        public virtual Shop AssignedShop { get; set; }
+
         public DateTime Created { get; private set; }
 
         public DateTime Updated { get; private set; }

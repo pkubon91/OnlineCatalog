@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6609d065-7e63-49f0-8050-e4b244804588" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="40538609-07f4-45f7-a15d-77d0bcd9ce64" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,18 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/RegistrationService/RegisterService.svc?singleWsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/RegistrationService/RegisterService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RegisterService.wsdl" MetadataType="Wsdl" ID="85615c22-519c-41c5-9191-a92aa2aa4061" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?singleWsdl" />
+    <MetadataFile FileName="RegisterService.xsd" MetadataType="Schema" ID="21f163dd-a7a5-4122-823c-f50cb5352242" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RegisterService1.xsd" MetadataType="Schema" ID="9056e639-50bf-44db-bedc-6e3e00d75594" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd5" />
+    <MetadataFile FileName="RegisterService2.xsd" MetadataType="Schema" ID="a2aa93bd-2001-49c0-8900-e63b9d41c45f" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd4" />
+    <MetadataFile FileName="RegisterService.wsdl" MetadataType="Wsdl" ID="d554be6a-aa58-47fb-8665-4e73efc7c42f" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="RegisterService3.xsd" MetadataType="Schema" ID="87ef6513-e813-45be-9e7f-d4e65248b1ae" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd6" />
+    <MetadataFile FileName="RegisterService1.wsdl" MetadataType="Wsdl" ID="e7d9ffdc-8cef-4b87-8238-0aa81c6953f3" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?wsdl" />
+    <MetadataFile FileName="RegisterService4.xsd" MetadataType="Schema" ID="84525e3d-29c4-41ff-9e86-edc8d5348b20" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RegisterService5.xsd" MetadataType="Schema" ID="efce8260-9356-4aa0-8820-df92b17c7fae" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RegisterService6.xsd" MetadataType="Schema" ID="c7eb9194-f122-4645-961c-6124345d5180" SourceId="1" SourceUrl="http://localhost/RegistrationService/RegisterService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

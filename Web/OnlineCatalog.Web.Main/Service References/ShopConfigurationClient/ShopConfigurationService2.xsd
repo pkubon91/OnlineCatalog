@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="https://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/ShopService/ShopConfigurationService.svc?xsd=xsd2" namespace="https://onlinecatalog.com" />
+  <xs:import schemaLocation="http://localhost/ShopService/ShopConfigurationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/ShopService/ShopConfigurationService.svc?xsd=xsd3" namespace="https://online.catalog.com" />
+  <xs:import schemaLocation="http://localhost/ShopService/ShopConfigurationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:element name="AddNewShop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="https://online.catalog.com/" minOccurs="0" name="shop" nillable="true" type="q1:ShopDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ShopDto">
+    <xs:sequence>
+      <xs:element xmlns:q2="https://onlinecatalog.com" minOccurs="0" name="Address" nillable="true" type="q2:UserAddressDto" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShopGuid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q3="https://online.catalog.com/" name="ShopDto" nillable="true" type="q3:ShopDto" />
+  <xs:element name="AddNewShopResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="https://online.catalog.com/" minOccurs="0" name="AddNewShopResult" nillable="true" type="q4:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ServiceActionResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="https://online.catalog.com" minOccurs="0" name="Status" type="q5:ActionStatus" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ThrownException" nillable="true" type="q6:Exception" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q7="https://online.catalog.com/" name="ServiceActionResult" nillable="true" type="q7:ServiceActionResult" />
+  <xs:element name="ShopActivation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shopGuid" type="ser:guid" />
+        <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShopActivationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="https://online.catalog.com/" minOccurs="0" name="ShopActivationResult" nillable="true" type="q8:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditShop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="https://online.catalog.com/" minOccurs="0" name="shop" nillable="true" type="q9:ShopDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditShopResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="https://online.catalog.com/" minOccurs="0" name="EditShopResult" nillable="true" type="q10:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

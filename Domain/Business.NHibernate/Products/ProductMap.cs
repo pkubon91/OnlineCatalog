@@ -20,8 +20,8 @@ namespace Business.NHibernate.Products
             Map(prod => prod.Tax).Not.Nullable().Column("TAX").Default("0");
             Map(prod => prod.ProductImage).Nullable().Column("PRODUCT_IMAGE");
 
-            References(prod => prod.CreatedBy).Nullable().Not.Cascade.All().Column("USER_GUID");
-            
+            References(prod => prod.CreatedBy).Not.Nullable().Cascade.All().Column("USER_GUID");
+            References(prod => prod.AssignedShop).Not.Nullable().LazyLoad(Laziness.False).Column("SHOP_GUID");
 
             HasManyToMany(prod => prod.Categories)
                 .Cascade.All()

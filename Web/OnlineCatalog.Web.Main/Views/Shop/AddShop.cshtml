@@ -1,0 +1,25 @@
+﻿@model OnlineCatalog.Web.Main.Models.Groups.ShopViewModel
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add new Shop</title>
+</head>
+<body>
+    <h2>Add new shop</h2>
+    @using (Html.BeginForm("AddShop", "Shop", FormMethod.Post))
+    {
+        Html.RenderPartial("ShopView", Model);
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="AddShop" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</body>
+</html>

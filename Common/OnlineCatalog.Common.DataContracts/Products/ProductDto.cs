@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using OnlineCatalog.Common.DataContracts.Administration;
+using OnlineCatalog.Common.DataContracts.Groups;
 
 namespace OnlineCatalog.Common.DataContracts.Products
 {
     [DataContract(Namespace = "https://online.catalog.com/")]
     public class ProductDto
     {
+        [DataMember]
+        public Guid ProductGuid { get; set; }
+
+        [DataMember]
+        public ShopDto ShopAssigned { get; set; }
+
         [DataMember]
         public IEnumerable<ProductCategoryDto> ProductCategories { get; set; }
 

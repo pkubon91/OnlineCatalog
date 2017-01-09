@@ -43,12 +43,12 @@ namespace OnlineCatalog.Services.ShopService
 
         protected void Session_End(object sender, EventArgs e)
         {
-            _container?.Dispose();
+
         }
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+            _container?.Dispose();
         }
     }
 }

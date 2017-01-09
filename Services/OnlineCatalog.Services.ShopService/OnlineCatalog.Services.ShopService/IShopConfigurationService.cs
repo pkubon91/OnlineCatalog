@@ -1,6 +1,6 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using OnlineCatalog.Common.DataContracts;
-using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Common.DataContracts.Groups;
 
 namespace OnlineCatalog.Services.ShopService
@@ -10,5 +10,11 @@ namespace OnlineCatalog.Services.ShopService
     {
         [OperationContract]
         ServiceActionResult AddNewShop(ShopDto shop);
+
+        [OperationContract]
+        ServiceActionResult ShopActivation(Guid shopGuid, bool isActive);
+
+        [OperationContract]
+        ServiceActionResult EditShop(ShopDto shop);
     }
 }

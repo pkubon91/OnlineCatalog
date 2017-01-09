@@ -6,27 +6,19 @@ namespace Business.Groups
 {
     public class Shop : BaseDomainObject, IAuditable, IActiveable
     {
-        private DateTime _created;
-
-        private DateTime _updated;
-
-        private bool _isActive;
-
-        private bool _isDeleted;
-
         public virtual string Name { get; set; }
 
         public virtual UserAddress Address { get; set; }
 
         public virtual IEnumerable<User> AssignedUsers { get; set; }
 
-        public DateTime Created => _created;
+        public DateTime Created { get; private set; }
 
-        public DateTime Updated => _updated;
+        public DateTime Updated { get; private set; }
 
         public void SetActive(bool isActive)
         {
-            _isActive = isActive;
+            IsActive = isActive;
         }
 
         public void SetDeleted(bool isDeleted)
@@ -35,24 +27,24 @@ namespace Business.Groups
             {
                 SetActive(false);
             }
-            _isDeleted = isDeleted;
+            IsDeleted = isDeleted;
         }
 
-        public bool IsActive => _isActive;
+        public bool IsActive { get; protected set; }
 
-        public bool IsDeleted => _isDeleted;
+        public bool IsDeleted { get; protected set; }
 
         public void SetCreatedDate(DateTime dateTime)
         {
             if (Created == DateTime.MinValue)
             {
-                _created = dateTime;
+                Created = dateTime;
             }
         }
 
         public void SetUpdatedDate(DateTime dateTime)
         {
-            _updated = dateTime;
+            Updated = dateTime;
         }
     }
 }

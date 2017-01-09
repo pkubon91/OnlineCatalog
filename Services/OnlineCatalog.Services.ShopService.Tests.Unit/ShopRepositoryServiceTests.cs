@@ -78,10 +78,10 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         public void WhenShopRepositoryReturnNullThenEmptyCollectionIsReturned()
         {
             var shopRepository = new Mock<IShopRepository>();
-            shopRepository.Setup(r => r.GetAllActiveShops()).Returns((IEnumerable<Shop>) null);
+            shopRepository.Setup(r => r.GetAllShops()).Returns((IEnumerable<Shop>) null);
             var shopService = new ShopRepositoryService(shopRepository.Object);
 
-            IEnumerable<ShopDto> shops = shopService.GetAllActiveShops();
+            IEnumerable<ShopDto> shops = shopService.GetAllShops();
 
             shops.Should().BeEmpty();
         }
@@ -90,10 +90,10 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         public void WhenShopRepositoryReturnSomeRecordsThenAllRecordsAreMappedIntoShopDto()
         {
             var shopRepository = new Mock<IShopRepository>();
-            shopRepository.Setup(r => r.GetAllActiveShops()).Returns(new List<Shop>() {Mock.Of<Shop>(), Mock.Of<Shop>()});
+            shopRepository.Setup(r => r.GetAllShops()).Returns(new List<Shop>() {Mock.Of<Shop>(), Mock.Of<Shop>()});
             var shopService = new ShopRepositoryService(shopRepository.Object);
 
-            IEnumerable<ShopDto> shops = shopService.GetAllActiveShops();
+            IEnumerable<ShopDto> shops = shopService.GetAllShops();
 
             shops.Should().NotBeEmpty();
             shops.Should().HaveCount(2);

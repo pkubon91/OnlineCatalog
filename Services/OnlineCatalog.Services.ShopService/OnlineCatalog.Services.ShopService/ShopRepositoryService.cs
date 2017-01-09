@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Business.DataAccess.Group;
+using Business.Groups;
 using Castle.Core.Internal;
 using OnlineCatalog.Common.DataContracts.Groups;
 using OnlineCatalog.Common.DataContracts.Mappings;
@@ -18,9 +19,9 @@ namespace OnlineCatalog.Services.ShopService
             _shopRepository = shopRepository;
         }
 
-        public IEnumerable<ShopDto> GetAllActiveShops()
+        public IEnumerable<ShopDto> GetAllShops()
         {
-            var allShops = _shopRepository.GetAllActiveShops();
+            IEnumerable<Shop> allShops = _shopRepository.GetAllShops();
             if (allShops == null) return Enumerable.Empty<ShopDto>();
             return allShops.Select(s => s.Map());
         }

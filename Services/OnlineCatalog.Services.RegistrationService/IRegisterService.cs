@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using OnlineCatalog.Common.DataContracts;
 using OnlineCatalog.Common.DataContracts.Administration;
 
 namespace OnlineCatalog.Services.RegistrationService
@@ -7,6 +8,6 @@ namespace OnlineCatalog.Services.RegistrationService
     public interface IRegisterService
     {
         [OperationContract(Action = "RegisterUser")]
-        void RegisterUser(UserDto userForRegistration);
+        ServiceActionResult RegisterUser(UserDto userForRegistration);
     }
 }

@@ -53,8 +53,10 @@
     <Compile Include="Group\IShopRepository.cs" />
     <Compile Include="Group\ShopRepository.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Product\IProductCategoryRepository.cs" />
-    <Compile Include="Product\ProductCategoryRepository.cs" />
+    <Compile Include="Products\IProductCategoryRepository.cs" />
+    <Compile Include="Products\IProductRepository.cs" />
+    <Compile Include="Products\ProductCategoryRepository.cs" />
+    <Compile Include="Products\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

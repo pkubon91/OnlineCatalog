@@ -1,5 +1,7 @@
 ﻿using System;
 using Business.DataAccess.Product;
+using Business.DataAccess.Products;
+using Business.NHibernate;
 using Castle.Facilities.WcfIntegration;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -14,6 +16,7 @@ namespace OnlineCatalog.Services.ProductCategoryService
         {
             if(_container == null) _container = new WindsorContainer();
             _container.AddFacility<WcfFacility>()
+                .Register(Component.For<ISessionProvider>().ImplementedBy<SessionFactory>())
                 .Register(Component.For<IProductCategoryRepository>().ImplementedBy<ProductCategoryRepository>())
                 .Register(Component.For<IProductCategoryService>().ImplementedBy<ProductCategoryService>());
         }

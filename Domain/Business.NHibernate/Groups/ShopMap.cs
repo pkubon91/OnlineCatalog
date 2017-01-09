@@ -3,7 +3,7 @@ using FluentNHibernate.Mapping;
 
 namespace Business.NHibernate.Groups
 {
-    public class ShopMap : ClassMap<Shop>
+    public sealed class ShopMap : ClassMap<Shop>
     {
         public ShopMap()
         {
@@ -16,7 +16,7 @@ namespace Business.NHibernate.Groups
             Map(shop => shop.IsActive).Not.Nullable().Column("IS_ACTIVE");
             Map(shop => shop.IsDeleted).Not.Nullable().Column("IS_DELETED");
 
-            References(shop => shop.Address).Not.Nullable().Cascade.All().Unique().Column("USER_ADDRESS_GUID");
+            References(shop => shop.Address).Not.Nullable().Cascade.All().Unique().LazyLoad(Laziness.False).Column("USER_ADDRESS_GUID");
             HasManyToMany(shop => shop.AssignedUsers)
                 .Cascade.AllDeleteOrphan()
                 .ChildKeyColumn("APP_USER_GUID")

@@ -1,0 +1,25 @@
+﻿@model OnlineCatalog.Web.Main.Models.Groups.ShopViewModel
+
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Edit existing shop</title>
+</head>
+<body>
+    <h2>Edit existing shop</h2>
+    @using (Html.BeginForm("EditShop", "Shop", FormMethod.Post))
+    {
+        Html.RenderPartial("ShopView", Model);
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</body>
+</html>

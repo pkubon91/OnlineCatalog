@@ -2,6 +2,7 @@
 using Business.Administration;
 using Business.DataAccess.Administration;
 using DataContracts.Mappings;
+using OnlineCatalog.Common.DataContracts;
 using OnlineCatalog.Common.DataContracts.Administration;
 using OnlineCatalog.Common.DataContracts.General;
 using OnlineCatalog.Common.Validations;
@@ -26,16 +27,30 @@ namespace OnlineCatalog.Services.RegistrationService
             _mailClient = mailClient;
         }
 
-        public void RegisterUser(UserDto userForRegistration)
+        public ServiceActionResult RegisterUser(UserDto userForRegistration)
         {
-            if (!_validator.Validate(userForRegistration)) return;
-            User user = _userRepository.GetUserByLogin(userForRegistration.Login);
-            if (user != null) throw new ArgumentException("User with this login already exist in db", nameof(userForRegistration));
+            if (!_validator.Validate(userForRegistration)) return new ServiceActionResult(ActionStatus.NotSuccessfull, "User is not filled correctly");
+            try
+            {
+                User user = _userRepository.GetUserByLogin(userForRegistration.Login);
+                if (user != null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "User with defined login already exist");
+                _userRepository.AddToDatabase(userForRegistration.Map());
+            }
+            catch (Exception ex)
+            {
+                return new ServiceActionResult(ActionStatus.WithException, ex);
+            }
 
-            _userRepository.AddToDatabase(userForRegistration.Map());
-
-            var messageContent = _mailClient.BuildMessage(BuildMailContext(userForRegistration));
-            _mailClient.SendMail(messageContent);
+            try
+            {
+                var messageContent = _mailClient.BuildMessage(BuildMailContext(userForRegistration));
+                _mailClient.SendMail(messageContent);
+                return ServiceActionResult.Successfull;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceActionResult(ActionStatus.WithException, ex);
+            }
         }
 
         private static MailContext BuildMailContext(UserDto userForRegistration)

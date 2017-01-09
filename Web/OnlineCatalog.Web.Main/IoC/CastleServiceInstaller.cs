@@ -3,6 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using OnlineCatalog.Web.Main.LoginClient;
 using OnlineCatalog.Web.Main.RegistrationClient;
+using OnlineCatalog.Web.Main.ShopConfigurationClient;
 using OnlineCatalog.Web.Main.ShopRepositoryClient;
 
 namespace OnlineCatalog.Web.Main.IoC
@@ -13,7 +14,8 @@ namespace OnlineCatalog.Web.Main.IoC
         {
             container.Register(Component.For<ILoginService>().ImplementedBy<LoginServiceClient>())
                 .Register(Component.For<IShopRepositoryService>().ImplementedBy<ShopRepositoryServiceClient>())
-                .Register(Component.For<IRegisterService>().ImplementedBy<RegisterServiceClient>());
+                .Register(Component.For<IRegisterService>().ImplementedBy<RegisterServiceClient>())
+                .Register(Component.For<IShopConfigurationService>().ImplementedBy<ShopConfigurationServiceClient>());
         }
     }
 }

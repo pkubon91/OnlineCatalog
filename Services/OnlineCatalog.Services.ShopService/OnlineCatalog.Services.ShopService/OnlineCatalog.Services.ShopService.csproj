@@ -80,7 +80,9 @@
     <Content Include="Global.asax" />
     <Content Include="ShopConfigurationService.svc" />
     <Content Include="ShopRepositoryService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
