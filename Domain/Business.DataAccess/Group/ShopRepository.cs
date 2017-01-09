@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.Administration;
 using Business.Groups;
 using Business.NHibernate;
 using NHibernate;
@@ -68,6 +69,18 @@ namespace Business.DataAccess.Group
                 using (var transaction = session.BeginTransaction())
                 {
                     session.Update(shop);
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public void AssignUser(Shop shop, User user)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    shop.AssignUser(user);
                     transaction.Commit();
                 }
             }

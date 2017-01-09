@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.Administration;
 using Business.Groups;
 
 namespace Business.DataAccess.Group
@@ -13,5 +14,7 @@ namespace Business.DataAccess.Group
         Shop GetShopById(Guid uniqueId);
 
         void UpdateShop(Shop shop);
+
+        void AssignUser(Shop shop, User user);
     }
 }

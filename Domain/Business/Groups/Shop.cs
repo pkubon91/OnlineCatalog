@@ -10,7 +10,7 @@ namespace Business.Groups
 
         public virtual UserAddress Address { get; set; }
 
-        public virtual IEnumerable<User> AssignedUsers { get; set; }
+        public virtual IList<User> AssignedUsers { get; set; }
 
         public DateTime Created { get; private set; }
 
@@ -45,6 +45,12 @@ namespace Business.Groups
         public void SetUpdatedDate(DateTime dateTime)
         {
             Updated = dateTime;
+        }
+
+        public void AssignUser(User userToAssign)
+        {
+            if(userToAssign == null) throw new ArgumentNullException(nameof(userToAssign));
+            AssignedUsers.Add(userToAssign);
         }
     }
 }

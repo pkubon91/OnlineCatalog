@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineCatalog.Services.UserAssignmentService.Tests.Unit
+namespace OnlineCatalog.Services.UserService.Tests.Unit
 {
     public class Class1
     {

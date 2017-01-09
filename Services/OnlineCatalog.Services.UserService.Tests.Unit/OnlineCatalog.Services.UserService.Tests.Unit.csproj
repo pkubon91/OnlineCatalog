@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>357da9cf-ab42-4c0a-bf50-9b5b822deda4</ProjectGuid>
+    <ProjectGuid>9bee9a33-92fa-40c8-afd6-91467aa2a5cd</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineCatalog.Services.UserAssignmentService.Tests.Unit</RootNamespace>
-    <AssemblyName>OnlineCatalog.Services.UserAssignmentService.Tests.Unit</AssemblyName>
+    <RootNamespace>OnlineCatalog.Services.UserService.Tests.Unit</RootNamespace>
+    <AssemblyName>OnlineCatalog.Services.UserService.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
