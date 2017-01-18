@@ -63,6 +63,15 @@
   <ItemGroup>
     <Content Include="BasketRepositoryService.svc" />
     <Content Include="BasketService.svc" />
+    <Content Include="OrderService.svc" />
+    <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.General.MailContext.datasource" />
+    <None Include="Service References\MailClient\MailService.disco" />
+    <None Include="Service References\MailClient\configuration91.svcinfo" />
+    <None Include="Service References\MailClient\configuration.svcinfo" />
+    <None Include="Service References\MailClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -72,12 +81,30 @@
     <Compile Include="BasketService.cs" />
     <Compile Include="IBasketRepositoryService.cs" />
     <Compile Include="IBasketService.cs" />
+    <Compile Include="IOrderService.cs" />
+    <Compile Include="OrdersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\MailClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\MailClient\MailService.wsdl" />
+    <None Include="Service References\MailClient\MailService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MailClient\MailService1.wsdl" />
+    <None Include="Service References\MailClient\MailService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MailClient\MailService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -90,10 +117,20 @@
       <Project>{AA6DAD0B-8A37-435E-8EFE-47266D8D3650}</Project>
       <Name>OnlineCatalog.Common.DataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Domain\Business.DataAccess\Business.DataAccess.csproj">
+      <Project>{20679846-A4D6-44AD-8B58-88C10D007D00}</Project>
+      <Name>Business.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Domain\Business\Business.csproj">
       <Project>{5B84B39E-51AF-4D19-8827-075CA7F36CEC}</Project>
       <Name>Business</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MailClient\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

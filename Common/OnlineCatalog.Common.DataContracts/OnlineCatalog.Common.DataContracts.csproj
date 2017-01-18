@@ -58,6 +58,7 @@
     <Compile Include="Mappings\ShopMapper.cs" />
     <Compile Include="Mappings\UserAddressMapper.cs" />
     <Compile Include="Mappings\UserMapper.cs" />
+    <Compile Include="Orders\BasketDto.cs" />
     <Compile Include="Products\ProductCategoryDto.cs" />
     <Compile Include="Products\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
