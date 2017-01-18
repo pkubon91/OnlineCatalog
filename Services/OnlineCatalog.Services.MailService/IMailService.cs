@@ -6,7 +6,7 @@ namespace OnlineCatalog.Services.MailService
     [ServiceContract(Namespace = "https://online.catalog.com/")]
     public interface IMailService
     {
-        [OperationContract(Action = "SendMail")]
+        [OperationContract(Action = "SendMail", IsOneWay = true)]
         void SendMail(MailContext context);
 
         [OperationContract(Action = "BuildMessage")]

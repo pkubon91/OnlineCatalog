@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using OnlineCatalog.Common.DataContracts;
 
 namespace OnlineCatalog.Services.UserService
@@ -14,5 +9,8 @@ namespace OnlineCatalog.Services.UserService
     {
         [OperationContract]
         ServiceActionResult AssignUserToShop(string login, Guid shopGuid);
+
+        [OperationContract]
+        ServiceActionResult UnassignUserFromShop(string login, Guid shopGuid);
     }
 }

@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "System shops";
-//    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <head>
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -11,24 +10,35 @@
     <h2>System shops</h2>
 
 <table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Shop name</td>
+        <td class="h4">City</td>
+        <td class="h4">Email</td>
+        <td class="h4">Phone number</td>
+        <td class="h4">Activation</td>
+        <td class="h4">Edit</td>
+    </tr>
     @foreach (var shop in Model)
     {
         <tr>
             <td class="hidden">@shop.ShopGuid</td>
-            <td>@shop.ShopName
+            <td>@shop.ShopName </td>
+            <td>@shop.Address.City</td>
+            <td>@shop.Address.Email</td>
+            <td>@shop.Address.PhoneNumber</td>
             <td class="col-lg-offset-3">
                 @if (shop.IsActive)
                 {
-                    <input type="button" value="Deactivate" class="btn-danger" onclick="@("window.location.href='" + @Url.Action("DeactivateShop", "Shop", new {shopGuid = shop.ShopGuid}) + "'");" />
+                    <input type="button" value="Deactivate" class="btn-danger" onclick="@("window.location.href='" + @Url.Action("DeactivateShop", "Shop", new {shopGuid = shop.ShopGuid}) + "'");"/>
 
                 }
                 else
                 {
-                    <input type="button" value="Activate" class="btn-default" onclick="@("window.location.href='" + @Url.Action("ActivateShop", "Shop",  new {shopGuid = shop.ShopGuid}) + "'");" />
+                    <input type="button" value="Activate" class="btn-default" onclick="@("window.location.href='" + @Url.Action("ActivateShop", "Shop", new {shopGuid = shop.ShopGuid}) + "'");"/>
                 }
             </td>
             <td class="col-lg-offset-3">
-                <input type="button" value="Edit" class="btn-default" onclick="@("window.location.href='" + @Url.Action("EditShop", "Shop",  new {shopGuid = shop.ShopGuid}) + "'");"/>
+                <input type="button" value="Edit" class="btn-default" onclick="@("window.location.href='" + @Url.Action("EditShop", "Shop", new {shopGuid = shop.ShopGuid}) + "'");"/>
             </td>
         </tr>
     }

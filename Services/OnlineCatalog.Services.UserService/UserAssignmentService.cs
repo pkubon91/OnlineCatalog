@@ -3,6 +3,7 @@ using Business.Administration;
 using Business.DataAccess.Administration;
 using Business.DataAccess.Group;
 using Business.Groups;
+using Castle.Core.Internal;
 using OnlineCatalog.Common.DataContracts;
 
 namespace OnlineCatalog.Services.UserService
@@ -22,6 +23,7 @@ namespace OnlineCatalog.Services.UserService
 
         public ServiceActionResult AssignUserToShop(string login, Guid shopGuid)
         {
+            if(login.IsNullOrEmpty()) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Login cannot be null or empty");
             try
             {
                 User userToAssign = _userRepository.GetUserByLogin(login);
@@ -37,6 +39,11 @@ namespace OnlineCatalog.Services.UserService
             {
                 return new ServiceActionResult(ActionStatus.WithException, ex);
             }
+        }
+
+        public ServiceActionResult UnassignUserFromShop(string login, Guid shopGuid)
+        {
+            throw new NotImplementedException();
         }
     }
 }

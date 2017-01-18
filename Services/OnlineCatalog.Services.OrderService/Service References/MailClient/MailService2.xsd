@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://online.catalog.com/" elementFormDefault="qualified" targetNamespace="https://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/MailService/MailService.svc?xsd=xsd2" namespace="http://online.catalog.com/" />
+  <xs:element name="SendMail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://online.catalog.com/" minOccurs="0" name="context" nillable="true" type="q1:MailContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuildMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://online.catalog.com/" minOccurs="0" name="messageType" nillable="true" type="q2:MailContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuildMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://online.catalog.com/" minOccurs="0" name="BuildMessageResult" nillable="true" type="q3:MailContext" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

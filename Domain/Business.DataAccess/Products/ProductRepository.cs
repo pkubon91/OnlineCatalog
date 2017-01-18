@@ -26,6 +26,12 @@ namespace Business.DataAccess.Products
             }
         }
 
-
+        public Business.Products.Product GetProductById(Guid productGuid)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.Get<Business.Products.Product>(productGuid);
+            }
+        }
     }
 }

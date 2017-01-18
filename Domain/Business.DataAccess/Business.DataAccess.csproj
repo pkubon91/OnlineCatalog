@@ -53,6 +53,8 @@
     <Compile Include="Group\IShopRepository.cs" />
     <Compile Include="Group\ShopRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Orders\BasketRepository.cs" />
+    <Compile Include="Orders\IBasketRepository.cs" />
     <Compile Include="Products\IProductCategoryRepository.cs" />
     <Compile Include="Products\IProductRepository.cs" />
     <Compile Include="Products\ProductCategoryRepository.cs" />

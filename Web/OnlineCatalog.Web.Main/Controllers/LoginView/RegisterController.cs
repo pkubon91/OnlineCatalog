@@ -34,7 +34,7 @@ namespace OnlineCatalog.Web.Main.Controllers.LoginView
                     Password = registeredUser.Password,
                     Name = registeredUser.Name,
                     Surname = registeredUser.Surname,
-                    UserRank = UserRankDto.SystemAdministrator,
+                    UserRank = (UserRankDto)registeredUser.UserRank,
                     Address = new UserAddressDto()
                     {
                         BuildingNumber = registeredUser.Address.BuildingNumber,

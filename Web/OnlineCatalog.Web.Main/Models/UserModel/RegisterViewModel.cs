@@ -36,6 +36,9 @@ namespace OnlineCatalog.Web.Main.Models.UserModel
 
         public AddressViewModel Address { get; set; }
 
+        [Required, DisplayName("User rank")]
+        public UserRank UserRank { get; set; }
+
         public Dictionary<string, bool> ShopNames { get; set; }
     }
 }
