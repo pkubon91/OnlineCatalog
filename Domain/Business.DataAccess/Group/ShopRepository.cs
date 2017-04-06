@@ -85,5 +85,18 @@ namespace Business.DataAccess.Group
                 }
             }
         }
+
+        public IEnumerable<Shop> GetShopsAssignedToUser(string login)
+        {
+            if(login.IsNullOrEmpty()) throw new ArgumentNullException(nameof(login));
+            using (var session = _sessionProvider.CreateSession())
+            {
+                string queryString = @"select s from Shop s join s.AssignedUsers u where u.Login = :login";
+                IQuery query = session.CreateQuery(queryString);
+                query.SetParameter("login", login, NHibernateUtil.String);
+
+                return query.List<Shop>();
+            }
+        }
     }
 }

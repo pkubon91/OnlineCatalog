@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using Business.DataAccess.Group;
 using Business.Groups;
 using Castle.Core.Internal;
@@ -40,6 +41,21 @@ namespace OnlineCatalog.Services.ShopService
             var shop = _shopRepository.GetShopById(uniqueId);
             if(shop == null) return ShopDto.EmptyShop;
             return shop.Map();
+        }
+
+        public IEnumerable<ShopDto> GetShopsAssignedToUser(string login)
+        {
+            try
+            {
+                if (login.IsNullOrEmpty()) return Enumerable.Empty<ShopDto>();
+                var shops = _shopRepository.GetShopsAssignedToUser(login);
+                if (shops == null) return Enumerable.Empty<ShopDto>();
+                return shops.Select(s => s.Map());
+            }
+            catch (Exception)
+            {
+                throw new FaultException();
+            }
         }
     }
 }

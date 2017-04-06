@@ -14,7 +14,7 @@ namespace Business.Products
             CategoryName = categoryName;
         }
 
-        public virtual string CategoryName { get; protected set; }
+        public virtual string CategoryName { get; set; }
 
         public virtual IEnumerable<Product> AssignedProducts { get; set; }
 

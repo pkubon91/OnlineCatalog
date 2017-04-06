@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OnlineCatalog.Web.Main.Models.Products.ProductCategoryViewModel>
+
+@{
+    ViewBag.Title = "Product categories";
+    Layout = "~/Views/Shared/_ShopAdminLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Product categories</h2>
+
+<table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Category name</td>
+        <td class="h4">Edit</td>
+        <td class="h4">Remove</td>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td class="hidden">@category.ProductCategoryGuid</td>
+            <td>@category.ProductCategoryName</td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Edit" class="btn-default" onclick="@("window.location.href='" + @Url.Action("EditCategory", "ProductCategories", new {productCategoryGuid = category.ProductCategoryGuid}) + "'");"/>
+            </td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Remove" class="btn-default" onclick="@("window.location.href='" + @Url.Action("RemoveCategory", "ProductCategories", new {productCategoryGuid = category.ProductCategoryGuid}) + "'");"/>
+            </td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Products" class="btn-default" onclick="@("window.location.href='" + @Url.Action("ProductAssignments", "ProductCategories", new {productCategoryGuid = category.ProductCategoryGuid}) + "'");" />
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Add new product category", "AddProductCategory", new {controller = "ProductCategories"})
+</div>

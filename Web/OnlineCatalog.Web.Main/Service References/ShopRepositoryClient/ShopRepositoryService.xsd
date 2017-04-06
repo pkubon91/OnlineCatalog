@@ -23,6 +23,7 @@
   <xs:complexType name="ShopDto">
     <xs:sequence>
       <xs:element xmlns:q4="https://onlinecatalog.com" minOccurs="0" name="Address" nillable="true" type="q4:UserAddressDto" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ShopGuid" type="ser:guid" />
     </xs:sequence>
@@ -53,6 +54,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q7="https://online.catalog.com/" minOccurs="0" name="GetShopByUniqueIdResult" nillable="true" type="q7:ShopDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShopsAssignedToUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShopsAssignedToUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="https://online.catalog.com/" minOccurs="0" name="GetShopsAssignedToUserResult" nillable="true" type="q8:ArrayOfShopDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

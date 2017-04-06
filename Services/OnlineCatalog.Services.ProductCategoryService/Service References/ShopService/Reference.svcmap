@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5c0273c8-9652-48d4-9048-6d2502efc821" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8109b6f2-d4c9-4bd9-8b44-2829fdcca6c7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -12,21 +13,22 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
-    <ReferencedAssemblies />
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="OnlineCatalog.Common.DataContracts" />
+    </ReferencedAssemblies>
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/ShopService/ShopRepositoryService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/ShopService/ShopRepositoryService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ShopRepositoryService.xsd" MetadataType="Schema" ID="11933168-93d3-4a8a-91b6-7e1eae16a097" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd0" />
-    <MetadataFile FileName="ShopRepositoryService.disco" MetadataType="Disco" ID="59380b66-3ff6-4d05-93a2-3d98211e52ec" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?disco" />
-    <MetadataFile FileName="ShopRepositoryService.wsdl" MetadataType="Wsdl" ID="508314e7-86d8-4d74-ae40-ce7bc6cc81cf" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl" />
-    <MetadataFile FileName="ShopRepositoryService1.xsd" MetadataType="Schema" ID="ce2ae3ab-ae31-49e2-93e8-40ecfb695231" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ShopRepositoryService1.wsdl" MetadataType="Wsdl" ID="92002080-d943-40f5-83fe-a1b5dc95ea1c" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="ShopRepositoryService2.xsd" MetadataType="Schema" ID="b888792a-d002-4124-a893-9befaac88c06" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ShopRepositoryService.xsd" MetadataType="Schema" ID="ac355d02-e5c5-4e61-89c8-c9d138c65c8e" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ShopRepositoryService.wsdl" MetadataType="Wsdl" ID="756b2edf-b3ae-4b3e-910e-640c0c96145e" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="ShopRepositoryService1.xsd" MetadataType="Schema" ID="5996189a-d57b-43c9-baf5-14033950241e" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ShopRepositoryService1.wsdl" MetadataType="Wsdl" ID="8df77486-b5b9-4671-bc09-4fae7774a913" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ShopRepositoryService2.xsd" MetadataType="Schema" ID="6a2c2469-fe8f-4056-84bf-4b07d64e0d7c" SourceId="1" SourceUrl="http://localhost/ShopService/ShopRepositoryService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

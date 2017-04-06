@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Client shop</title>
+    <link href="~/Content/custom.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+    <div class="title">Shop store</div>
+    <div class="login">
+        Hello @User.Identity.Name |
+        <a href="" class="link">logout</a>
+    </div>
+</div>
+    <div id="client-menu-left">
+            @{Html.RenderAction("ShowMenuItems", "ShopAdminNav");}
+    </div>
+    <div id="content-shop-admin">
+        @RenderBody()
+    </div>
+</body>
+</html>

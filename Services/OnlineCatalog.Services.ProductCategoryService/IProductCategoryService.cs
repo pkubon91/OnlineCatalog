@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using OnlineCatalog.Common.DataContracts;
 using OnlineCatalog.Common.DataContracts.Products;
 
@@ -9,5 +10,11 @@ namespace OnlineCatalog.Services.ProductCategoryService
     {
         [OperationContract]
         ServiceActionResult AddProductCategory(ProductCategoryDto productCategory);
+
+        [OperationContract]
+        ServiceActionResult RemoveProductCategory(Guid productCategoryUniqueId);
+
+        [OperationContract]
+        ServiceActionResult EditProductCategory(ProductCategoryDto productCategory);
     }
 }

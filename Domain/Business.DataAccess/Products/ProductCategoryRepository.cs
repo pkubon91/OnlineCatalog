@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Business.DataAccess.Products;
 using Business.NHibernate;
 using Business.Products;
-using NHibernate;
 using NHibernate.Linq;
 
-namespace Business.DataAccess.Product
+namespace Business.DataAccess.Products
 {
     public class ProductCategoryRepository : IProductCategoryRepository
     {
@@ -33,11 +31,11 @@ namespace Business.DataAccess.Product
             }
         }
 
-        public IEnumerable<ProductCategory> GetProductCategoriesForShop(Guid shopUniqueId)
+        public List<ProductCategory> GetProductCategoriesForShop(Guid shopUniqueId)
         {
             using (var session = _sessionProvider.CreateSession())
             {
-                return session.Query<ProductCategory>().Where(category => category.ProductCategoryShop.UniqueId == shopUniqueId);
+                return session.Query<ProductCategory>().Where(category => category.ProductCategoryShop.UniqueId == shopUniqueId).ToList();
             }
         }
 
@@ -45,7 +43,15 @@ namespace Business.DataAccess.Product
         {
             using (var session = _sessionProvider.CreateSession())
             {
-                return session.Query<ProductCategory>().Single(cat => cat.ProductCategoryShop.UniqueId == shopId && cat.CategoryName == name);
+                return session.Query<ProductCategory>().SingleOrDefault(cat => cat.ProductCategoryShop.UniqueId == shopId && cat.CategoryName == name);
+            }
+        }
+
+        public ProductCategory GetProductCategory(Guid productCategoryUniqueId)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.Get<ProductCategory>(productCategoryUniqueId);
             }
         }
 
@@ -74,6 +80,18 @@ namespace Business.DataAccess.Product
                 using (var transaction = session.BeginTransaction())
                 {
                     session.Delete(productCategory);
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public void UpdateProductCategory(ProductCategory productCategory)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Update(productCategory);
                     transaction.Commit();
                 }
             }

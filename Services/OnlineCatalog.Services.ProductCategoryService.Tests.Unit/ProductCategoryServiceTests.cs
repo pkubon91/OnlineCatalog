@@ -1,6 +1,7 @@
 ﻿using System;
-using Business.DataAccess.Product;
+using Business.DataAccess.Group;
 using Business.DataAccess.Products;
+using Business.Groups;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
@@ -17,7 +18,7 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
         [Test]
         public void WhenProductCategoryRepositoryIsNullThenThrowArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ProductCategoryService(null, Mock.Of<IShopRepositoryService>()));
+            Assert.Throws<ArgumentNullException>(() => new ProductCategoryService(null, Mock.Of<IShopRepository>()));
         }
 
         [Test]
@@ -29,7 +30,7 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
         [Test]
         public void WhenProductCategoryIsNullThenNotSuccessfullStatusIsReturned()
         {
-            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepositoryService>());
+            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepository>());
 
             ServiceActionResult result = service.AddProductCategory(null);
 
@@ -41,7 +42,7 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
         [TestCase(null)]
         public void WhenProductCategoryNameIsNullOrEmptyThenNotSuccessfullStatusIsReturned(string categoryName)
         {
-            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepositoryService>());
+            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepository>());
 
             ServiceActionResult result = service.AddProductCategory(new ProductCategoryDto() { CategoryName = categoryName });
 
@@ -52,7 +53,7 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
         [Test]
         public void WhenShopGuidIsEmptyGuidThenNotSuccessfullActionIsReturned()
         {
-            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepositoryService>());
+            ProductCategoryService service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepository>());
 
             ServiceActionResult result = service.AddProductCategory(new ProductCategoryDto() { CategoryName = "testName", ShopGuid = Guid.Empty });
 
@@ -68,7 +69,7 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
                 new ProductCategoryService(
                     Mock.Of<IProductCategoryRepository>(
                         r => r.GetProductCategoryByName(shopGuid, "testName") == new Business.Products.ProductCategory("testName")),
-                    Mock.Of<IShopRepositoryService>(r => r.GetShopByUniqueId(shopGuid) == new ShopDto() {ShopGuid = shopGuid}));
+                    Mock.Of<IShopRepository>(r => r.GetShopById(shopGuid) == new Shop() {UniqueId = shopGuid}));
 
             ServiceActionResult result = service.AddProductCategory(new ProductCategoryDto() { CategoryName = "testName", ShopGuid = shopGuid });
 
@@ -80,8 +81,8 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
         public void WhenShopDoesntExistThenNotSuccessfullActionResultIsReturned()
         {
             Guid shopGuid = Guid.NewGuid();
-            var shopRepositoryMock = new Mock<IShopRepositoryService>();
-            shopRepositoryMock.Setup(r => r.GetShopByUniqueId(shopGuid)).Returns((ShopDto) null);
+            var shopRepositoryMock = new Mock<IShopRepository>();
+            shopRepositoryMock.Setup(r => r.GetShopById(shopGuid)).Returns((Shop) null);
             ProductCategoryService service =
                 new ProductCategoryService(
                     Mock.Of<IProductCategoryRepository>(
@@ -99,8 +100,8 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
             var shopId = Guid.NewGuid();
             var repositoryMock = new Mock<IProductCategoryRepository>();
             repositoryMock.Setup(r => r.GetProductCategoryByName(shopId, "testName")).Returns((Business.Products.ProductCategory)null);
-            var shopRepositoryMock = new Mock<IShopRepositoryService>();
-            shopRepositoryMock.Setup(r => r.GetShopByUniqueId(shopId)).Returns(new ShopDto() {ShopGuid = shopId});
+            var shopRepositoryMock = new Mock<IShopRepository>();
+            shopRepositoryMock.Setup(r => r.GetShopById(shopId)).Returns(new Shop() {UniqueId = shopId});
             ProductCategoryService service = new ProductCategoryService(repositoryMock.Object, shopRepositoryMock.Object);
 
             ServiceActionResult result = service.AddProductCategory(new ProductCategoryDto() { CategoryName = "testName", ShopGuid = shopId });

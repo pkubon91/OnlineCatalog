@@ -16,5 +16,8 @@ namespace OnlineCatalog.Services.ShopService
 
         [OperationContract]
         ShopDto GetShopByUniqueId(Guid uniqueId);
+
+        [OperationContract]
+        IEnumerable<ShopDto> GetShopsAssignedToUser(string login);
     }
 }

@@ -23,6 +23,9 @@ namespace OnlineCatalog.Web.Main.ShopRepositoryClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueId", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueIdResponse")]
         OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByUniqueId(System.Guid uniqueId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUser", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUserResponse")]
+        OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetShopsAssignedToUser(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -62,6 +65,10 @@ namespace OnlineCatalog.Web.Main.ShopRepositoryClient {
         
         public OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByUniqueId(System.Guid uniqueId) {
             return base.Channel.GetShopByUniqueId(uniqueId);
+        }
+        
+        public OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetShopsAssignedToUser(string login) {
+            return base.Channel.GetShopsAssignedToUser(login);
         }
     }
 }

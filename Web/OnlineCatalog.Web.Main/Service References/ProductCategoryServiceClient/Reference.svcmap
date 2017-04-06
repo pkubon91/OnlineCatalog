@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="37191fd4-02aa-45e4-9bec-4b7be62bc2db" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/ProductCategoryService/ProductCategoryService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductCategoryService.xsd" MetadataType="Schema" ID="fee9d27b-026b-425a-8051-ffa67adcbfc6" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProductCategoryService1.xsd" MetadataType="Schema" ID="267752f1-93d0-4a0c-8788-b8b110a5dce2" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProductCategoryService2.xsd" MetadataType="Schema" ID="19dc6591-1990-4c60-9877-353ed3f3919d" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductCategoryService3.xsd" MetadataType="Schema" ID="0361e9fc-8899-4369-a926-045022796283" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="ProductCategoryService.wsdl" MetadataType="Wsdl" ID="dc29a085-872e-493a-bd4e-87307ae66c58" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?wsdl" />
+    <MetadataFile FileName="ProductCategoryService4.xsd" MetadataType="Schema" ID="2ba92dab-6b1d-4d9c-ae8e-441e52792a25" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductCategoryService1.wsdl" MetadataType="Wsdl" ID="dc50b560-1960-48fa-a6a3-8142319ae06c" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ProductCategoryService5.xsd" MetadataType="Schema" ID="96ba1134-4f0a-4c47-a716-ddf3998ed15b" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

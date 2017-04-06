@@ -25,6 +25,12 @@
   <wsdl:message name="IShopRepositoryService_GetShopByUniqueId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetShopByUniqueIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IShopRepositoryService_GetShopsAssignedToUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopsAssignedToUser" />
+  </wsdl:message>
+  <wsdl:message name="IShopRepositoryService_GetShopsAssignedToUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopsAssignedToUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IShopRepositoryService">
     <wsdl:operation name="GetAllShops">
       <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetAllShops" message="tns:IShopRepositoryService_GetAllShops_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="GetShopByUniqueId">
       <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueId" message="tns:IShopRepositoryService_GetShopByUniqueId_InputMessage" />
       <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueIdResponse" message="tns:IShopRepositoryService_GetShopByUniqueId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShopsAssignedToUser">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUser" message="tns:IShopRepositoryService_GetShopsAssignedToUser_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUserResponse" message="tns:IShopRepositoryService_GetShopsAssignedToUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

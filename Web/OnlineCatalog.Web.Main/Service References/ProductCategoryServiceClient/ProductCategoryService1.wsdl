@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="https://online.catalog.com/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://online.catalog.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://online.catalog.com/Imports">
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd0" namespace="https://online.catalog.com/" />
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd2" namespace="http://onlinecatalog.com" />
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd3" namespace="https://onlinecatalog.com" />
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd4" namespace="https://online.catalog.com" />
+      <xsd:import schemaLocation="http://localhost/ProductCategoryService/ProductCategoryService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProductCategoryService_AddProductCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductCategory" />
+  </wsdl:message>
+  <wsdl:message name="IProductCategoryService_AddProductCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductCategoryService_RemoveProductCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProductCategory" />
+  </wsdl:message>
+  <wsdl:message name="IProductCategoryService_RemoveProductCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveProductCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductCategoryService_EditProductCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditProductCategory" />
+  </wsdl:message>
+  <wsdl:message name="IProductCategoryService_EditProductCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditProductCategoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProductCategoryService">
+    <wsdl:operation name="AddProductCategory">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IProductCategoryService/AddProductCategory" message="tns:IProductCategoryService_AddProductCategory_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IProductCategoryService/AddProductCategoryResponse" message="tns:IProductCategoryService_AddProductCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveProductCategory">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IProductCategoryService/RemoveProductCategory" message="tns:IProductCategoryService_RemoveProductCategory_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IProductCategoryService/RemoveProductCategoryResponse" message="tns:IProductCategoryService_RemoveProductCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditProductCategory">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IProductCategoryService/EditProductCategory" message="tns:IProductCategoryService_EditProductCategory_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IProductCategoryService/EditProductCategoryResponse" message="tns:IProductCategoryService_EditProductCategory_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

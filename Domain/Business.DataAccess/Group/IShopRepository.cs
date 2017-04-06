@@ -16,5 +16,7 @@ namespace Business.DataAccess.Group
         void UpdateShop(Shop shop);
 
         void AssignUser(Shop shop, User user);
+
+        IEnumerable<Shop> GetShopsAssignedToUser(string login);
     }
 }

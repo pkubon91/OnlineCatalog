@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d4e479b1-9847-4a41-a5d1-db8ee89f5961" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductCategoryRepositoryService.disco" MetadataType="Disco" ID="49763c4a-3dbb-424a-8946-2dab79c2e49b" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?disco" />
+    <MetadataFile FileName="ProductCategoryRepositoryService.wsdl" MetadataType="Wsdl" ID="7423c790-cee5-4033-8a55-fb7756aa9f26" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="ProductCategoryRepositoryService.xsd" MetadataType="Schema" ID="0f9328c6-bd1a-42d0-9d86-39fccb0d67c2" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProductCategoryRepositoryService1.xsd" MetadataType="Schema" ID="afeb0125-fd8d-4672-a65e-65cb169503f8" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductCategoryRepositoryService2.xsd" MetadataType="Schema" ID="ba623b7a-4379-4534-9e13-7e36b2fae928" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductCategoryRepositoryService3.xsd" MetadataType="Schema" ID="9dcc2ac7-a4c6-45d5-bc5a-a88723b8aec8" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProductCategoryRepositoryService1.wsdl" MetadataType="Wsdl" ID="341f6299-f456-4f3f-88a0-2d9416eaa5fe" SourceId="1" SourceUrl="http://localhost/ProductCategoryService/ProductCategoryRepositoryService.svc?wsdl=wsdl0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

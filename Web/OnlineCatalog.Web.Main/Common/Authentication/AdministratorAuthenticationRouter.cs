@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Web;
 using System.Web.Security;
 using OnlineCatalog.Common.DataContracts.Administration;
-using OnlineCatalog.Common.DataContracts.Groups;
-using OnlineCatalog.Web.Main.Models.Groups;
-using OnlineCatalog.Web.Main.Models.UserModel;
 using OnlineCatalog.Web.Main.ShopRepositoryClient;
 
 namespace OnlineCatalog.Web.Main.Common.Authentication

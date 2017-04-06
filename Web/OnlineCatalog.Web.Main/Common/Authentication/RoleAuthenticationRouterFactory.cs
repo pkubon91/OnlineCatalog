@@ -15,6 +15,7 @@ namespace OnlineCatalog.Web.Main.Common.Authentication
             Implementations = new Dictionary<UserRankDto, IRoleAuthenticationRouter>
             {
                 {UserRankDto.Client, new ClientAuthenticationRouter()},
+                {UserRankDto.ShopAdministrator, new ShopAdministratorAuthenticationRouter() },
                 {UserRankDto.SystemAdministrator, new AdministratorAuthenticationRouter(new ShopRepositoryServiceClient())}
             };
         }

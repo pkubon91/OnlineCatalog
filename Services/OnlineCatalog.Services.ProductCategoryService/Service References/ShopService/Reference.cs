@@ -15,11 +15,29 @@ namespace OnlineCatalog.Services.ProductCategoryService.ShopService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="https://online.catalog.com/", ConfigurationName="ShopService.IShopRepositoryService")]
     public interface IShopRepositoryService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetAllShops", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetAllShopsResponse")]
+        OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetAllShops();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetAllShops", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetAllShopsResponse")]
+        System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto[]> GetAllShopsAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopByName", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopByNameResponse")]
         OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByName(string shopName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopByName", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopByNameResponse")]
+        System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto> GetShopByNameAsync(string shopName);
+        
         [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueId", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueIdResponse")]
         OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByUniqueId(System.Guid uniqueId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueId", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopByUniqueIdResponse")]
+        System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto> GetShopByUniqueIdAsync(System.Guid uniqueId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUser", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUserResponse")]
+        OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetShopsAssignedToUser(string login);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUser", ReplyAction="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUserResponse")]
+        System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto[]> GetShopsAssignedToUserAsync(string login);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +67,36 @@ namespace OnlineCatalog.Services.ProductCategoryService.ShopService {
                 base(binding, remoteAddress) {
         }
         
+        public OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetAllShops() {
+            return base.Channel.GetAllShops();
+        }
+        
+        public System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto[]> GetAllShopsAsync() {
+            return base.Channel.GetAllShopsAsync();
+        }
+        
         public OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByName(string shopName) {
             return base.Channel.GetShopByName(shopName);
         }
         
+        public System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto> GetShopByNameAsync(string shopName) {
+            return base.Channel.GetShopByNameAsync(shopName);
+        }
+        
         public OnlineCatalog.Common.DataContracts.Groups.ShopDto GetShopByUniqueId(System.Guid uniqueId) {
             return base.Channel.GetShopByUniqueId(uniqueId);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto> GetShopByUniqueIdAsync(System.Guid uniqueId) {
+            return base.Channel.GetShopByUniqueIdAsync(uniqueId);
+        }
+        
+        public OnlineCatalog.Common.DataContracts.Groups.ShopDto[] GetShopsAssignedToUser(string login) {
+            return base.Channel.GetShopsAssignedToUser(login);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineCatalog.Common.DataContracts.Groups.ShopDto[]> GetShopsAssignedToUserAsync(string login) {
+            return base.Channel.GetShopsAssignedToUserAsync(login);
         }
     }
 }
