@@ -12,6 +12,9 @@ namespace OnlineCatalog.Services.ProductService
         ServiceActionResult AddProduct(ProductDto product);
 
         [OperationContract]
+        ServiceActionResult EditProduct(ProductDto product);
+
+        [OperationContract]
         ServiceActionResult RemoveProduct(Guid productGuid);
     }
 }

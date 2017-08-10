@@ -79,6 +79,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="ProductAdministrationService.svc" />
+    <Content Include="ProductRepositoryService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +87,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IProductAdministrationService.cs" />
+    <Compile Include="IProductRepositoryService.cs" />
     <Compile Include="ProductAdministrationService.cs" />
+    <Compile Include="ProductRepositoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

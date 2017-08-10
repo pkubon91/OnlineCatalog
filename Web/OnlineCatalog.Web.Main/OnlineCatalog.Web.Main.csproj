@@ -116,6 +116,7 @@
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Administration.UserDto.datasource" />
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.ServiceActionResult.datasource" />
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Products.ProductCategoryDto.datasource" />
+    <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Products.ProductDto.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -132,6 +133,29 @@
     <None Include="Service References\LoginClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService.wsdl" />
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService1.wsdl" />
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\ProductAdministrationService6.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProductCategoryRepositoryClient\ProductCategoryRepositoryService.wsdl" />
     <None Include="Service References\ProductCategoryRepositoryClient\ProductCategoryRepositoryService.xsd">
@@ -165,6 +189,23 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProductCategoryServiceClient\ProductCategoryService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService.wsdl" />
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService1.wsdl" />
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductRepositoryClient\ProductRepositoryService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RegistrationClient\RegisterService.wsdl" />
@@ -238,6 +279,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ProductRepositoryClient\configuration91.svcinfo" />
+    <None Include="Service References\ProductRepositoryClient\configuration.svcinfo" />
+    <None Include="Service References\ProductRepositoryClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ProductAdministrationClient\configuration91.svcinfo" />
+    <None Include="Service References\ProductAdministrationClient\configuration.svcinfo" />
+    <None Include="Service References\ProductAdministrationClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Views\LoginView\Login.cshtml" />
     <Content Include="Views\LoginView\Register.cshtml" />
@@ -264,8 +317,10 @@
     <Compile Include="Controllers\Navigation\ClientShopNavController.cs" />
     <Compile Include="Controllers\Navigation\ShopAdminNavController.cs" />
     <Compile Include="Controllers\Products\ProductController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\ShopAdministration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\ShopAdministration\ShopAdministrationCoreController.cs" />
+    <Compile Include="CustomValidations\IntegerValidator.cs" />
     <Compile Include="CustomValidations\ValidateUserAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -276,10 +331,13 @@
     <Compile Include="IoC\CastleServiceInstaller.cs" />
     <Compile Include="Mappings\AddressViewMapper.cs" />
     <Compile Include="Mappings\ProductCategoryViewMapper.cs" />
+    <Compile Include="Mappings\ProductViewMapper.cs" />
     <Compile Include="Mappings\ShopViewMapper.cs" />
     <Compile Include="Models\Groups\ShopViewModel.cs" />
     <Compile Include="Models\MenuItemRouting.cs" />
+    <Compile Include="Models\Products\AddProductViewModel.cs" />
     <Compile Include="Models\Products\ProductCategoryViewModel.cs" />
+    <Compile Include="Models\Products\ProductViewModel.cs" />
     <Compile Include="Models\Shared\IAddressViewModel.cs" />
     <Compile Include="Models\Shared\AddressViewModel.cs" />
     <Compile Include="Models\UserModel\LoginViewModel.cs" />
@@ -291,12 +349,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ProductAdministrationClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ProductCategoryRepositoryClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ProductCategoryServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ProductRepositoryClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -362,9 +430,15 @@
     <None Include="Views\ProductCategories\AddProductCategory.cshtml" />
     <None Include="Views\ProductCategories\EditCategory.cshtml" />
     <Content Include="Views\ProductCategories\ProductCategoryEditPage.cshtml" />
+    <Content Include="Views\Product\NotRemovedProduct.cshtml" />
     <None Include="Views\Product\ProductList.cshtml" />
+    <None Include="Views\ShopAdministrationCore\AddProduct.cshtml" />
     <None Include="Views\ShopAdministrationCore\AdminShopProduct.cshtml" />
     <None Include="Views\ShopAdministrationCore\AdminShopProductCategories.cshtml" />
+    <Content Include="Views\ShopAdministrationCore\ProductEditPage.cshtml" />
+    <Content Include="Views\ShopAdministrationCore\EditProduct.cshtml" />
+    <None Include="Views\ShopAdministrationCore\ProductCategories.cshtml" />
+    <Content Include="Views\ShopAdministrationCore\RemoveProduct.cshtml" />
     <None Include="Views\ShopAdminNav\ShopAdminMenuItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -376,15 +450,17 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Client\" />
-    <Folder Include="Views\Products\" />
+    <Folder Include="Views\ShopAdministrationCore\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\LoginClient\" />
+    <WCFMetadataStorage Include="Service References\ProductAdministrationClient\" />
     <WCFMetadataStorage Include="Service References\ProductCategoryRepositoryClient\" />
     <WCFMetadataStorage Include="Service References\ProductCategoryServiceClient\" />
+    <WCFMetadataStorage Include="Service References\ProductRepositoryClient\" />
     <WCFMetadataStorage Include="Service References\RegistrationClient\" />
     <WCFMetadataStorage Include="Service References\ShopConfigurationClient\" />
     <WCFMetadataStorage Include="Service References\ShopRepositoryClient\" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Business.Groups;
 using Business.Products;
+using DataContracts.Mappings;
 using OnlineCatalog.Common.DataContracts.Products;
 
 namespace OnlineCatalog.Common.DataContracts.Mappings.ProductMappings
@@ -14,9 +16,10 @@ namespace OnlineCatalog.Common.DataContracts.Mappings.ProductMappings
             Mapper.Initialize(
                 m =>
                     m.CreateMap<ProductDto, Product>()
-                        .ForMember(dest => dest.Categories, opts => opts.MapFrom(src => src.ProductCategories.Select(x => x.Map())))
+                        .ForMember(dest => dest.Categories, opts => opts.MapFrom(src => src.ProductCategories.Select(x => new ProductCategory() {UniqueId = x})))
                         .ForMember(dest => dest.UniqueId, opts => opts.MapFrom(src => src.ProductGuid))
-                        .ForMember(dest => dest.AssignedShop, opts => opts.MapFrom(src => src.ShopAssigned.Map())));
+                        .ForMember(dest => dest.AssignedShop, opts => opts.MapFrom(src => new Shop {UniqueId = src.AssignedShop}))
+                        .ForMember(dest => dest.CreatedBy, opts => opts.MapFrom(src => src.CreatedBy.Map())));
             return Mapper.Map<Product>(productDto);
         }
 
@@ -26,9 +29,9 @@ namespace OnlineCatalog.Common.DataContracts.Mappings.ProductMappings
             Mapper.Initialize(
                 m =>
                     m.CreateMap<Product, ProductDto>()
-                        .ForMember(dest => dest.ProductCategories, opts => opts.MapFrom(src => src.Categories.Select(x => x.Map())))
                         .ForMember(dest => dest.ProductGuid, opts => opts.MapFrom(src => src.UniqueId))
-                        .ForMember(dest => dest.ShopAssigned, opts => opts.MapFrom(src => src.AssignedShop.Map())));
+                        .ForMember(dest => dest.AssignedShop, opts => opts.MapFrom(src => src.AssignedShop.UniqueId))
+                        .ForMember(dest => dest.CreatedBy, opts => opts.Ignore()));
             return Mapper.Map<ProductDto>(product);
         }
     }

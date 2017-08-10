@@ -1,0 +1,28 @@
+﻿@model OnlineCatalog.Web.Main.Models.Products.AddProductViewModel
+
+@{
+    ViewBag.Title = "Add new product";
+    Layout = "~/Views/Shared/_ShopAdminLayout.cshtml";
+}
+
+<h2>Add new product</h2>
+
+<body>
+    @using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { productViewModel = Model }))
+    {
+        @Html.AntiForgeryToken()
+        Html.RenderPartial("ProductEditPage", Model);
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.ProductView.AssignedCategories)
+            <div class="col-md-10">
+                @Html.ListBoxFor(x => x.ProductView.AssignedCategories, Model.ShopProductCategories)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add product" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</body>

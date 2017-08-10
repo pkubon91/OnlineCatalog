@@ -2,13 +2,12 @@
 using Business.DataAccess.Group;
 using Business.DataAccess.Products;
 using Business.Groups;
+using Business.Products;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using OnlineCatalog.Common.DataContracts;
-using OnlineCatalog.Common.DataContracts.Groups;
 using OnlineCatalog.Common.DataContracts.Products;
-using OnlineCatalog.Services.ProductCategoryService.ShopService;
 
 namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
 {
@@ -108,6 +107,68 @@ namespace OnlineCatalog.Services.ProductCategoryService.Tests.Unit
 
             result.ShouldBeEquivalentTo(ServiceActionResult.Successfull);
             repositoryMock.Verify(r => r.AddToDatabase(It.IsAny<Business.Products.ProductCategory>()), Times.Once());
+        }
+
+        [Test]
+        public void WhenProductCategoryIsNullThenEditProductCategoryReturnNotSuccessfullResult()
+        {
+            var service = new ProductCategoryService(Mock.Of<IProductCategoryRepository>(), Mock.Of<IShopRepository>());
+
+            var actionResult = service.EditProductCategory(null);
+
+            actionResult.Status.Should().Be(ActionStatus.NotSuccessfull);
+        }
+
+        [Test]
+        public void WhenProductCategoryNotFoundThenEditProductCategoryReturnNotSuccessfullResult()
+        {
+            var productCategoryGuid = Guid.Parse("{02C0CB50-DB9F-45EC-9C67-1D4550AA86EC}");
+            var productCategoryRepository = Mock.Of<IProductCategoryRepository>();
+            Mock.Get(productCategoryRepository).Setup(r => r.GetProductCategory(productCategoryGuid)).Returns((ProductCategory) null);
+            var service = new ProductCategoryService(productCategoryRepository, Mock.Of<IShopRepository>());
+
+            var actionResult = service.EditProductCategory(new ProductCategoryDto() {ProductCategoryGuid = productCategoryGuid });
+
+            actionResult.Status.Should().Be(ActionStatus.NotSuccessfull);
+        }
+
+        [Test]
+        public void WhenProductCategoryWithDefinedNameAlreadyExistsThenEditProductCategoryReturnNotSuccessfull()
+        {
+            var productCategoryGuid = Guid.Parse("{02C0CB50-DB9F-45EC-9C67-1D4550AA86EC}");
+            var productCategory = new ProductCategory("Name");
+            var productCategoryRepository = Mock.Of<IProductCategoryRepository>(r => r.GetProductCategory(productCategoryGuid) == productCategory && r.GetProductCategoryByName(It.IsAny<Guid>(), "Name") == productCategory);
+            var service = new ProductCategoryService(productCategoryRepository, Mock.Of<IShopRepository>());
+
+            var actionResult = service.EditProductCategory(new ProductCategoryDto() { ProductCategoryGuid = productCategoryGuid, CategoryName = "Name"});
+
+            actionResult.Status.Should().Be(ActionStatus.NotSuccessfull);
+        }
+
+        [Test]
+        public void WhenProductCategoryIsUniqueThenEditProductCategoryReturnSuccessfull()
+        {
+            var productCategoryGuid = Guid.Parse("{02C0CB50-DB9F-45EC-9C67-1D4550AA86EC}");
+            var productCategory = new ProductCategory("Name");
+            var productCategoryRepository = Mock.Of<IProductCategoryRepository>(r => r.GetProductCategory(productCategoryGuid) == productCategory);
+            Mock.Get(productCategoryRepository).Setup(r => r.GetProductCategoryByName(It.IsAny<Guid>(), "Name")).Returns((ProductCategory) null);
+            var service = new ProductCategoryService(productCategoryRepository, Mock.Of<IShopRepository>());
+
+            var actionResult = service.EditProductCategory(new ProductCategoryDto() { ProductCategoryGuid = productCategoryGuid, CategoryName = "Name" });
+
+            actionResult.Should().Be(ServiceActionResult.Successfull);
+        }
+
+        [Test]
+        public void WhenExceptionThrownThenReturnWithExceptionResult()
+        {
+            var productCategoryRepository = Mock.Of<IProductCategoryRepository>();
+            Mock.Get(productCategoryRepository).Setup(r => r.GetProductCategory(It.IsAny<Guid>())).Throws<Exception>();
+            var service = new ProductCategoryService(productCategoryRepository, Mock.Of<IShopRepository>());
+
+            var actionResult = service.EditProductCategory(new ProductCategoryDto() { CategoryName = "Name" });
+
+            actionResult.Status.Should().Be(ActionStatus.WithException);
         }
     }
 }

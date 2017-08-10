@@ -21,6 +21,7 @@ namespace Business.NHibernate.Administration
                 .Cascade.AllDeleteOrphan()
                 .ChildKeyColumn("SHOP_GUID")
                 .ParentKeyColumn("APP_USER_GUID")
+                .LazyLoad().FetchType.Select()
                 .Table("USER_SHOPS");
         }
     }

@@ -1,6 +1,4 @@
-﻿using OnlineCatalog.Web.Main.Models.UserModel;
-
-namespace OnlineCatalog.Web.Main.Models.Shared
+﻿namespace OnlineCatalog.Web.Main.Models.Shared
 {
     public interface IAddressViewModel
     {

@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.User
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.UserService.Tests.Unit", "Services\OnlineCatalog.Services.UserService.Tests.Unit\OnlineCatalog.Services.UserService.Tests.Unit.csproj", "{9BEE9A33-92FA-40C8-AFD6-91467AA2A5CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCatalog.Services.LoginService.Tests.Integration", "Services\OnlineCatalog.Services.LoginService.Tests.Integration\OnlineCatalog.Services.LoginService.Tests.Integration.csproj", "{2F65B868-2D8F-4DED-883D-C250F9FEC9D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +187,10 @@ Global
 		{9BEE9A33-92FA-40C8-AFD6-91467AA2A5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BEE9A33-92FA-40C8-AFD6-91467AA2A5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BEE9A33-92FA-40C8-AFD6-91467AA2A5CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F65B868-2D8F-4DED-883D-C250F9FEC9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F65B868-2D8F-4DED-883D-C250F9FEC9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F65B868-2D8F-4DED-883D-C250F9FEC9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F65B868-2D8F-4DED-883D-C250F9FEC9D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,5 +224,6 @@ Global
 		{B9825587-073E-4923-9DE5-F5BB3AA9CF84} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{02F73F9A-C485-413B-BCC3-64105C0AEC29} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 		{9BEE9A33-92FA-40C8-AFD6-91467AA2A5CD} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
+		{2F65B868-2D8F-4DED-883D-C250F9FEC9D0} = {42539EDC-4B3C-4E79-954E-CF2C6C3B20E4}
 	EndGlobalSection
 EndGlobal

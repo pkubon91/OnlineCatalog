@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://online.catalog.com" elementFormDefault="qualified" targetNamespace="https://online.catalog.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/ProductService/ProductAdministrationService.svc?xsd=xsd2" namespace="https://online.catalog.com/" />
+  <xs:import schemaLocation="http://localhost/ProductService/ProductAdministrationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="AddProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="https://online.catalog.com/" minOccurs="0" name="product" nillable="true" type="q1:ProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="https://online.catalog.com/" minOccurs="0" name="AddProductResult" nillable="true" type="q2:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="ActionStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Successfull" />
+      <xs:enumeration value="NotSuccessfull" />
+      <xs:enumeration value="WithException" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActionStatus" nillable="true" type="tns:ActionStatus" />
+  <xs:element name="EditProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="https://online.catalog.com/" minOccurs="0" name="product" nillable="true" type="q3:ProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="https://online.catalog.com/" minOccurs="0" name="EditProductResult" nillable="true" type="q4:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="productGuid" type="q5:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="https://online.catalog.com/" minOccurs="0" name="RemoveProductResult" nillable="true" type="q6:ServiceActionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,8 +1,38 @@
-﻿@model dynamic
+﻿@model IEnumerable<OnlineCatalog.Web.Main.Models.Products.ProductViewModel>
 
 @{
-    ViewBag.Title = "Product List";
+    ViewBag.Title = "Product list";
     Layout = "~/Views/Shared/_ShopAdminLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
 }
 
 <h2>Product List</h2>
+
+<table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Product name</td>
+        <td class="h4">Price without tax</td>
+        <td class="h4">Final price</td>
+        <td class="h4">Description</td>
+        <td class="h4">Active</td>
+        <td class="h4">Edit</td>
+        <td class="h4">Remove</td>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td class="hidden">@product.ProductGuid</td>
+            <td>@product.ProductName</td>
+            <td>@product.DefaultPrice</td>
+            <td>@product.CalculatedPrice</td>
+            <td>@product.Description</td>
+            <td class="checkbox">@product.IsActive</td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Edit" class="btn-default" onclick="@("window.location.href='" + @Url.Action("EditProduct", "ProductController", new {productGuid = product.ProductGuid}) + "'");"/>
+            </td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Remove" class="btn-default" onclick="@("window.location.href='" + @Url.Action("RemoveProduct", "ProductController", new {productGuid = product.ProductGuid}) + "'");"/>
+            </td>
+        </tr>
+    }
+</table>

@@ -6,7 +6,7 @@ namespace Business.Products
 {
     public class ProductCategory : BaseDomainObject, IAuditable
     {
-        internal ProductCategory()
+        public ProductCategory()
         { }
 
         public ProductCategory(string categoryName) : this()
@@ -15,8 +15,6 @@ namespace Business.Products
         }
 
         public virtual string CategoryName { get; set; }
-
-        public virtual IEnumerable<Product> AssignedProducts { get; set; }
 
         public DateTime Created
         {

@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using Business.Products;
 
 namespace Business.DataAccess.Products
 {
-    public interface IProductRepository : IRepository<Business.Products.Product>
+    public interface IProductRepository : IRepository<Product>
     {
-        Business.Products.Product GetProductById(Guid productGuid);
+        void RemoveProduct(Product product);
+        Product GetProductById(Guid productGuid);
+        IEnumerable<Product> GetNotDeletedProducts(Guid shopGuid);
+        void UpdateProduct(Product product);
     }
 }

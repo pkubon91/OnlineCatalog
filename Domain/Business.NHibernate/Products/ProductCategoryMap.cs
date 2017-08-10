@@ -15,12 +15,6 @@ namespace Business.NHibernate.Products
             Map(cat => cat.Updated).Not.Nullable().Column("UPDATED_DATE");
 
             References(cat => cat.ProductCategoryShop).Not.Nullable().Column("SHOP_GUID");
-            HasManyToMany(cat => cat.AssignedProducts)
-                .Cascade.All()
-                .Inverse()
-                .Table("PRODUCT_ASSIGNMENT")
-                .ParentKeyColumn("PRODUCT_CATEGORY_GUID")
-                .ChildKeyColumn("PRODUCT_GUID");
         }
     }
 }

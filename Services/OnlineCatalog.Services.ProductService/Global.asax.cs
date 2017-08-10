@@ -1,4 +1,5 @@
 ﻿using System;
+using Business.DataAccess.Administration;
 using Business.DataAccess.Products;
 using Business.NHibernate;
 using Castle.Facilities.WcfIntegration;
@@ -17,7 +18,10 @@ namespace OnlineCatalog.Services.ProductService
             _container.AddFacility<WcfFacility>()
                 .Register(Component.For<ISessionProvider>().ImplementedBy<SessionFactory>())
                 .Register(Component.For<IProductRepository>().ImplementedBy<ProductRepository>())
-                .Register(Component.For<IProductAdministrationService>().ImplementedBy<ProductAdministrationService>());
+                .Register(Component.For<IProductAdministrationService>().ImplementedBy<ProductAdministrationService>())
+                .Register(Component.For<IProductRepositoryService>().ImplementedBy<ProductRepositoryService>())
+                .Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>())
+                .Register(Component.For<IProductCategoryRepository>().ImplementedBy<ProductCategoryRepository>());
         }
 
         protected void Session_Start(object sender, EventArgs e)

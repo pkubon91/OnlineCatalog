@@ -24,7 +24,6 @@ namespace OnlineCatalog.Common.DataContracts.Tests.Unit.Mappings.ProductMappings
         {
             ProductCategory productCategory = new ProductCategory("categoryname")
             {
-                AssignedProducts = new List<Product> { new Product() { ProductName = "name"} },
                 UniqueId = Guid.NewGuid()
             };
             var createdDate = new DateTime(2016, 9, 2);

@@ -9,14 +9,16 @@ namespace OnlineCatalog.Common.DataContracts.Products
     [DataContract(Namespace = "https://online.catalog.com/")]
     public class ProductDto
     {
+        public static readonly ProductDto EmptyProduct = new ProductDto();
+
         [DataMember]
         public Guid ProductGuid { get; set; }
 
         [DataMember]
-        public ShopDto ShopAssigned { get; set; }
+        public Guid AssignedShop { get; set; }
 
         [DataMember]
-        public IEnumerable<ProductCategoryDto> ProductCategories { get; set; }
+        public IEnumerable<Guid> ProductCategories { get; set; }
 
         [DataMember]
         public string ProductName { get; set; }
