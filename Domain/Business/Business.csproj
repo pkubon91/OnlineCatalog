@@ -64,6 +64,7 @@
     <Compile Include="IActiveable.cs" />
     <Compile Include="IAuditable.cs" />
     <Compile Include="Orders\Basket.cs" />
+    <Compile Include="Orders\BasketState.cs" />
     <Compile Include="Orders\Order.cs" />
     <Compile Include="Orders\Promotion.cs" />
     <Compile Include="Products\Product.cs" />

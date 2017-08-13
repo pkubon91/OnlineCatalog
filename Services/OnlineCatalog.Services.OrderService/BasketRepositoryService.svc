@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="OnlineCatalog.Services.OrderService.BasketRepositoryService" CodeBehind="BasketRepositoryService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="OnlineCatalog.Services.OrderService.BasketRepositoryService" Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>

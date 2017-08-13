@@ -54,12 +54,14 @@
     <Compile Include="General\MailContext.cs" />
     <Compile Include="General\MailMessageType.cs" />
     <Compile Include="Groups\ShopDto.cs" />
+    <Compile Include="Mappings\BasketMapper.cs" />
     <Compile Include="Mappings\ProductMappings\ProductCategoryMapper.cs" />
     <Compile Include="Mappings\ProductMappings\ProductMapper.cs" />
     <Compile Include="Mappings\ShopMapper.cs" />
     <Compile Include="Mappings\UserAddressMapper.cs" />
     <Compile Include="Mappings\UserMapper.cs" />
     <Compile Include="Orders\BasketDto.cs" />
+    <Compile Include="Orders\OrderState.cs" />
     <Compile Include="Products\ProductCategoryDto.cs" />
     <Compile Include="Products\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

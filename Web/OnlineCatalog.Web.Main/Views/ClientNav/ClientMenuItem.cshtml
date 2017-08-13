@@ -1,0 +1,6 @@
+﻿@model OnlineCatalog.Web.Main.Models.MenuItemRouting[]
+
+@foreach (var item in Model)
+{
+    @Html.RouteLink(item.MenuItem, new { controller = "ClientNav", action = "RouteToAction", menuItemRouting = item.RouteTo })
+}

@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Linq;
+using Business.Administration;
+using Business.DataAccess.Administration;
 using Business.DataAccess.Orders;
 using Business.DataAccess.Products;
+using Business.Groups;
 using Business.Orders;
 using Business.Products;
 using OnlineCatalog.Common.DataContracts;
@@ -13,29 +17,36 @@ namespace OnlineCatalog.Services.OrderService
         private readonly IBasketRepository _basketRepository;
         private readonly IProductRepository _productRepository;
         private readonly IMailService _mailClient;
+        private readonly IUserRepository _userRepository;
 
-        public BasketService(IBasketRepository basketRepository, IProductRepository productRepository, IMailService mailClient)
+        public BasketService(IBasketRepository basketRepository, IProductRepository productRepository, IUserRepository userRepository)
         {
             if (basketRepository == null) throw new ArgumentNullException(nameof(basketRepository));
             if (productRepository == null) throw new ArgumentNullException(nameof(productRepository));
-            if (mailClient == null) throw new ArgumentNullException(nameof(mailClient));
+            if (userRepository == null) throw new ArgumentNullException(nameof(userRepository));
 
             _basketRepository = basketRepository;
             _productRepository = productRepository;
-            _mailClient = mailClient;
+            _userRepository = userRepository;
         }
 
-        public ServiceActionResult AddProductToBasket(Guid basketGuid, Guid productGuid)
+        public ServiceActionResult AddProductToBasket(Guid shopGuid, Guid productGuid, string loginUser)
         {
+            if (loginUser == null) return new ServiceActionResult(ActionStatus.NotSuccessfull,  "User with empty login does not exists");
             try
             {
-                Basket basket = _basketRepository.GetBasketByUniqueId(basketGuid);
-                if(basket == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Basket with specified guid doesn't exist");
+                User user = _userRepository.GetUserByLogin(loginUser);
+                if(user == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User with {loginUser} does not exists");
+
+                Basket basket = _basketRepository.GetBasketForShopAndOwner(shopGuid, user.UniqueId, BasketState.Basket) ??
+                                CreateNewBasket(shopGuid, user);
 
                 Product product = _productRepository.GetProductById(productGuid);
                 if(product == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Product with specified guid doesn't exist");
 
-                _basketRepository.AssignProduct(basket, product);
+                basket.AddProduct(product);
+                _basketRepository.UpdateBasket(basket);
+
                 return ServiceActionResult.Successfull;
             }
             catch (Exception ex)
@@ -44,9 +55,38 @@ namespace OnlineCatalog.Services.OrderService
             }
         }
 
-        public ServiceActionResult RemoveProductFromBasket(Guid basGuid, Guid productGuid)
+        public ServiceActionResult RemoveProductFromBasket(Guid basketGuid, Guid productGuid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Basket basket = _basketRepository.GetBasketByUniqueId(basketGuid);
+                if(basket == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Specified basket not found");
+
+                Product productBasket = basket.BasketProducts.FirstOrDefault(p => p.UniqueId == productGuid);
+                if(productBasket == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Specified product is already removed from the basket");
+
+                basket.BasketProducts.Remove(productBasket);
+                _basketRepository.UpdateBasket(basket);
+
+                return ServiceActionResult.Successfull;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceActionResult(ActionStatus.WithException, ex);
+            }
+        }
+
+        private Basket CreateNewBasket(Guid shopGuid, User user)
+        {
+            Basket basket = new Basket
+            {
+                Owner = user,
+                BasketShop = new Shop { UniqueId = shopGuid },
+                State = BasketState.Basket
+            };
+            _basketRepository.AddToDatabase(basket);
+
+            return basket;
         }
     }
 }

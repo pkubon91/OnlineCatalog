@@ -1,0 +1,35 @@
+﻿@model System.Collections.Generic.IEnumerable<OnlineCatalog.Web.Main.Models.Basket.BasketViewModel>
+
+@{
+    ViewBag.Title = "All orders";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>All orders</h2>
+
+<table class="table">
+    @foreach (var basket in Model)
+    {
+        <tr>
+            <td>
+                <div>
+                    @Html.LabelFor(m => basket.ProductCount)
+                    @basket.ProductCount
+                </div>
+                <div>
+                    @Html.LabelFor(m => basket.OrderState)
+                    @basket.OrderState
+                </div>
+                <div>
+                    @Html.LabelFor(m => basket.FinalPrice)
+                    @basket.FinalPrice
+                </div>
+                <div>
+                    @Html.LabelFor(m => basket.UpdateDateTime)
+                    @basket.UpdateDateTime
+                </div>
+            </td>
+        </tr>
+    }
+</table>

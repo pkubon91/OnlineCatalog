@@ -1,0 +1,36 @@
+﻿@model OnlineCatalog.Web.Main.Models.Basket.BasketViewModel
+
+@{
+    ViewBag.Title = "Shop basket";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Shop basket</h2>
+
+<table class="table">
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>
+                @{ Html.RenderPartial("ProductView", product); }
+                <div class="right">
+                    <input class="btn-danger" type="button" value="Remove product" onclick="@("window.location.href='" + @Url.Action("RemoveProduct", "Client", new {productGuid = product.ProductGuid}) + "'");"/>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+<div class="col-lg-2">
+    @Html.LabelFor(x => x.FinalPrice)
+    @Model.FinalPrice
+</div>
+<div class="right">
+<input class="btn-info" type="button" value="Make order" onclick="@("window.location.href='" + @Url.Action("OrderBasket", "Client") + "'");" 
+       @{
+           if (!Model.IsOrderButtonEnabled)
+           {
+               @:disabled="disabled"
+           }
+       }/>
+</div>

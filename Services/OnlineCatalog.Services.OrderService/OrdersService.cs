@@ -16,16 +16,16 @@ namespace OnlineCatalog.Services.OrderService
             _basketRepository = basketRepository;
         }
 
-        public ServiceActionResult FinalizeOrder(BasketDto basketDto)
+        public ServiceActionResult FinalizeOrder(Guid basketGuid)
         {
-            if(basketDto == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Basket cannot be null");
             try
             {
-                Basket basketToFinalize = _basketRepository.GetBasketByUniqueId(basketDto.BasketGuid);
+                Basket basketToFinalize = _basketRepository.GetBasketByUniqueId(basketGuid);
                 if(basketToFinalize == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Basket doesn't exist");
                 if(basketToFinalize.IsRealized) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Basket is already finalized");
 
                 basketToFinalize.IsRealized = true;
+                basketToFinalize.State = BasketState.Ordered;
                 _basketRepository.UpdateBasket(basketToFinalize);
                 
                 return ServiceActionResult.Successfull;

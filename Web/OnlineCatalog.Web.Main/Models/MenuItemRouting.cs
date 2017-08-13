@@ -7,6 +7,11 @@
         public static readonly MenuItemRouting Order = new MenuItemRouting("Orders", "AdminShopOrders");
         public static readonly MenuItemRouting User = new MenuItemRouting("Users", "AdminShopUsers");
 
+        public static readonly MenuItemRouting ClientShops = new MenuItemRouting("Shops", "Shops");
+        public static readonly MenuItemRouting ClientShopProducts = new MenuItemRouting("Products", "ShopProducts");
+        public static readonly MenuItemRouting ClientShopBasket = new MenuItemRouting("Basket", "ShopBasket");
+        public static readonly MenuItemRouting ClientOrders = new MenuItemRouting("Orders", "ClientOrders");
+
         private MenuItemRouting(string menuItem, string routeTo)
         {
             MenuItem = menuItem;

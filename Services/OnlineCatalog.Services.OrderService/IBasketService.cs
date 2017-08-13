@@ -8,9 +8,9 @@ namespace OnlineCatalog.Services.OrderService
     public interface IBasketService
     {
         [OperationContract]
-        ServiceActionResult AddProductToBasket(Guid basketGuid, Guid productGuid);
+        ServiceActionResult AddProductToBasket(Guid shopGuid, Guid productGuid, string loginUser);
 
         [OperationContract]
-        ServiceActionResult RemoveProductFromBasket(Guid basGuid, Guid productGuid);
+        ServiceActionResult RemoveProductFromBasket(Guid basketGuid, Guid productGuid);
     }
 }

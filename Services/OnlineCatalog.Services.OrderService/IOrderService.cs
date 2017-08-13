@@ -9,6 +9,6 @@ namespace OnlineCatalog.Services.OrderService
     public interface IOrderService
     {
         [OperationContract]
-        ServiceActionResult FinalizeOrder(BasketDto basketDto);
+        ServiceActionResult FinalizeOrder(Guid basketGuid);
     }
 }

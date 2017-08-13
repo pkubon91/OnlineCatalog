@@ -1,0 +1,16 @@
+﻿@model IEnumerable<OnlineCatalog.Web.Main.Models.Products.ProductViewModel>
+
+@{
+    ViewBag.Title = "Shop products";
+    Layout = "~/Views/Shared/_ClientLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>All products</h2>
+
+<table class="table">
+    @foreach (var product in Model)
+    {
+        Html.RenderPartial("OrderProductView", product);
+    }
+</table>

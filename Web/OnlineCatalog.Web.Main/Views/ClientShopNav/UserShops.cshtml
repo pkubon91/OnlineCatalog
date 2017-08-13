@@ -1,6 +1,0 @@
-﻿@model System.Collections.Generic.IEnumerable<OnlineCatalog.Web.Main.Models.Groups.ShopViewModel>
-
-@foreach (var shop in Model)
-{
-    @Html.RouteLink(shop.ShopName, new { controller = "ClientNav", action = "ProductCategories", shopGuid = shop.ShopGuid })
-}

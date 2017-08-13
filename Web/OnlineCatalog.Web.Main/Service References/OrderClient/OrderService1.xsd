@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://online.catalog.com" elementFormDefault="qualified" targetNamespace="https://online.catalog.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ActionStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Successfull" />
+      <xs:enumeration value="NotSuccessfull" />
+      <xs:enumeration value="WithException" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActionStatus" nillable="true" type="tns:ActionStatus" />
+</xs:schema>

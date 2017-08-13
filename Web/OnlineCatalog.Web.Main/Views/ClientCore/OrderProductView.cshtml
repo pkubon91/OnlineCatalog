@@ -1,0 +1,12 @@
+﻿@model OnlineCatalog.Web.Main.Models.Products.ProductViewModel
+@{
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+<tr>
+    <td>
+        @{ Html.RenderPartial("ProductView", Model); }
+        <div class="right">
+            <input class="btn-info" type="button" value="Add to basket" onclick="@("window.location.href='" + @Url.Action("AddToBasket", "Client", new {productGuid = Model.ProductGuid}) + "'");"/>
+        </div>
+    </td>
+</tr>

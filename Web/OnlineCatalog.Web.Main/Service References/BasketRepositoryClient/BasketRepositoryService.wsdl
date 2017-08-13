@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="https://online.catalog.com/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://online.catalog.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://online.catalog.com/Imports">
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd0" namespace="https://online.catalog.com/" />
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" />
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd3" namespace="http://onlinecatalog.com" />
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd4" namespace="https://onlinecatalog.com" />
+      <xsd:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBasketRepositoryService_GetBasketByUniqueId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBasketByUniqueId" />
+  </wsdl:message>
+  <wsdl:message name="IBasketRepositoryService_GetBasketByUniqueId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBasketByUniqueIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBasketRepositoryService_GetShopBasketForClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopBasketForClient" />
+  </wsdl:message>
+  <wsdl:message name="IBasketRepositoryService_GetShopBasketForClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShopBasketForClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBasketRepositoryService_GetBaskets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBaskets" />
+  </wsdl:message>
+  <wsdl:message name="IBasketRepositoryService_GetBaskets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBasketsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBasketRepositoryService">
+    <wsdl:operation name="GetBasketByUniqueId">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetBasketByUniqueId" message="tns:IBasketRepositoryService_GetBasketByUniqueId_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetBasketByUniqueIdResponse" message="tns:IBasketRepositoryService_GetBasketByUniqueId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShopBasketForClient">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetShopBasketForClient" message="tns:IBasketRepositoryService_GetShopBasketForClient_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetShopBasketForClientResponse" message="tns:IBasketRepositoryService_GetShopBasketForClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBaskets">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetBaskets" message="tns:IBasketRepositoryService_GetBaskets_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IBasketRepositoryService/GetBasketsResponse" message="tns:IBasketRepositoryService_GetBaskets_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

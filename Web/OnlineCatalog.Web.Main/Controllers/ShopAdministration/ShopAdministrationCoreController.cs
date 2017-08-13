@@ -16,7 +16,7 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
     {
         private readonly IProductCategoryRepositoryService _productCategoryRepository;
         private readonly IProductRepositoryService _productRepositoryService;
-        public static readonly Guid ShopGuid = Guid.Parse("ffc105ca-e1b1-45eb-9233-a74d00ff563b");
+        public static readonly Guid ShopGuid = Guid.Parse("0a5172d8-2681-40ee-a0ad-a7cc00faa3a8");
 
         public ShopAdministrationCoreController(IProductCategoryRepositoryService productCategoryRepository, IProductRepositoryService productRepositoryService)
         {

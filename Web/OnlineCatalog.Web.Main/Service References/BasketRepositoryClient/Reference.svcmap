@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="539c865a-734b-4763-a87a-6f5105be2e27" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/OrderService/BasketRepositoryService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BasketRepositoryService.xsd" MetadataType="Schema" ID="3665117a-e1ed-496f-bf69-8bdfda454de7" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BasketRepositoryService1.xsd" MetadataType="Schema" ID="3311ac9f-0ffe-4dca-b5d8-f97c971b4ebf" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BasketRepositoryService2.xsd" MetadataType="Schema" ID="d8571608-0d17-4f62-85ef-258b12cc7b93" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd5" />
+    <MetadataFile FileName="BasketRepositoryService.disco" MetadataType="Disco" ID="6c6172ff-6e0c-44df-8eba-1783f92f1794" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?disco" />
+    <MetadataFile FileName="BasketRepositoryService.wsdl" MetadataType="Wsdl" ID="226a6916-8614-4e54-974b-74c9ba208f98" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BasketRepositoryService3.xsd" MetadataType="Schema" ID="5eb1be87-b883-4abf-8a55-994b4b9b7121" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd4" />
+    <MetadataFile FileName="BasketRepositoryService1.wsdl" MetadataType="Wsdl" ID="b7302f49-87b8-4e2c-82cf-c409b7bc1c65" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?wsdl" />
+    <MetadataFile FileName="BasketRepositoryService4.xsd" MetadataType="Schema" ID="deaba65f-6ac3-4dd0-880a-13df074f65a1" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BasketRepositoryService5.xsd" MetadataType="Schema" ID="39cec42d-721c-48d4-8d96-e7c15b7ca44e" SourceId="1" SourceUrl="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

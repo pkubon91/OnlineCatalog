@@ -10,15 +10,11 @@
 <div id="header">
     <div class="title">Shop store</div>
     <div class="login">Hello @User.Identity.Name |
-        <a href="" class="link">basket</a> |
-        <a href="" class="link">logout</a>
+        <a href="@Url.Action("Logout", "Shared")" class="link">logout</a>
     </div>
 </div>
 <div id="client-menu-left">
-@*    @{Html.RenderAction("ProductCategories", "ClientNav");}*@
-</div>
-<div id="client-menu-right">
-@*    @{Html.RenderAction("UserShops", "ClientShopNav");}*@
+    @{Html.RenderAction("ShowMenuItems", "ClientNav");}
 </div>
 <div id="content">
     @RenderBody()

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="https://online.catalog.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd3" namespace="http://onlinecatalog.com" />
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd4" namespace="https://onlinecatalog.com" />
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" />
+  <xs:element name="GetBasketByUniqueId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uniqueId" type="ser:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBasketByUniqueIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" minOccurs="0" name="GetBasketByUniqueIdResult" nillable="true" type="q1:BasketDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfProductDto">
+    <xs:sequence>
+      <xs:element xmlns:q2="https://online.catalog.com/" minOccurs="0" maxOccurs="unbounded" name="ProductDto" nillable="true" type="q2:ProductDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q3="https://online.catalog.com/" name="ArrayOfProductDto" nillable="true" type="q3:ArrayOfProductDto" />
+  <xs:complexType name="ProductDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssignedShop" type="ser:guid" />
+      <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+      <xs:element xmlns:q4="http://onlinecatalog.com" minOccurs="0" name="CreatedBy" nillable="true" type="q4:UserDto" />
+      <xs:element minOccurs="0" name="DefaultPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ProductCategories" nillable="true" type="q5:ArrayOfguid" />
+      <xs:element minOccurs="0" name="ProductGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="ProductImage" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tax" type="xs:int" />
+      <xs:element minOccurs="0" name="Updated" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q6="https://online.catalog.com/" name="ProductDto" nillable="true" type="q6:ProductDto" />
+  <xs:complexType name="ArrayOfShopDto">
+    <xs:sequence>
+      <xs:element xmlns:q7="https://online.catalog.com/" minOccurs="0" maxOccurs="unbounded" name="ShopDto" nillable="true" type="q7:ShopDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q8="https://online.catalog.com/" name="ArrayOfShopDto" nillable="true" type="q8:ArrayOfShopDto" />
+  <xs:complexType name="ShopDto">
+    <xs:sequence>
+      <xs:element xmlns:q9="https://onlinecatalog.com" minOccurs="0" name="Address" nillable="true" type="q9:UserAddressDto" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShopGuid" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q10="https://online.catalog.com/" name="ShopDto" nillable="true" type="q10:ShopDto" />
+  <xs:simpleType name="UserRankDto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="SystemAdministrator" />
+      <xs:enumeration value="ShopAdministrator" />
+      <xs:enumeration value="Client" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element xmlns:q11="https://online.catalog.com/" name="UserRankDto" nillable="true" type="q11:UserRankDto" />
+  <xs:element name="GetShopBasketForClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shopGuid" type="ser:guid" />
+        <xs:element minOccurs="0" name="clientLogin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShopBasketForClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" minOccurs="0" name="GetShopBasketForClientResult" nillable="true" type="q12:BasketDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBaskets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shopGUid" type="ser:guid" />
+        <xs:element minOccurs="0" name="clientLogin" nillable="true" type="xs:string" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" minOccurs="0" name="orderStates" nillable="true" type="q13:ArrayOfOrderState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBasketsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" minOccurs="0" name="GetBasketsResult" nillable="true" type="q14:ArrayOfBasketDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

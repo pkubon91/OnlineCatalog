@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Business.NHibernate;
 using Business.Orders;
+using Business.Products;
 
 namespace Business.DataAccess.Orders
 {
@@ -16,7 +18,15 @@ namespace Business.DataAccess.Orders
 
         public void AddToDatabase(Basket entity)
         {
-            throw new NotImplementedException();
+            if(entity == null) throw new ArgumentNullException(nameof(entity));
+            using (var session = _sessionProvider.CreateSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.Save(entity);
+                    transaction.Commit();
+                }
+            }
         }
 
         public Basket GetBasketByUniqueId(Guid basketGuid)
@@ -27,14 +37,14 @@ namespace Business.DataAccess.Orders
             }
         }
 
-        public void AssignProduct(Basket basket, Business.Products.Product product)
+        public void AssignProduct(Guid basketGuid, Product product)
         {
-            if(basket == null) throw new ArgumentNullException(nameof(basket));
             if(product == null) throw  new ArgumentNullException(nameof(product));
             using (var session = _sessionProvider.CreateSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
+                    var basket = GetBasketByUniqueId(basketGuid);
                     basket.BasketProducts.Add(product);
                     transaction.Commit();
                 }
@@ -51,6 +61,32 @@ namespace Business.DataAccess.Orders
                     session.Update(basket);
                     transaction.Commit();
                 }
+            }
+        }
+
+        public Basket GetBasketForShopAndOwner(Guid shopGuid, Guid userGuid, BasketState state)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return
+                    session.QueryOver<Basket>()
+                        .Where(b => b.State == state &&
+                                    b.BasketShop.UniqueId == shopGuid &&
+                                    b.Owner.UniqueId == userGuid)
+                        .Fetch(x => x.BasketProducts).Eager
+                        .SingleOrDefault();
+            }
+        }
+
+        public IEnumerable<Basket> GetBaskets(Guid shopGuid, Guid userGuid)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return
+                    session.QueryOver<Basket>()
+                        .Where(b => b.BasketShop.UniqueId == shopGuid &&
+                                    b.Owner.UniqueId == userGuid)
+                        .List<Basket>();
             }
         }
     }

@@ -117,6 +117,7 @@
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.ServiceActionResult.datasource" />
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Products.ProductCategoryDto.datasource" />
     <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Products.ProductDto.datasource" />
+    <Content Include="Properties\DataSources\OnlineCatalog.Common.DataContracts.Orders.BasketDto.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -128,12 +129,60 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Service References\BasketClient\BasketService.wsdl" />
+    <None Include="Service References\BasketClient\BasketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketClient\BasketService1.wsdl" />
+    <None Include="Service References\BasketClient\BasketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketClient\BasketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketClient\BasketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService.wsdl" />
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService1.wsdl" />
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\LoginClient\configuration91.svcinfo" />
     <None Include="Service References\LoginClient\configuration.svcinfo" />
     <None Include="Service References\LoginClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\OrderClient\OrderService.wsdl" />
+    <None Include="Service References\OrderClient\OrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderClient\OrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderClient\OrderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderClient\OrderService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderClient\OrdersService.wsdl" />
     <None Include="Service References\ProductAdministrationClient\ProductAdministrationService.wsdl" />
     <None Include="Service References\ProductAdministrationClient\ProductAdministrationService.xsd">
       <SubType>Designer</SubType>
@@ -291,6 +340,27 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\BasketClient\BasketService.disco" />
+    <None Include="Service References\BasketClient\configuration91.svcinfo" />
+    <None Include="Service References\BasketClient\configuration.svcinfo" />
+    <None Include="Service References\BasketClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BasketRepositoryClient\BasketRepositoryService.disco" />
+    <None Include="Service References\BasketRepositoryClient\configuration91.svcinfo" />
+    <None Include="Service References\BasketRepositoryClient\configuration.svcinfo" />
+    <None Include="Service References\BasketRepositoryClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OrderClient\OrderService.disco" />
+    <None Include="Service References\OrderClient\configuration91.svcinfo" />
+    <None Include="Service References\OrderClient\configuration.svcinfo" />
+    <None Include="Service References\OrderClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Views\LoginView\Login.cshtml" />
     <Content Include="Views\LoginView\Register.cshtml" />
@@ -310,7 +380,10 @@
     <Compile Include="Common\Authentication\ShopAdministratorAuthenticationRouter.cs" />
     <Compile Include="Common\Authentication\UserRole.cs" />
     <Compile Include="Common\Authentication\UserRoles.cs" />
+    <Compile Include="Common\SessionKeys.cs" />
     <Compile Include="Controllers\Administration\ShopController.cs" />
+    <Compile Include="Controllers\Client\ClientController.cs" />
+    <Compile Include="Controllers\Client\ClientCoreController.cs" />
     <Compile Include="Controllers\LoginView\LoginViewController.cs" />
     <Compile Include="Controllers\LoginView\RegisterController.cs" />
     <Compile Include="Controllers\Navigation\ClientNavController.cs" />
@@ -330,9 +403,11 @@
     <Compile Include="IoC\CastleCustomDependenciesInstaller.cs" />
     <Compile Include="IoC\CastleServiceInstaller.cs" />
     <Compile Include="Mappings\AddressViewMapper.cs" />
+    <Compile Include="Mappings\BasketMapper.cs" />
     <Compile Include="Mappings\ProductCategoryViewMapper.cs" />
     <Compile Include="Mappings\ProductViewMapper.cs" />
     <Compile Include="Mappings\ShopViewMapper.cs" />
+    <Compile Include="Models\Basket\BasketViewModel.cs" />
     <Compile Include="Models\Groups\ShopViewModel.cs" />
     <Compile Include="Models\MenuItemRouting.cs" />
     <Compile Include="Models\Products\AddProductViewModel.cs" />
@@ -344,7 +419,22 @@
     <Compile Include="Models\UserModel\RegisterViewModel.cs" />
     <Compile Include="Models\UserModel\UserRank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BasketClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BasketRepositoryClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\LoginClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrderClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -423,15 +513,27 @@
     <Content Include="Views\Shop\ShopView.cshtml" />
     <Content Include="Views\Shop\EditShop.cshtml" />
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
+    <Content Include="Views\ClientNav\ClientMenuItem.cshtml" />
+    <Content Include="Views\ClientCore\Shops.cshtml" />
+    <Content Include="Views\ClientCore\ShopNotFound.cshtml" />
+    <Content Include="Views\ClientCore\ShopProducts.cshtml" />
+    <Content Include="Views\ClientCore\BasketProductView.cshtml" />
+    <Content Include="Views\ClientCore\OrderProductView.cshtml" />
+    <Content Include="Views\ClientCore\ProductView.cshtml" />
+    <Content Include="Views\ClientCore\ClientOrders.cshtml" />
     <None Include="Views\ClientNav\ClientProductCategories.cshtml" />
-    <None Include="Views\ClientShopNav\UserShops.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_ShopAdminLayout.cshtml" />
+    <Content Include="Views\Client\ProductAddedToBasket.cshtml" />
+    <Content Include="Views\Client\BasketNotFound.cshtml" />
+    <Content Include="Views\Client\ProductRemovedFromBasket.cshtml" />
+    <Content Include="Views\Client\OrderFinalized.cshtml" />
     <None Include="Views\ProductCategories\AddProductCategory.cshtml" />
     <None Include="Views\ProductCategories\EditCategory.cshtml" />
     <Content Include="Views\ProductCategories\ProductCategoryEditPage.cshtml" />
     <Content Include="Views\Product\NotRemovedProduct.cshtml" />
     <None Include="Views\Product\ProductList.cshtml" />
+    <Content Include="Views\Shared\UnexpectedError.cshtml" />
     <None Include="Views\ShopAdministrationCore\AddProduct.cshtml" />
     <None Include="Views\ShopAdministrationCore\AdminShopProduct.cshtml" />
     <None Include="Views\ShopAdministrationCore\AdminShopProductCategories.cshtml" />
@@ -449,14 +551,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Client\" />
     <Folder Include="Views\ShopAdministrationCore\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BasketClient\" />
+    <WCFMetadataStorage Include="Service References\BasketRepositoryClient\" />
     <WCFMetadataStorage Include="Service References\LoginClient\" />
+    <WCFMetadataStorage Include="Service References\OrderClient\" />
     <WCFMetadataStorage Include="Service References\ProductAdministrationClient\" />
     <WCFMetadataStorage Include="Service References\ProductCategoryRepositoryClient\" />
     <WCFMetadataStorage Include="Service References\ProductCategoryServiceClient\" />

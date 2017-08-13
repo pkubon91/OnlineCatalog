@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OnlineCatalog.Common.DataContracts.Orders" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost/OrderService/BasketRepositoryService.svc?xsd=xsd0" namespace="https://online.catalog.com/" />
+  <xs:complexType name="BasketDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BasketGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="OrderState" type="tns:OrderState" />
+      <xs:element xmlns:q1="https://online.catalog.com/" minOccurs="0" name="Products" nillable="true" type="q1:ArrayOfProductDto" />
+      <xs:element minOccurs="0" name="ShopGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserAssigned" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BasketDto" nillable="true" type="tns:BasketDto" />
+  <xs:simpleType name="OrderState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Basket" />
+      <xs:enumeration value="Ordered" />
+      <xs:enumeration value="OrderInProgress" />
+      <xs:enumeration value="OrderSent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderState" nillable="true" type="tns:OrderState" />
+  <xs:complexType name="ArrayOfOrderState">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderState" type="tns:OrderState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderState" nillable="true" type="tns:ArrayOfOrderState" />
+  <xs:complexType name="ArrayOfBasketDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BasketDto" nillable="true" type="tns:BasketDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBasketDto" nillable="true" type="tns:ArrayOfBasketDto" />
+</xs:schema>

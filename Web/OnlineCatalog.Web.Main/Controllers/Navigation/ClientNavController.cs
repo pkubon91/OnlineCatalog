@@ -1,33 +1,28 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using OnlineCatalog.Common.DataContracts.Products;
+﻿using System.Web.Mvc;
 using OnlineCatalog.Web.Main.Common.Authentication;
-using OnlineCatalog.Web.Main.Mappings;
-using OnlineCatalog.Web.Main.Models.Products;
-using OnlineCatalog.Web.Main.ProductCategoryRepositoryClient;
+using OnlineCatalog.Web.Main.Models;
 
 namespace OnlineCatalog.Web.Main.Controllers.Navigation
 {
+    [Authorize(Roles = UserRoles.Client)]
     public class ClientNavController : Controller
     {
-        private readonly IProductCategoryRepositoryService _productCategoriesRepositoryService;
-
-        public ClientNavController(IProductCategoryRepositoryService productCategoriesRepositoryService)
+        private static readonly MenuItemRouting[] MenuItems =
         {
-            if (productCategoriesRepositoryService == null) throw new ArgumentNullException(nameof(productCategoriesRepositoryService));
-            _productCategoriesRepositoryService = productCategoriesRepositoryService;
+            MenuItemRouting.ClientShops,
+            MenuItemRouting.ClientShopProducts,
+            MenuItemRouting.ClientShopBasket,
+            MenuItemRouting.ClientOrders
+        };
+
+        public PartialViewResult ShowMenuItems()
+        {
+            return PartialView("ClientMenuItem", MenuItems);
         }
 
-        [Authorize(Roles = UserRoles.Client)]
-        [HttpGet]
-        public ViewResult ProductCategories(Guid shopGuid)
+        public ActionResult RouteToAction(string menuItemRouting)
         {
-            if (shopGuid == Guid.Empty) return View("ClientProductCategories", Enumerable.Empty<ProductCategoryViewModel>());
-            ProductCategoryDto[] productCategories = _productCategoriesRepositoryService.GetProductCategories(shopGuid);
-            if (productCategories == null) return View("ClientProductCategories", Enumerable.Empty<ProductCategoryViewModel>());
-
-            return View("ClientProductCategories", productCategories.Select(c => c.Map()));
+            return RedirectToAction(menuItemRouting, "ClientCore");
         }
     }
 }

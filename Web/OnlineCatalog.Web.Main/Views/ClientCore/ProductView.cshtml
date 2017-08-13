@@ -1,0 +1,20 @@
+﻿@model OnlineCatalog.Web.Main.Models.Products.ProductViewModel
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<div class="left">
+    <div>
+        @Html.LabelFor(model => model.ProductName)
+        @Model.ProductName
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Description)
+        @Model.Description
+    </div>
+    <div>
+        @Html.LabelFor(model => model.CalculatedPrice)
+        @Model.CalculatedPrice
+    </div>
+</div>

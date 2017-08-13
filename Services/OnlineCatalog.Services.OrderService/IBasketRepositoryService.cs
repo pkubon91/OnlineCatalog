@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using Business.Orders;
+using OnlineCatalog.Common.DataContracts.Orders;
 
 namespace OnlineCatalog.Services.OrderService
 {
@@ -8,6 +8,12 @@ namespace OnlineCatalog.Services.OrderService
     public interface IBasketRepositoryService
     {
         [OperationContract]
-        Basket GetBasketByUniqueId(Guid uniqueId);
+        BasketDto GetBasketByUniqueId(Guid uniqueId);
+
+        [OperationContract]
+        BasketDto GetShopBasketForClient(Guid shopGuid, string clientLogin);
+
+        [OperationContract]
+        BasketDto[] GetBaskets(Guid shopGUid, string clientLogin, params OrderState[] orderStates);
     }
 }
