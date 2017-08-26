@@ -60,6 +60,14 @@ namespace Business.DataAccess.Products
             }
         }
 
+        public IEnumerable<Product> GetActiveProducts(Guid shopGuid)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.QueryOver<Product>().Where(p => p.AssignedShop.UniqueId == shopGuid && p.IsActive == true && p.IsDeleted == false).List<Product>();
+            }
+        }
+
         public void UpdateProduct(Product product)
         {
             using (var session = _sessionProvider.CreateSession())

@@ -18,7 +18,8 @@ namespace Business.NHibernate.Groups
 
             References(shop => shop.Address).Not.Nullable().Cascade.All().Unique().LazyLoad(Laziness.False).Column("USER_ADDRESS_GUID");
             HasManyToMany(shop => shop.AssignedUsers)
-                .Cascade.AllDeleteOrphan()
+                .Not.LazyLoad()
+                .Cascade.Merge()
                 .ChildKeyColumn("APP_USER_GUID")
                 .ParentKeyColumn("SHOP_GUID")
                 .Table("USER_SHOPS");

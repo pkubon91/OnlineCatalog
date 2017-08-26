@@ -2,12 +2,16 @@
 using System.Linq;
 using System.Web.Mvc;
 using Castle.Core.Internal;
+using OnlineCatalog.Common.DataContracts.Groups;
 using OnlineCatalog.Common.DataContracts.Products;
+using OnlineCatalog.Web.Main.Common;
 using OnlineCatalog.Web.Main.Common.Authentication;
 using OnlineCatalog.Web.Main.Mappings;
+using OnlineCatalog.Web.Main.Models.Groups;
 using OnlineCatalog.Web.Main.Models.Products;
 using OnlineCatalog.Web.Main.ProductCategoryRepositoryClient;
 using OnlineCatalog.Web.Main.ProductRepositoryClient;
+using OnlineCatalog.Web.Main.ShopRepositoryClient;
 
 namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
 {
@@ -16,21 +20,26 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
     {
         private readonly IProductCategoryRepositoryService _productCategoryRepository;
         private readonly IProductRepositoryService _productRepositoryService;
-        public static readonly Guid ShopGuid = Guid.Parse("0a5172d8-2681-40ee-a0ad-a7cc00faa3a8");
+        private readonly IShopRepositoryService _shopRepository;
 
-        public ShopAdministrationCoreController(IProductCategoryRepositoryService productCategoryRepository, IProductRepositoryService productRepositoryService)
+        public ShopAdministrationCoreController(IProductCategoryRepositoryService productCategoryRepository, IProductRepositoryService productRepositoryService, IShopRepositoryService shopRepository)
         {
             if (productCategoryRepository == null) throw new ArgumentNullException(nameof(productCategoryRepository));
             if (productRepositoryService == null) throw new ArgumentNullException(nameof(productRepositoryService));
+            if (shopRepository == null) throw new ArgumentNullException(nameof(shopRepository));
 
             _productCategoryRepository = productCategoryRepository;
             _productRepositoryService = productRepositoryService;
+            _shopRepository = shopRepository;
         }
 
         [HttpGet]
         public ViewResult AdminShopProduct()
         {
-            ProductDto[] shopProducts = _productRepositoryService.GetShopProducts(ShopGuid);
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+
+            ProductDto[] shopProducts = _productRepositoryService.GetShopProducts(shopGuid);
             if (shopProducts.IsNullOrEmpty()) return View(Enumerable.Empty<ProductViewModel>());
 
             return View(shopProducts.Select(p => p.Map()));
@@ -39,7 +48,10 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
         [HttpGet]
         public ViewResult AdminShopProductCategories()
         {
-            ProductCategoryDto[] productCategories = _productCategoryRepository.GetProductCategories(ShopGuid);
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+
+            ProductCategoryDto[] productCategories = _productCategoryRepository.GetProductCategories(shopGuid);
             if (productCategories.IsNullOrEmpty()) return View(Enumerable.Empty<ProductCategoryViewModel>());
             return View(productCategories.Select(c => c.Map()));
         }
@@ -49,7 +61,10 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
             var product = _productRepositoryService.GetProduct(productGuid);
             if (product == ProductDto.EmptyProduct) return AdminShopProduct();
 
-            var productCategories = _productCategoryRepository.GetProductCategories(ShopGuid);
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+
+            ProductCategoryDto[] productCategories = _productCategoryRepository.GetProductCategories(shopGuid);
             return View(new AddProductViewModel(productCategories.Select(s => s.Map()))
             {
                 ProductView = product.Map()
@@ -58,7 +73,7 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
 
         public ActionResult RemoveProduct(Guid productGuid)
         {
-            var product = _productRepositoryService.GetProduct(productGuid);
+            ProductDto product = _productRepositoryService.GetProduct(productGuid);
             if (product == ProductDto.EmptyProduct) return AdminShopProduct();
 
             return View(product.Map());
@@ -66,17 +81,33 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
 
         public ActionResult AddProduct()
         {
-            ProductCategoryDto[] shopCategories = _productCategoryRepository.GetProductCategories(ShopGuid);
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+
+            ProductCategoryDto[] shopCategories = _productCategoryRepository.GetProductCategories(shopGuid);
             if (shopCategories == null) return View(new AddProductViewModel(Enumerable.Empty<ProductCategoryViewModel>()));
-            //TODO Shop guid
+            
             return View(new AddProductViewModel(shopCategories.Select(c => c.Map()))
             {
                 ProductView = new ProductViewModel()
                 {
-                    ShopGuid = ShopGuid,
+                    ShopGuid = shopGuid,
                     CreatedLogin = User.Identity.Name
                 }
             });
+        }
+
+        public ActionResult AssignedShops()
+        {
+            ShopDto[] allAssignedShops = _shopRepository.GetShopsAssignedToUserByLogin(User.Identity.Name);
+            if (allAssignedShops.IsNullOrEmpty()) return View(Enumerable.Empty<ShopViewModel>());
+            return View(allAssignedShops.Select(s => s.Map()));
+        }
+
+        public ActionResult SelectShop(Guid shopGuid)
+        {
+            Session[SessionKeys.ShopAdminSelectedShopGuid] = shopGuid;
+            return RedirectToAction("AdminShopProduct");
         }
     }
 }

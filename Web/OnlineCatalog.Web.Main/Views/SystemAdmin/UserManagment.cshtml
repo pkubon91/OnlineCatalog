@@ -1,0 +1,32 @@
+﻿@model IEnumerable<OnlineCatalog.Web.Main.Models.UserModel.UserViewModel>
+
+@{
+    ViewBag.Title = "User Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>User Management</h2>
+
+<table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Name</td>
+        <td class="h4">Surname</td>
+        <td class="h4">Login</td>
+        <td class="h4">Rank</td>
+        <td class="h4">Shop assignment</td>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td class="hidden">@user.UserGuid</td>
+            <td>@user.Name</td>
+            <td>@user.Surname</td>
+            <td>@user.Login</td>
+            <td>@user.UserRank</td>
+            <td class="col-lg-3">
+                <input type="button" value="Assign shop" class="btn-default" onclick="@("window.location.href='" + @Url.Action("AssignShop", "SystemAdmin", new {userGuid = user.UserGuid}) + "'");"/>
+            </td>
+        </tr>
+    }
+</table>

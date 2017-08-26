@@ -80,4 +80,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetActiveShopProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shopGuid" type="ser:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveShopProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="https://online.catalog.com/" minOccurs="0" name="GetActiveShopProductsResult" nillable="true" type="q13:ArrayOfProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

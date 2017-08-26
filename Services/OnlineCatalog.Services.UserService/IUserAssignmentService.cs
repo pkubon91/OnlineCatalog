@@ -8,9 +8,9 @@ namespace OnlineCatalog.Services.UserService
     public interface IUserAssignmentService
     {
         [OperationContract]
-        ServiceActionResult AssignUserToShop(string login, Guid shopGuid);
+        ServiceActionResult AssignUserToShop(Guid userGuid, Guid shopGuid);
 
         [OperationContract]
-        ServiceActionResult UnassignUserFromShop(string login, Guid shopGuid);
+        ServiceActionResult UnassignUserFromShop(Guid userGuid, Guid shopGuid);
     }
 }

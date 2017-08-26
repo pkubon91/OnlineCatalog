@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Business.Administration;
 using Business.Groups;
 using Business.NHibernate;
 using NHibernate;
+using NHibernate.Linq;
 using OnlineCatalog.Common.Extensions;
 
 namespace Business.DataAccess.Group
@@ -86,16 +88,11 @@ namespace Business.DataAccess.Group
             }
         }
 
-        public IEnumerable<Shop> GetShopsAssignedToUser(string login)
+        public IEnumerable<Shop> GetShopsAssignedToUser(Guid userGuid)
         {
-            if(login.IsNullOrEmpty()) throw new ArgumentNullException(nameof(login));
             using (var session = _sessionProvider.CreateSession())
             {
-                string queryString = @"select s from Shop s join s.AssignedUsers u where u.Login = :login";
-                IQuery query = session.CreateQuery(queryString);
-                query.SetParameter("login", login, NHibernateUtil.String);
-
-                return query.List<Shop>();
+                return session.Query<Shop>().Where(s => s.AssignedUsers.Any(u => u.UniqueId == userGuid)).ToList();
             }
         }
     }

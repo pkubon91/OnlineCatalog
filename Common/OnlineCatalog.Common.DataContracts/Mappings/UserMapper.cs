@@ -36,7 +36,8 @@ namespace DataContracts.Mappings
                     m.CreateMap<User, UserDto>()
                         .ForMember(dest => dest.Address, opts => opts.MapFrom(src => src.Address.Map()))
                         .ForMember(dest => dest.UserRank, opts => opts.MapFrom(src => src.UserRank))
-                        .ForMember(dest => dest.AssignedShops, opts => opts.MapFrom(src => GetShops(src))));
+                        .ForMember(dest => dest.AssignedShops, opts => opts.Ignore())
+                        .ForMember(dest => dest.UserGuid, opts => opts.MapFrom(src => src.UniqueId)));
             return Mapper.Map<UserDto>(domainUser);
         }
 

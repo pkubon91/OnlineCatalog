@@ -31,7 +31,7 @@ namespace OnlineCatalog.Services.UserService.Tests.Unit
         {
             var service = new UserAssignmentService(Mock.Of<IShopRepository>(), Mock.Of<IUserRepository>());
 
-            ServiceActionResult result = service.AssignUserToShop(userLogin, Guid.Empty);
+            ServiceActionResult result = service.AssignUserToShop(Guid.Empty, Guid.Empty);
 
             result.Status.Should().Be(ActionStatus.NotSuccessfull);
         }
@@ -41,7 +41,7 @@ namespace OnlineCatalog.Services.UserService.Tests.Unit
         {
             var service = new UserAssignmentService(Mock.Of<IShopRepository>(), Mock.Of<IUserRepository>());
 
-            ServiceActionResult result = service.AssignUserToShop("testLogin", Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
+            ServiceActionResult result = service.AssignUserToShop(Guid.Empty, Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
 
             result.Status.Should().Be(ActionStatus.NotSuccessfull);
         }
@@ -51,7 +51,7 @@ namespace OnlineCatalog.Services.UserService.Tests.Unit
         {
             var service = new UserAssignmentService(Mock.Of<IShopRepository>(), Mock.Of<IUserRepository>(r => r.GetUserByLogin("testLogin") == new User("testLogin", "testPassword", UserRank.Client)));
 
-            ServiceActionResult result = service.AssignUserToShop("testLogin", Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
+            ServiceActionResult result = service.AssignUserToShop(Guid.Empty, Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
 
             result.Status.Should().Be(ActionStatus.NotSuccessfull);
         }
@@ -64,7 +64,7 @@ namespace OnlineCatalog.Services.UserService.Tests.Unit
             var shopRepository = Mock.Of<IShopRepository>(r => r.GetShopById(Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163")) == shop);
             var service = new UserAssignmentService(shopRepository, Mock.Of<IUserRepository>(r => r.GetUserByLogin("testLogin") == userToAssign));
 
-            ServiceActionResult result = service.AssignUserToShop("testLogin", Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
+            ServiceActionResult result = service.AssignUserToShop(Guid.Empty, Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
 
             result.Status.Should().Be(ActionStatus.Successfull);
             Mock.Get(shopRepository).Verify(r => r.AssignUser(shop, userToAssign), Times.Once);
@@ -77,7 +77,7 @@ namespace OnlineCatalog.Services.UserService.Tests.Unit
             Mock.Get(shopRepository).Setup(r => r.GetShopById(Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"))).Throws<Exception>();
             var service = new UserAssignmentService(shopRepository, Mock.Of<IUserRepository>(r => r.GetUserByLogin("testLogin") == new User("testLogin", "testPassword", UserRank.Client)));
 
-            ServiceActionResult result = service.AssignUserToShop("testLogin", Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
+            ServiceActionResult result = service.AssignUserToShop(Guid.Empty, Guid.Parse("5d3e3599-5e38-44e7-a0d9-84abef706163"));
 
             result.Status.Should().Be(ActionStatus.WithException);
         }

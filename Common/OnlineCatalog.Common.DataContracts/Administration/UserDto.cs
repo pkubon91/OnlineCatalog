@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using OnlineCatalog.Common.DataContracts.Groups;
@@ -9,6 +10,9 @@ namespace OnlineCatalog.Common.DataContracts.Administration
     public class UserDto
     {
         public static readonly UserDto EmptyUser = new UserDto() {IsAuthenticated = false};
+
+        [DataMember]
+        public Guid UserGuid { get; set; }
 
         [DataMember]
         public string Name { get; set; }

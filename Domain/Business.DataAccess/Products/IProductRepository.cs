@@ -9,6 +9,7 @@ namespace Business.DataAccess.Products
         void RemoveProduct(Product product);
         Product GetProductById(Guid productGuid);
         IEnumerable<Product> GetNotDeletedProducts(Guid shopGuid);
+        IEnumerable<Product> GetActiveProducts(Guid shopGuid); 
         void UpdateProduct(Product product);
     }
 }

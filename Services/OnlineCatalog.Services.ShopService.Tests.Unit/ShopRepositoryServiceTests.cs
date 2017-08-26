@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Business.DataAccess.Administration;
 using Business.DataAccess.Group;
 using Business.Groups;
 using FluentAssertions;
@@ -15,14 +16,14 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         [Test]
         public void WhenShopRepositoryIsNullThenThrowArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => new ShopRepositoryService(null));
+            Assert.Throws<ArgumentNullException>(() => new ShopRepositoryService(null, Mock.Of<IUserRepository>()));
         }
 
         [TestCase("")]
         [TestCase(null)]
         public void WhenShopNameIsNullOrEmptyThenThrowArgumentNullException(string shopName)
         {
-            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>());
+            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>(), Mock.Of<IUserRepository>());
 
             Assert.Throws<ArgumentNullException>(() => shopRepositoryService.GetShopByName(shopName));
         }
@@ -32,7 +33,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         {
             var shopRepository = new Mock<IShopRepository>();
             shopRepository.Setup(r => r.GetShopByName("shopName")).Returns((Shop) null);
-            var shopRepositoryService = new ShopRepositoryService(shopRepository.Object);
+            var shopRepositoryService = new ShopRepositoryService(shopRepository.Object, Mock.Of<IUserRepository>());
 
             ShopDto shop = shopRepositoryService.GetShopByName("shopName");
 
@@ -42,7 +43,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         [Test]
         public void WhenRequestedShopExistThenReturnThatShop()
         {
-            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>(r => r.GetShopByName("shopName") == new Shop() {Name = "shopName"}));
+            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>(r => r.GetShopByName("shopName") == new Shop() {Name = "shopName"}), Mock.Of<IUserRepository>());
 
             ShopDto shop = shopRepositoryService.GetShopByName("shopName");
 
@@ -55,7 +56,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         {
             var shopRepository = new Mock<IShopRepository>();
             shopRepository.Setup(r => r.GetShopById(It.IsAny<Guid>())).Returns((Shop)null);
-            var shopRepositoryService = new ShopRepositoryService(shopRepository.Object);
+            var shopRepositoryService = new ShopRepositoryService(shopRepository.Object, Mock.Of<IUserRepository>());
 
             ShopDto shop = shopRepositoryService.GetShopByUniqueId(It.IsAny<Guid>());
 
@@ -66,7 +67,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         public void WhenShopWithSpecifiedUniqueIdExistThenReturnThatShop()
         {
             Guid shopGuid = Guid.NewGuid();
-            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>(r => r.GetShopById(shopGuid) == new Shop() { UniqueId = shopGuid}));
+            var shopRepositoryService = new ShopRepositoryService(Mock.Of<IShopRepository>(r => r.GetShopById(shopGuid) == new Shop() { UniqueId = shopGuid}), Mock.Of<IUserRepository>());
 
             ShopDto shop = shopRepositoryService.GetShopByUniqueId(shopGuid);
 
@@ -79,7 +80,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         {
             var shopRepository = new Mock<IShopRepository>();
             shopRepository.Setup(r => r.GetAllShops()).Returns((IEnumerable<Shop>) null);
-            var shopService = new ShopRepositoryService(shopRepository.Object);
+            var shopService = new ShopRepositoryService(shopRepository.Object, Mock.Of<IUserRepository>());
 
             IEnumerable<ShopDto> shops = shopService.GetAllShops();
 
@@ -91,7 +92,7 @@ namespace OnlineCatalog.Services.ShopService.Tests.Unit
         {
             var shopRepository = new Mock<IShopRepository>();
             shopRepository.Setup(r => r.GetAllShops()).Returns(new List<Shop>() {Mock.Of<Shop>(), Mock.Of<Shop>()});
-            var shopService = new ShopRepositoryService(shopRepository.Object);
+            var shopService = new ShopRepositoryService(shopRepository.Object, Mock.Of<IUserRepository>());
 
             IEnumerable<ShopDto> shops = shopService.GetAllShops();
 

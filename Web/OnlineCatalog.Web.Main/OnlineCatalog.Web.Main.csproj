@@ -361,6 +361,34 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService.wsdl" />
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService1.wsdl" />
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService.disco" />
+    <None Include="Service References\UserRepositoryClient\configuration91.svcinfo" />
+    <None Include="Service References\UserRepositoryClient\configuration.svcinfo" />
+    <None Include="Service References\UserRepositoryClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\UserAssignmentClient\UserAssignmentService.disco" />
+    <None Include="Service References\UserAssignmentClient\configuration91.svcinfo" />
+    <None Include="Service References\UserAssignmentClient\configuration.svcinfo" />
+    <None Include="Service References\UserAssignmentClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Views\LoginView\Login.cshtml" />
     <Content Include="Views\LoginView\Register.cshtml" />
@@ -380,6 +408,7 @@
     <Compile Include="Common\Authentication\ShopAdministratorAuthenticationRouter.cs" />
     <Compile Include="Common\Authentication\UserRole.cs" />
     <Compile Include="Common\Authentication\UserRoles.cs" />
+    <Compile Include="Common\SessionExtensions.cs" />
     <Compile Include="Common\SessionKeys.cs" />
     <Compile Include="Controllers\Administration\ShopController.cs" />
     <Compile Include="Controllers\Client\ClientController.cs" />
@@ -393,6 +422,7 @@
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\ShopAdministration\ProductCategoriesController.cs" />
     <Compile Include="Controllers\ShopAdministration\ShopAdministrationCoreController.cs" />
+    <Compile Include="Controllers\Administration\SystemAdminController.cs" />
     <Compile Include="CustomValidations\IntegerValidator.cs" />
     <Compile Include="CustomValidations\ValidateUserAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -407,7 +437,9 @@
     <Compile Include="Mappings\ProductCategoryViewMapper.cs" />
     <Compile Include="Mappings\ProductViewMapper.cs" />
     <Compile Include="Mappings\ShopViewMapper.cs" />
+    <Compile Include="Mappings\UserMapper.cs" />
     <Compile Include="Models\Basket\BasketViewModel.cs" />
+    <Compile Include="Models\Groups\ShopUserViewModel.cs" />
     <Compile Include="Models\Groups\ShopViewModel.cs" />
     <Compile Include="Models\MenuItemRouting.cs" />
     <Compile Include="Models\Products\AddProductViewModel.cs" />
@@ -418,6 +450,7 @@
     <Compile Include="Models\UserModel\LoginViewModel.cs" />
     <Compile Include="Models\UserModel\RegisterViewModel.cs" />
     <Compile Include="Models\UserModel\UserRank.cs" />
+    <Compile Include="Models\UserModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BasketClient\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -474,6 +507,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\UserAssignmentClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserRepositoryClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -515,12 +558,28 @@
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
     <Content Include="Views\ClientNav\ClientMenuItem.cshtml" />
     <Content Include="Views\ClientCore\Shops.cshtml" />
-    <Content Include="Views\ClientCore\ShopNotFound.cshtml" />
+    <Content Include="Views\Shared\ShopNotFound.cshtml" />
     <Content Include="Views\ClientCore\ShopProducts.cshtml" />
     <Content Include="Views\ClientCore\BasketProductView.cshtml" />
     <Content Include="Views\ClientCore\OrderProductView.cshtml" />
     <Content Include="Views\ClientCore\ProductView.cshtml" />
     <Content Include="Views\ClientCore\ClientOrders.cshtml" />
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService.wsdl" />
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserRepositoryClient\UserRepositoryService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\ClientNav\ClientProductCategories.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_ShopAdminLayout.cshtml" />
@@ -539,9 +598,12 @@
     <None Include="Views\ShopAdministrationCore\AdminShopProductCategories.cshtml" />
     <Content Include="Views\ShopAdministrationCore\ProductEditPage.cshtml" />
     <Content Include="Views\ShopAdministrationCore\EditProduct.cshtml" />
+    <Content Include="Views\ShopAdministrationCore\AssignedShops.cshtml" />
     <None Include="Views\ShopAdministrationCore\ProductCategories.cshtml" />
     <Content Include="Views\ShopAdministrationCore\RemoveProduct.cshtml" />
     <None Include="Views\ShopAdminNav\ShopAdminMenuItem.cshtml" />
+    <Content Include="Views\SystemAdmin\UserManagment.cshtml" />
+    <Content Include="Views\SystemAdmin\AssignShop.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -568,6 +630,8 @@
     <WCFMetadataStorage Include="Service References\RegistrationClient\" />
     <WCFMetadataStorage Include="Service References\ShopConfigurationClient\" />
     <WCFMetadataStorage Include="Service References\ShopRepositoryClient\" />
+    <WCFMetadataStorage Include="Service References\UserAssignmentClient\" />
+    <WCFMetadataStorage Include="Service References\UserRepositoryClient\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\OnlineCatalog.Common.DataContracts\OnlineCatalog.Common.DataContracts.csproj">

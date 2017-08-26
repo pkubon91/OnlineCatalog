@@ -18,7 +18,7 @@ namespace Business.NHibernate.Administration
 
             References(u => u.Address).Not.Nullable().Cascade.All().Unique().Column("USER_ADDRESS_GUID").LazyLoad(Laziness.False);
             HasManyToMany(user => user.AssignedShops)
-                .Cascade.AllDeleteOrphan()
+                .Cascade.Merge()
                 .ChildKeyColumn("SHOP_GUID")
                 .ParentKeyColumn("APP_USER_GUID")
                 .LazyLoad().FetchType.Select()

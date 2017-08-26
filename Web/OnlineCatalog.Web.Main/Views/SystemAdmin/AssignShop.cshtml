@@ -1,0 +1,39 @@
+﻿@model System.Collections.Generic.IEnumerable<OnlineCatalog.Web.Main.Models.Groups.ShopUserViewModel>
+
+@{
+    ViewBag.Title = "Shop assignment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Shop assignment</h2>
+
+<table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Shop name</td>
+        <td class="h4">Is Active</td>
+        <td class="h4">Activate</td>
+    </tr>
+    @foreach (var shop in Model)
+    {
+        <tr>
+            <td class="hidden">@shop.ShopGuid</td>
+            <td class="hidden">@shop.UserIdentity</td>
+            <td>@shop.ShopName</td>
+            <td class="col-lg-3">
+                @Html.CheckBoxFor(p => shop.IsShopAssigned, new { @disabled = "disabled" })
+            </td>
+            <td class="col-lg-3">
+                @if (shop.IsShopAssigned)
+                {
+                    <input type="button" class="btn-danger" value="Deactivate" onclick="@("window.location.href='" + @Url.Action("UnassignShopFromUser", "SystemAdmin", new {userGuid = shop.UserIdentity, shopGuid = shop.ShopGuid}) + "'");"/>
+                }
+                else
+                {
+                    <input type="button" class="btn-default" value="Activate" onclick="@("window.location.href='" + @Url.Action("AssignShopToUser", "SystemAdmin", new {userGuid = shop.UserIdentity, shopGuid = shop.ShopGuid}) + "'");"/>    
+                }
+                
+            </td>
+        </tr>
+    }
+</table>

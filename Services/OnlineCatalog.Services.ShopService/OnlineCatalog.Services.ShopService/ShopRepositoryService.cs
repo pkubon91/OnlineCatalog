@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using Business.Administration;
+using Business.DataAccess.Administration;
 using Business.DataAccess.Group;
 using Business.Groups;
 using Castle.Core.Internal;
@@ -13,11 +15,14 @@ namespace OnlineCatalog.Services.ShopService
     public class ShopRepositoryService : IShopRepositoryService
     {
         private readonly IShopRepository _shopRepository;
+        private readonly IUserRepository _userRepository;
 
-        public ShopRepositoryService(IShopRepository shopRepository)
+        public ShopRepositoryService(IShopRepository shopRepository, IUserRepository userRepository)
         {
             if (shopRepository == null) throw new ArgumentNullException(nameof(shopRepository));
+            if (userRepository == null) throw new ArgumentNullException(nameof(userRepository));
             _shopRepository = shopRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<ShopDto> GetAllShops()
@@ -43,12 +48,11 @@ namespace OnlineCatalog.Services.ShopService
             return shop.Map();
         }
 
-        public IEnumerable<ShopDto> GetShopsAssignedToUser(string login)
+        public IEnumerable<ShopDto> GetShopsAssignedToUser(Guid userGuid)
         {
             try
             {
-                if (login.IsNullOrEmpty()) return Enumerable.Empty<ShopDto>();
-                var shops = _shopRepository.GetShopsAssignedToUser(login);
+                var shops = _shopRepository.GetShopsAssignedToUser(userGuid);
                 if (shops == null) return Enumerable.Empty<ShopDto>();
                 return shops.Select(s => s.Map());
             }
@@ -56,6 +60,14 @@ namespace OnlineCatalog.Services.ShopService
             {
                 throw new FaultException();
             }
+        }
+
+        public IEnumerable<ShopDto> GetShopsAssignedToUserByLogin(string login)
+        {
+            if (login == null) throw new ArgumentNullException(nameof(login));
+            User user = _userRepository.GetUserByLogin(login);
+            if (user == null) return Enumerable.Empty<ShopDto>();
+            return GetShopsAssignedToUser(user.UniqueId);
         }
     }
 }

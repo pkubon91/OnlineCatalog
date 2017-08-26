@@ -52,5 +52,11 @@ namespace Business.Groups
             if(userToAssign == null) throw new ArgumentNullException(nameof(userToAssign));
             AssignedUsers.Add(userToAssign);
         }
+
+        public void UnassignUser(User userToAssign)
+        {
+            if (userToAssign == null) throw new ArgumentNullException(nameof(userToAssign));
+            if (AssignedUsers.Contains(userToAssign)) AssignedUsers.Remove(userToAssign);
+        }
     }
 }

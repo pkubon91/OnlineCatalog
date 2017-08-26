@@ -3,7 +3,6 @@ using Business.Administration;
 using Business.DataAccess.Administration;
 using Business.DataAccess.Group;
 using Business.Groups;
-using Castle.Core.Internal;
 using OnlineCatalog.Common.DataContracts;
 
 namespace OnlineCatalog.Services.UserService
@@ -21,18 +20,20 @@ namespace OnlineCatalog.Services.UserService
             _userRepository = userRepository;
         }
 
-        public ServiceActionResult AssignUserToShop(string login, Guid shopGuid)
+        public ServiceActionResult AssignUserToShop(Guid userGuid, Guid shopGuid)
         {
-            if(login.IsNullOrEmpty()) return new ServiceActionResult(ActionStatus.NotSuccessfull, "Login cannot be null or empty");
             try
             {
-                User userToAssign = _userRepository.GetUserByLogin(login);
-                if(userToAssign == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User {login} doesn't exist");
+                User userToAssign = _userRepository.GetUser(userGuid);
+                if(userToAssign == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User with id {userGuid} doesn't exist");
 
                 Shop shop = _shopRepository.GetShopById(shopGuid);
                 if(shop == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"shop with id {shopGuid} doesn't exist");
 
-                _shopRepository.AssignUser(shop, userToAssign);
+                if(shop.AssignedUsers.Contains(userToAssign)) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User {userToAssign.Login} is already assigned to the {shop.Name} shop");
+
+                shop.AssignedUsers.Add(userToAssign);
+                _shopRepository.UpdateShop(shop);
                 return ServiceActionResult.Successfull;
             }
             catch (Exception ex)
@@ -41,9 +42,26 @@ namespace OnlineCatalog.Services.UserService
             }
         }
 
-        public ServiceActionResult UnassignUserFromShop(string login, Guid shopGuid)
+        public ServiceActionResult UnassignUserFromShop(Guid userGuid, Guid shopGuid)
         {
-            throw new NotImplementedException();
+            try
+            {
+                User userToAssign = _userRepository.GetUser(userGuid);
+                if (userToAssign == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User with id {userGuid} doesn't exist");
+
+                Shop shop = _shopRepository.GetShopById(shopGuid);
+                if (shop == null) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"shop with id {shopGuid} doesn't exist");
+
+                if (!shop.AssignedUsers.Contains(userToAssign)) return new ServiceActionResult(ActionStatus.NotSuccessfull, $"User {userToAssign.Login} is already unasigned from {shop.Name} shop");
+
+                shop.UnassignUser(userToAssign);
+                _shopRepository.UpdateShop(shop);
+                return ServiceActionResult.Successfull;
+            }
+            catch (Exception ex)
+            {
+                return new ServiceActionResult(ActionStatus.WithException,  ex);
+            }
         }
     }
 }

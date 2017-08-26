@@ -21,6 +21,12 @@
   <wsdl:message name="IProductRepositoryService_GetProduct_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductRepositoryService_GetActiveShopProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveShopProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductRepositoryService_GetActiveShopProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveShopProductsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductRepositoryService">
     <wsdl:operation name="GetShopProducts">
       <wsdl:input wsaw:Action="https://online.catalog.com/IProductRepositoryService/GetShopProducts" message="tns:IProductRepositoryService_GetShopProducts_InputMessage" />
@@ -29,6 +35,10 @@
     <wsdl:operation name="GetProduct">
       <wsdl:input wsaw:Action="https://online.catalog.com/IProductRepositoryService/GetProduct" message="tns:IProductRepositoryService_GetProduct_InputMessage" />
       <wsdl:output wsaw:Action="https://online.catalog.com/IProductRepositoryService/GetProductResponse" message="tns:IProductRepositoryService_GetProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveShopProducts">
+      <wsdl:input wsaw:Action="https://online.catalog.com/IProductRepositoryService/GetActiveShopProducts" message="tns:IProductRepositoryService_GetActiveShopProducts_InputMessage" />
+      <wsdl:output wsaw:Action="https://online.catalog.com/IProductRepositoryService/GetActiveShopProductsResponse" message="tns:IProductRepositoryService_GetActiveShopProducts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

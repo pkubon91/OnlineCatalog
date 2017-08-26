@@ -25,6 +25,13 @@ namespace OnlineCatalog.Services.ProductService
             return products.Select(p => p.Map());
         }
 
+        public IEnumerable<ProductDto> GetActiveShopProducts(Guid shopGuid)
+        {
+            IEnumerable<Product> products = _productRepository.GetActiveProducts(shopGuid);
+            if (products == null) return Enumerable.Empty<ProductDto>();
+            return products.Select(p => p.Map());
+        } 
+
         public ProductDto GetProduct(Guid productGuid)
         {
             Product product = _productRepository.GetProductById(productGuid);

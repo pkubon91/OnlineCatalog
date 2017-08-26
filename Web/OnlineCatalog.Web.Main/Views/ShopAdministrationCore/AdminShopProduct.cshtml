@@ -27,7 +27,7 @@
             <td>@product.CalculatedPrice</td>
             <td>@product.Description</td>
             <td class="col-lg-offset-3">
-                @Html.CheckBoxFor(p => product.IsActive, new {@disabled = "disabled"})
+                @Html.CheckBoxFor(p => product.IsActive, new { @disabled = "disabled" })
             </td>
             <td class="col-lg-offset-3">
                 <input type="button" value="Edit" class="btn-default" onclick="@("window.location.href='" + @Url.Action("EditProduct", "ShopAdministrationCore", new {productGuid = product.ProductGuid}) + "'");"/>

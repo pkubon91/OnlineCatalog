@@ -1,0 +1,25 @@
+﻿@model System.Collections.Generic.IEnumerable<OnlineCatalog.Web.Main.Models.Groups.ShopViewModel>
+
+@{
+    ViewBag.Title = "Assigned shops";
+    Layout = "~/Views/Shared/_ShopAdminLayout.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Assigned shops</h2>
+
+<table class="table">
+    <tr class="hidden-sm">
+        <td class="h4">Shop name</td>
+        <td class="h4">Select</td>
+    </tr>
+    @foreach (var shop in Model)
+    {
+        <tr>
+            <td>@shop.ShopName</td>
+            <td class="col-lg-offset-3">
+                <input type="button" value="Select" class="btn-default" onclick="@("window.location.href='" + @Url.Action("SelectShop", "ShopAdministrationCore", new {shopGuid = shop.ShopGuid}) + "'");"/>
+            </td> 
+        </tr>
+    }
+</table>

@@ -13,5 +13,8 @@ namespace OnlineCatalog.Services.ProductService
 
         [OperationContract]
         ProductDto GetProduct(Guid productGuid);
+
+        [OperationContract]
+        IEnumerable<ProductDto> GetActiveShopProducts(Guid shopGuid);
     }
 }

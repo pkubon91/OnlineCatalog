@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e3338185-1cb3-4924-87f3-d75543dacdc0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/UserService/UserAssignmentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UserAssignmentService.xsd" MetadataType="Schema" ID="f1ba60d3-2a65-4e84-81f5-7546597453f8" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserAssignmentService.wsdl" MetadataType="Wsdl" ID="52f241a3-30d9-49de-b145-c4b63d631ad5" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="UserAssignmentService1.xsd" MetadataType="Schema" ID="3f1058bf-8f32-4bd9-991c-8244e9bbee94" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserAssignmentService2.xsd" MetadataType="Schema" ID="7a201897-93a3-40a9-ab2f-59c9b36699ce" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserAssignmentService3.xsd" MetadataType="Schema" ID="9346e014-54ec-4da8-a066-221e5a8de8e8" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?xsd=xsd3" />
+    <MetadataFile FileName="UserAssignmentService.disco" MetadataType="Disco" ID="2b404a57-2db7-4d24-a1c4-b57628c1cdbe" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?disco" />
+    <MetadataFile FileName="UserAssignmentService1.wsdl" MetadataType="Wsdl" ID="a4b18b63-af38-4ee8-87be-1cce8bca3ada" SourceId="1" SourceUrl="http://localhost/UserService/UserAssignmentService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

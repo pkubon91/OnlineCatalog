@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using OnlineCatalog.Common.DataContracts;
 using OnlineCatalog.Common.DataContracts.Products;
+using OnlineCatalog.Web.Main.Common;
 using OnlineCatalog.Web.Main.Common.Authentication;
 using OnlineCatalog.Web.Main.Mappings;
 using OnlineCatalog.Web.Main.Models.Products;
@@ -35,7 +36,11 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
         {
             if(!ModelState.IsValid) return AddProductCategory();
             ProductCategoryDto productCategoryDto = productCategory.Map();
-            productCategoryDto.ShopGuid = ShopAdministrationCoreController.ShopGuid;
+
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+
+            productCategoryDto.ShopGuid = shopGuid;
 
             ServiceActionResult result = _productCategoryService.AddProductCategory(productCategoryDto);
             if (result.Status != ServiceActionResult.Successfull.Status) return AddProductCategory();
@@ -67,7 +72,11 @@ namespace OnlineCatalog.Web.Main.Controllers.ShopAdministration
         {
             if (!ModelState.IsValid) return EditCategory(productCategory.ProductCategoryGuid);
             ProductCategoryDto productCategoryDto = productCategory.Map();
-            productCategoryDto.ShopGuid = ShopAdministrationCoreController.ShopGuid;
+
+            Guid shopGuid;
+            if (!Session.TryGetKey(SessionKeys.ShopAdminSelectedShopGuid, out shopGuid)) return View("ShopNotFound");
+            productCategoryDto.ShopGuid = shopGuid;
+
             ServiceActionResult actionResult = _productCategoryService.EditProductCategory(productCategoryDto);
             if (actionResult.Status != ActionStatus.Successfull) return EditCategory(productCategory.ProductCategoryGuid);
 

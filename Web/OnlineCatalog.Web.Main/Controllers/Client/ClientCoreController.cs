@@ -48,7 +48,7 @@ namespace OnlineCatalog.Web.Main.Controllers.Client
             Guid parsedShopGuid;
             if (!Guid.TryParse(Session[SessionKeys.ClientSelectedShopGuid].ToString(), out parsedShopGuid)) return View("ShopNotFound");
 
-            ProductDto[] products = _productRepository.GetShopProducts(parsedShopGuid);
+            ProductDto[] products = _productRepository.GetActiveShopProducts(parsedShopGuid);
             if (products.IsNullOrEmpty()) return View(Enumerable.Empty<ProductViewModel>());
             return View(products.Select(p => p.Map()));
         }

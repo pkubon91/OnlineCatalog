@@ -12,7 +12,8 @@
         <div class="login">
             Hello @User.Identity.Name |
             <a href="@Url.Action("Logout", "Shared")" class="link">logout</a> |
-            <a href="" class="link">users</a>
+            <a href="@Url.Action("UserManagment", "SystemAdmin")" class="link">users</a> |
+            <a href="@Url.Action("AdminShopList", "Shop")" class="link">shops</a>
         </div>
     </div>
     <div id="content-admin">

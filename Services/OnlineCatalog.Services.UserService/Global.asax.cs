@@ -17,7 +17,8 @@ namespace OnlineCatalog.Services.UserService
             _container.AddFacility<WcfFacility>().Register(Component.For<ISessionProvider>().ImplementedBy<SessionFactory>())
                 .Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>())
                 .Register(Component.For<IShopRepository>().ImplementedBy<ShopRepository>())
-                .Register(Component.For<IUserAssignmentService>().ImplementedBy<UserAssignmentService>());
+                .Register(Component.For<IUserAssignmentService>().ImplementedBy<UserAssignmentService>())
+                .Register(Component.For<IUserRepositoryService>().ImplementedBy<UserRepositoryService>());
         }
 
         protected void Session_Start(object sender, EventArgs e)

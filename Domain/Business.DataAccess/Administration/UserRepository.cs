@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Business.Administration;
 using Business.NHibernate;
 using NHibernate;
+using NHibernate.Criterion;
 using OnlineCatalog.Common.Extensions;
 
 namespace Business.DataAccess.Administration
@@ -32,13 +35,12 @@ namespace Business.DataAccess.Administration
 
         public User GetUserByLogin(string login)
         {
-            if(login.IsNullOrEmpty()) throw new ArgumentNullException(nameof(login));
+            if(StringExtensions.IsNullOrEmpty(login)) throw new ArgumentNullException(nameof(login));
 
             User user;
             using (var session = _sessionProvider.CreateSession())
             {
-                var usersQuery = session.CreateQuery(@"select u from User u 
-                                                        left join fetch u.AssignedShops s 
+                var usersQuery = session.CreateQuery(@"select u from User u  
                                                         where u.Login = :Login");
                 usersQuery.SetString("Login", login);
                 var users = usersQuery.List<User>();
@@ -46,6 +48,22 @@ namespace Business.DataAccess.Administration
                 user = users.SingleOrDefault();
             }
             return user;
+        }
+
+        public IEnumerable<User> GetUsersAssignedToRank(params UserRank[] userRanks)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.QueryOver<User>().Where(u => RestrictionExtensions.IsIn((object) u.UserRank, (ICollection) userRanks)).List<User>();
+            }
+        }
+
+        public User GetUser(Guid userGuid)
+        {
+            using (var session = _sessionProvider.CreateSession())
+            {
+                return session.Get<User>(userGuid);
+            }
         }
     }
 }

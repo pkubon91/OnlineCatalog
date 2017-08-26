@@ -60,7 +60,7 @@
   <xs:element name="GetShopsAssignedToUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userGuid" type="ser:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -68,6 +68,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="https://online.catalog.com/" minOccurs="0" name="GetShopsAssignedToUserResult" nillable="true" type="q8:ArrayOfShopDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShopsAssignedToUserByLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="login" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShopsAssignedToUserByLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="https://online.catalog.com/" minOccurs="0" name="GetShopsAssignedToUserByLoginResult" nillable="true" type="q9:ArrayOfShopDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

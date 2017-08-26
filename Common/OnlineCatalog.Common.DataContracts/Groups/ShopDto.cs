@@ -20,5 +20,13 @@ namespace OnlineCatalog.Common.DataContracts.Groups
 
         [DataMember]
         public bool IsActive { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+            ShopDto shop = obj as ShopDto;
+            if (shop == null) return false;
+            return shop.ShopGuid == ShopGuid;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Business.DataAccess.Administration;
 using Business.DataAccess.Group;
 using Business.NHibernate;
 using Castle.Facilities.WcfIntegration;
@@ -17,6 +18,7 @@ namespace OnlineCatalog.Services.ShopService
             _container.AddFacility<WcfFacility>()
                 .Register(Component.For<ISessionProvider>().ImplementedBy<SessionFactory>())
                 .Register(Component.For<IShopRepository>().ImplementedBy<ShopRepository>())
+                .Register(Component.For<IUserRepository>().ImplementedBy<UserRepository>())
                 .Register(Component.For<IShopRepositoryService>().ImplementedBy<ShopRepositoryService>())
                 .Register(Component.For<IShopConfigurationService>().ImplementedBy<ShopConfigurationService>());
         }

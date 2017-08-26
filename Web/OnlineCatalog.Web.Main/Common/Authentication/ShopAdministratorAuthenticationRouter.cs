@@ -14,7 +14,7 @@ namespace OnlineCatalog.Web.Main.Common.Authentication
 
             httpContext.User = new CustomPrincipal(new CustomIdentity(user.Login), UserRole);
             if (!Roles.IsUserInRole(UserRole.RoleName)) Roles.AddUserToRole(user.Login, UserRole.RoleName);
-            return new RedirectValues("AdminShopProduct", "ShopAdministrationCore");
+            return new RedirectValues("AssignedShops", "ShopAdministrationCore");
         }
 
         private UserRole UserRole = UserRole.ShopAdministrator;

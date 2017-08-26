@@ -20,6 +20,10 @@ namespace OnlineCatalog.Web.Main.ProductRepositoryClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IProductRepositoryService/GetProduct", ReplyAction="https://online.catalog.com/IProductRepositoryService/GetProductResponse")]
         OnlineCatalog.Common.DataContracts.Products.ProductDto GetProduct(System.Guid productGuid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="https://online.catalog.com/IProductRepositoryService/GetActiveShopProducts", ReplyAction="https://online.catalog.com/IProductRepositoryService/GetActiveShopProductsRespons" +
+            "e")]
+        OnlineCatalog.Common.DataContracts.Products.ProductDto[] GetActiveShopProducts(System.Guid shopGuid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +59,10 @@ namespace OnlineCatalog.Web.Main.ProductRepositoryClient {
         
         public OnlineCatalog.Common.DataContracts.Products.ProductDto GetProduct(System.Guid productGuid) {
             return base.Channel.GetProduct(productGuid);
+        }
+        
+        public OnlineCatalog.Common.DataContracts.Products.ProductDto[] GetActiveShopProducts(System.Guid shopGuid) {
+            return base.Channel.GetActiveShopProducts(shopGuid);
         }
     }
 }

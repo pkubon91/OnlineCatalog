@@ -40,6 +40,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetShopsAssignedToUserByLogin">
+      <soap:operation soapAction="https://online.catalog.com/IShopRepositoryService/GetShopsAssignedToUserByLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ShopRepositoryService">
     <wsdl:port name="BasicHttpBinding_IShopRepositoryService" binding="tns:BasicHttpBinding_IShopRepositoryService">

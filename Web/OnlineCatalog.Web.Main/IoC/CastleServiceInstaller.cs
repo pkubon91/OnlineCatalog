@@ -12,6 +12,8 @@ using OnlineCatalog.Web.Main.ProductRepositoryClient;
 using OnlineCatalog.Web.Main.RegistrationClient;
 using OnlineCatalog.Web.Main.ShopConfigurationClient;
 using OnlineCatalog.Web.Main.ShopRepositoryClient;
+using OnlineCatalog.Web.Main.UserAssignmentClient;
+using OnlineCatalog.Web.Main.UserRepositoryClient;
 
 namespace OnlineCatalog.Web.Main.IoC
 {
@@ -29,7 +31,9 @@ namespace OnlineCatalog.Web.Main.IoC
                 .Register(Component.For<IProductAdministrationService>().ImplementedBy<ProductAdministrationServiceClient>())
                 .Register(Component.For<IBasketService>().ImplementedBy<BasketServiceClient>())
                 .Register(Component.For<IBasketRepositoryService>().ImplementedBy<BasketRepositoryServiceClient>())
-                .Register(Component.For<IOrderService>().ImplementedBy<OrderServiceClient>());
+                .Register(Component.For<IOrderService>().ImplementedBy<OrderServiceClient>())
+                .Register(Component.For<IUserRepositoryService>().ImplementedBy<UserRepositoryServiceClient>())
+                .Register(Component.For<IUserAssignmentService>().ImplementedBy<UserAssignmentServiceClient>());
         }
     }
 }
